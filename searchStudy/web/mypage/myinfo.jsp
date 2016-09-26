@@ -119,77 +119,107 @@
 
 </head>
 <body>
-	<div id="wrap">
-		<div id="header">
-			<div id="nav_warp_shading"></div>
-			<div id="nav_wrap" class="fixed">
-				<div class="container_wrap">
-					<div id="nav_container" class="">
-						<div id="nav_shading" class="shading_bg" style="display: none;"></div>
-						<!-- logo section -->
-						<a id="nav_logo" href="/easyStudy/main.jsp"><img class="logo"
-							src="/easyStudy/images/logo.png"></a>
+<div id="wrap">
+	<div id="header">
+		<div id="nav_warp_shading"></div>
+		<div id="nav_wrap" class="fixed">
+	<div class="container_wrap">
+	<form action="/easyStudy/search.store" method="get">
+		<div id="nav_container" class="">
+			<div id="nav_shading" class="shading_bg" style="display: none;"></div>
+				<!-- logo section -->
+			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
 
-						<!--<div id="nav_city">
-						<span>서울</span>
-						<i class="icon"></i>	
-				</div>  -->
-
-						<!-- area search section -->
-						<div id="nav_area" class="search sel">
-							<div class="input">
-								<div class="selected">지역 선택</div>
-							</div>
-							<!-- <div class="box">
-						<ul class="district">
-							<li data-dist="c1038633da6870c2a84a6b58a82283a6" class="selected">강남<span>&gt;</span></li>
-							<li data-dist="1aac31587cc4cfffdaf450724a554aaa">종로<span>&gt;</span></li>
-							<li data-dist="4431507c0830b8cd256dca4762f83c9c">신촌<span>&gt;</span></li>
-						</ul>
-						
-
-						<button class="confirm red_fill border_radius soft" type="button" tabindex="-1">확인</button>
-					</div>-->
-						</div>
-						<!-- genre search section -->
-						<div id="nav_genre" class="search sel">
-							<div class="input">
-								<div class="selected">카테코리 선택</div>
-							</div>
-
-						</div>
-
-						<button type="button" id="nav_btn" class="search" tabindex="-1">검색</button>
-
-						<!-- account section -->
-						<div id="nav_account">
-							<div id="nav_guest">
-								<span id="nav_login">로그인</span> &nbsp;|&nbsp; <span
-									id="nav_join">회원가입</span>
-							</div>
-						</div>
-					</div>
+			<!-- area search section -->
+			<div id="nav_area" class="search sel">
+				<div class="input">
+					<div class="selected">지역 선택 </div>
+					<img src="images/down_arrow.png" class="searchbox arrow">
 				</div>
-				<div id="mymenu">
-					<!--마이페이지 메뉴 -->
-					<div id="mymenu_in">
-						<%
-							//일반회원모드
-						%>
-						<a href="/easyStudy/mypage/myBookmark.jsp">즐겨찾기</a> &nbsp; &nbsp;
-						&nbsp; &nbsp; &nbsp; &nbsp; <a
-							href="/easyStudy/mypage/myReview.jsp">내가 쓴 리뷰</a> &nbsp; &nbsp;
-						&nbsp; &nbsp; &nbsp; &nbsp; <a href="/easyStudy/mypage/myinfo.jsp">내
-							정보 변경</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						<%
-							//관리자 모드
-						%>
-						<a href="/easyStudy/mmanagement">회원 관리</a> &nbsp; &nbsp; &nbsp;
-						&nbsp; &nbsp; &nbsp; <a href="#">글쓰기</a>
-					</div>
+				<div class="box" id="box1">
+					<ul class="district content">
+						<li>
+						<input type="checkbox" name="area" id="GN" value="GN">
+						<label for="GN">강남</label>
+    					</li>
+						<li><input type="checkbox" name="area" id="JL" value="JL">
+							<label for="JL">종로</label></li>
+						<li><input type="checkbox" name="area" id="SC" value="SC">
+							<label for="SC">신촌</label></li>
+					</ul>
+					<!--<button type="button" id="off" class="confirm red_fill border_radius soft">확인</button>-->
+					<button class="confirm red_fill border_radius soft" type="button">확인</button>
 				</div>
 			</div>
+				<!-- genre search section -->
+			<div id="nav_genre" class="search sel">
+				<div class="input">
+					<div class="selected">카테고리 선택</div>
+					<img src="images/down_arrow.png" class="searchbox arrow">
+				</div>
+				<div class="box" id="box2">
+					<ul class="search_catagory content">
+						<li>
+						<input type="checkbox" name="category" id="S10" value="S10">
+						<label for="S10">도서관/독서실</label>
+    					</li>
+						<li><input type="checkbox" name="category" id="S20" value="S20">
+						<label for="S20">스터디룸</label></li>
+						<li><input type="checkbox" name="category" id="S30" value="S30">
+						<label for="S30">스터디카페</label></li>
+						<!--  <li><input type="checkbox" name="category" id="S40" value="S40">
+						<label for="S40">스터디룸/스터디카페</label></li>-->
+					</ul>
+					<button class="confirm red_fill border_radius soft" type="button">확인</button>
+				</div>
+					
+			</div>
+			<button type="submit" id="nav_btn" class="search">검색</button>
+			
+				<!-- account section -->
+				<div id="nav_account">
+						<div id="nav_guest">
+						<%if(member !=null){ %>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
+						<%}else{ %>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
+							&nbsp;|&nbsp;
+						<%} %>	
+							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal">회원가입</a></span>
+						</div>
+				</div>
 		</div>
+		</form>
+		
+	</div>
+		<div class="menu_wrap">
+			<div id="nav_menu">
+			<!-- 	 <a href="#" class="underline ">메뉴</a>
+				<a href="#" class="underline ">메뉴</a>
+				<a href="#" class="underline ">메뉴</a>
+				<a href="#" class="underline ">메뉴<i class="text new"></i></a> -->	
+			
+				<% if(member != null){
+					if("admin".equals(member.getUserId())) { %>	
+						<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
+						<a href="/easyStudy/mmanagement?page=1">회원 관리</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						<a href="#">글쓰기</a>		
+					<%}else{ %>		
+						<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
+						<a href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>">즐겨찾기</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						<a href="/easyStudy/mreview?page=1&nickname=<%=member.getNickName() %>">내가 쓴 리뷰</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						<a href="/easyStudy/mypage/myinfo.jsp">내 정보 변경</a> 		
+					<%}
+				}else{} %>
+			
+			</div>
+		</div>
+	</div>
+	</div>
+	<!--<div class="menu_wrap">
+			<div id="nav_menu">
+			</div>
+	</div>-->
 		<div id="container">
 			<div id="mypages">
 				<div id="mypage_informodify_detail">

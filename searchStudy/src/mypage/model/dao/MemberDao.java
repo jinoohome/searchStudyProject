@@ -307,7 +307,7 @@ public class MemberDao{
 		// 어느 위치에 입력시켜야할까?
 		
 		String[] bookmarks = new String[9];
-		int result = 0; 
+		int result = 10; 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -332,9 +332,11 @@ public class MemberDao{
 			}
 			
 			for(int i = 0; i <bookmarks.length; i++){
-				System.out.println("북마크"+bookmarks[i]);
+				if(bookmarks[i] == null){
+					result = i;
+					break;
+				}
 			}
-
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -343,12 +345,7 @@ public class MemberDao{
 			close(pstmt);
 		}
 		
-		for(int i = 0; i <bookmarks.length; i++){
-			if(bookmarks[i] == null){
-				result = i;
-				break;
-			}
-		}
+
 		
 		return result;
 	}
@@ -369,8 +366,8 @@ public class MemberDao{
 			rset = pstmt.executeQuery();
 			System.out.println("성공");
 			
-			if(rset.next() ){
-				System.out.println("adf " + rset.getString("BOOKMARK_N1") );
+			if(rset.next()){
+				System.out.println("실행!");
 				 bookmarks[0] = rset.getString("BOOKMARK_N1");
 				 bookmarks[1] = rset.getString("BOOKMARK_N2");
 				 bookmarks[2] = rset.getString("BOOKMARK_N3");
@@ -381,16 +378,20 @@ public class MemberDao{
 				 bookmarks[7] = rset.getString("BOOKMARK_N8");
 				 bookmarks[8] = rset.getString("BOOKMARK_N9");
 				 System.out.println("adsf" + bookmarks[3]);
-				 
+				 System.out.println("adf " + rset.getString("BOOKMARK_N1") );
+			}else{
+				System.out.println("adsfadsfa");
+			}
+			
 				 for(int i = 0; i <bookmarks.length; i++){
-						if(bookmarks[i].equals(storeid)){
+						if(storeid.equals(bookmarks[i])){
 							result = i;
 							System.out.println("번호  : " +  i);
 							break;
 						}
 					}
 				 
-			}
+			
 						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -412,11 +413,40 @@ public class MemberDao{
 		String[] bookmark = new String[]{"BOOKMARK_N1", "BOOKMARK_N2", "BOOKMARK_N3", "BOOKMARK_N4",
 							"BOOKMARK_N5", "BOOKMARK_N6", "BOOKMARK_N7", "BOOKMARK_N8", "BOOKMARK_N9"};
 		
-		String query = "update USER_BOOKMARKS set ? = ? where USER_ID = ?";
+String query = null;
+		
+		switch(bookmark[where]){
+		case "BOOKMARK_N1" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N1 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N2" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N2 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N3" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N3 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N4" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N4 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N5" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N5 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N6" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N6 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N7" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N7 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N8" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N8 = ? where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N9" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N9 = ? where USER_ID = ? ";
+			break;
+		}
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, bookmark[where]);
 			pstmt.setString(2, storeid);
 			pstmt.setString(3, userid);
 			
@@ -439,16 +469,45 @@ public class MemberDao{
 		String[] bookmark = new String[]{"BOOKMARK_N1", "BOOKMARK_N2", "BOOKMARK_N3", "BOOKMARK_N4",
 							"BOOKMARK_N5", "BOOKMARK_N6", "BOOKMARK_N7", "BOOKMARK_N8", "BOOKMARK_N9"};
 		
-		String query = " update USER_BOOKMARKS set ? = null where USER_ID = ? ";
+		String query = null;
 		
-		String column = bookmark[where] ;
+		switch(bookmark[where]){
+		case "BOOKMARK_N1" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N1 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N2" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N2 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N3" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N3 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N4" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N4 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N5" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N5 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N6" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N6 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N7" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N7 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N8" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N8 = null where USER_ID = ? ";
+			break;
+		case "BOOKMARK_N9" :  
+			query = " update USER_BOOKMARKS set BOOKMARK_N9 = null where USER_ID = ? ";
+			break;
+		}
+		
+		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, column);
-			pstmt.setString(2, userid);
-			
+			pstmt.setString(1, userid);
+			System.out.println("여기까지 실행");
 			result = pstmt.executeUpdate();
-			
+			System.out.println("성공!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -493,12 +552,14 @@ public class MemberDao{
 		ResultSet rset = null;
 		ArrayList<Review> list = null;
 		System.out.println("dao실행");
-		String query = "select * "
-						+ "	 from ( select rownum rnum, LIST_NO, STORE_ID, NICKNAME, ENROLL_DATE, SCORE, CONTENTS "
-								 + " from (select * from REVIEW where NICKNAME = ?  order by ENROLL_DATE desc ) ) "
-					    + " where rnum >= ? and rnum <= ? ";
+		String query = " SELECT LIST_NO, STORE_ID, NICKNAME, ENROLL_DATE, SCORE, CONTENTS "
+						+ " FROM ( SELECT LIST_NO, STORE_ID, NICKNAME, ENROLL_DATE, "
+											+ "	 SCORE, CONTENTS, ROW_NUMBER() OVER (ORDER BY ENROLL_DATE DESC) RANK "
+									+ " FROM REVIEW "
+									+ " WHERE NICKNAME = ? ) "
+						+ " WHERE RANK >= ? AND RANK <= ? ";
 		
-		int startRow = (currentPage - 1) * 10 + 1; // 읽기 시작할 row 번호.
+		int startRow = (currentPage - 1) * 5 + 1; // 읽기 시작할 row 번호.
 		int endRow = startRow + limit - 1; // 읽을 마지막 row 번호.
 		
 		try {

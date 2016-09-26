@@ -45,7 +45,7 @@ public class MyBookmarkDeleteS extends HttpServlet {
 		
 		if(result > 0){
 			//성공시 어디로 보낼까?
-			response.sendRedirect("/easyStudy/mbookmark");
+			response.sendRedirect("/easyStudy/mbookmark?userid="+userid);
 		}else{
 			//실패시 어디로 보낼까?
 			RequestDispatcher view = request.getRequestDispatcher("membe/noticeError.jsp");

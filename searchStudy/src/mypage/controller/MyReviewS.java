@@ -72,8 +72,11 @@ public class MyReviewS extends HttpServlet {
 				
 		
 		ArrayList<ReviewImage> listRImage = null;
-		for(int i =0; i < list.size(); i ++){
-			listRImage = new ReviewService().selectMyRImage(list.get(i).getListNo());
+		
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				listRImage = new ReviewService().selectMyRImage(list.get(i).getListNo());
+			}
 		}
 		System.out.println("listRImage : " + listRImage);
 		

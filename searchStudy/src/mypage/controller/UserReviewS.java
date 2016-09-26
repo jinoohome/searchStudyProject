@@ -72,8 +72,10 @@ public class UserReviewS extends HttpServlet {
 				endPage = maxPage;
 
 			ArrayList<ReviewImage> listRImage = null;
+			if(list != null){
 			for (int i = 0; i < list.size(); i++) {
 				listRImage = new ReviewService().selectMyRImage(list.get(i).getListNo());
+			}
 			}
 			System.out.println("listRImage : " + listRImage);
 
@@ -89,12 +91,6 @@ public class UserReviewS extends HttpServlet {
 			view.forward(request, response);
 
 			
-		} catch (Exception e) {
-			System.out.println("에러발생");
-			view = request.getRequestDispatcher("mypage/mypageError.jsp");
-			request.setAttribute("code", "nlist");
-			view.forward(request, response);
-		}
 	}
 
 	/**
