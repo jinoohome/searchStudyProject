@@ -1,0 +1,521 @@
+/*********** reset ***********/
+* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*********** login ***********/
+body{width:100%}
+
+#main_login div{
+	width:350px;
+	margin:0 auto;
+	margin-bottom: 20px; 
+}
+ #main_loginsave label{
+	font-size:20pt;
+}
+
+#main_loginHeader h1{
+	width: 350px;
+	text-align:center;
+	font-size:3.5em;
+	color: #d42305;
+	font-weight:bold;
+	margin-top:40px;
+}
+
+#main_loginHeader div input{
+	width: 350px;
+	height: 30px;
+	border : none; 
+}
+
+#main_loginBtn_area{
+	background: #d42305;
+
+}
+
+#main_loginBtn{
+	height: 40px;
+	background: #d42305;
+	color:white;
+	font-size:1em;
+	width:360px;
+	cursor:pointer;
+}
+
+#main_loginsave{
+	padding:0px;
+	height:20px;
+	vertical-align:-9px;
+}
+
+.main_inputRow{
+	border: solid 1px darkgray;
+	padding: 5px;
+}
+#main_loginWrap .divBox1 {
+	width: 350px;
+	padding:5px;
+	border: solid 1px darkgray;
+}
+
+#main_loginWrap .inputBox1 {
+	width: 350px;
+	height: 30px;
+	font-size:1.8em;
+	border: none;
+}
+
+.main_inputRow input{
+	font-size:1.8em;
+}
+#main_login_chk{
+	width:20px;
+}
+#main_find_info{
+	width:350px;
+	border-top: 1px solid darkgray;
+}
+#main_find_info div{
+	text-align:center;
+	margin:10px 5px 40px 5px;
+	
+}	
+
+#main_find_info a, span{
+	text-decoration : none;
+	color: grey;
+	font-size:9pt;
+}
+#main_find_info div>div{
+	margin-top:20px;
+}
+
+.main_labelRow{
+	border:none;
+	padding:5px;
+	height:30px;
+	
+}
+
+.main_loginCheck{
+	font-size: 12px;
+	position:absolute;
+	margin-top:10px;
+}
+
+/*********** join ***********/
+#main_join body {
+	width: 100%;
+}
+
+#main_join, #main_join div {
+	width: 350px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+#main_joinHeader h1 {
+	width: 350px;
+	text-align:center;
+	font-size:3.5em;
+	color: #d42305;
+	font-weight:bold;
+	margin-top:40px;
+}
+
+#main_sendInfoBtn input {
+	width: 360px;
+	height: 45px;
+	background: #d42305;
+	color: white;
+	border: none;
+	font-size: 11pt;
+	margin:10px 0px;
+	cursor:pointer;
+}
+#main_backArea{
+	text-align:right;
+}
+#main_backArea a{
+	text-decoration : none;
+	color: grey;
+	font-size:9pt;
+}
+
+::-webkit-input-placeholder {font-size:10pt }
+::-moz-placeholder { font-size:10pt } /* firefox 19+ */
+:-ms-input-placeholder { font-size:10pt ;} /* ie */
+input:-moz-placeholder { font-size:10pt }
+
+/*********** main_pwSearchModal ***********/
+#main_pwSearch body {
+	width: 100%;
+}
+
+#main_pwSearch, #main_pwSearch div {
+	width: 350px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+#main_pwSearchHeader h1 {
+	width: 350px;
+	text-align:center;
+	font-size:3.5em;
+	color: #d42305;
+	font-weight:bold;
+	margin-top:40px;
+}
+
+#main_sendEamilBtn input {
+	width: 360px;
+	height: 45px;
+	background: #d42305;
+	color: white;
+	border: none;
+	font-size: 11pt;
+	margin:10px 0px;
+	cursor:pointer;
+}
+#nav_guest a{
+	color:white;
+}
+
+::-webkit-input-placeholder {font-size:10pt }
+::-moz-placeholder { font-size:10pt } /* firefox 19+ */
+:-ms-input-placeholder { font-size:10pt ;} /* ie */
+input:-moz-placeholder { font-size:10pt }
+
+
+
+/********** myPage **********/
+/*전체적인 div*/
+div#mypages{
+    width: 850px;
+    height: 850px;
+    position: relative;
+    margin: 0 auto;
+    padding: 50px;    
+    background-color: white;
+}
+
+
+/*myBookmarks*/
+
+div#mypage_bookmark{
+    width: 750px;
+    height: 1400px;
+    position: relative;
+    margin: 0 auto;
+    padding: 50px;    
+    background-color: white;
+}
+
+div#mypage_bookmarkList{
+	margin-top: 60px;
+	margin-left: 13px;
+	width: 750px;
+	height: 1300px;
+	float: center;
+}
+
+.element>.image>.mypage_bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    padding-right: 10px;
+    width: auto;
+    color: #fff;
+    line-height: 20px;
+}
+
+.element>.image>.mypage_bottom>.name {
+    display: block;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+
+.element>.image>.mypage_bottom>.area {
+    font-size: 13px;
+}
+
+
+/* search 페이지  이미지 description */
+.element>.desc {
+    background-color: #fff;
+    position: relative;
+    padding: 8px 11px;
+}
+
+.element.medium>.desc {
+    height: 95px;
+}
+
+/* 가격 정보 */
+.element>.desc>.place_info>.budget {
+    padding: 2px 0 5px;
+    font-size: 12px;
+    margin-top: 3px;
+    line-height:130%;
+   /* text-indent: -35px;
+    padding-left: 35px;*/
+}
+
+/*홈페이지 주소 */
+.element>.desc>.place_info>.comment {
+    margin-top: 2px;
+    line-height: 16px;
+    color: #828282;
+    font-size: 11px;
+    height: 32px;
+    overflow: hidden;
+    text-indent: -35px;
+    padding-left: 35px;
+    word-break: break-all;
+}
+#mypage_bookmarkbuttondiv {
+	text-align: right;
+}
+#bookmarkdelBtn{
+	width: 80px;
+    height: 25px;
+	background: gray;
+	margin-left: 55px;
+	font-size: 11px;
+	color: white;
+	border: none;
+	cursor:pointer;
+}
+
+
+/*my review*/
+div#mypage_myreview{
+	   width: 750px;
+    height: 1200px;
+    position: relative;
+    margin: 0 auto;
+    padding: 50px;    
+    background-color: white;
+}
+
+
+
+/*myinformation*/
+table#mypage_infomodify{
+	width: 400px;
+	height: 150px;
+	margin: 0 auto;
+}
+
+div#mypage_informodify_detail{
+	margin-top: 60px;
+	text-align:center;
+	font-size: 20px;	
+	line-height: 30px;
+}
+
+div#mypage_informodify_detail .mypage_sitename{
+	font-size: 30px;
+	color: #d42305;
+}
+
+ul.mypage_pwdGuide{
+	text-align: center;
+	font-size: 12px;
+	margin-top: 15px;
+	margin-botton: 20px;
+	line-height: 15px;
+}
+
+#mypage_info_pwd body {
+	width: 100%;
+}
+
+#mypage_info_pwd, #mypage_info_pwd div {
+	width: 350px;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	text-align: center ;
+}
+
+ .inputBox{
+	width: 300px;
+	height: 30px;
+	text-align: center;
+}
+
+ .labelRow{
+	width: 200px;
+	height: 40px;
+}
+
+#mypage_infoBtn input {
+	width: 120px;
+	height: 30px;
+	background: #d42305;
+	color: white;
+	border: none;
+	font-size: 11pt;
+	margin:15px 0px;
+	cursor:pointer;
+}
+
+
+
+/*user manager*/
+
+#mypage_usersearch{
+	margin-left:240px;
+	margin-top: 70px;
+}
+
+#mypage_usersearch div{
+		float:left;
+}
+
+#mypage_usersearch .searchhow_select{
+	width: 65px;
+	height: 22px;
+	margin-top:3px;
+}
+
+#mypage_usersearch .mypage_userM_searchBtn {
+    color: #fff;
+    background: #920021;
+    border: 0;
+    width: 61px;
+    height: 25px;
+    font-size: 13px;
+}
+
+
+#mypage_userManager_T .mypage_del_btn{
+    width: 61px;
+    height: 25px;
+	background: #d42305;
+	font-size: 11px;
+	color: white;
+	border: none;
+	cursor:pointer;
+}
+
+
+#mypage_alldelete{
+	width: 61px;
+    height: 25px;
+	background: #d42305;
+	margin-left: 55px;
+	font-size: 11px;
+	color: white;
+	border: none;
+	cursor:pointer;
+}
+
+div#mypage_usercount{
+	text-align: center;
+	font-size:20px;
+	margin: 20px 20px;
+	padding: 20px;
+}
+
+#mypage_usercount .mypage_usercount_num{
+	font-size: 40px;
+	color: #d42305;
+}
+
+
+ul.mypage_usersort {
+overflow: 50px;;
+list-style-type: none;
+ float:right ;
+}
+
+ul.mypage_usersort li{
+	float:right;
+	display: inline;
+	float:left;
+}
+
+table.mypage_userManager{
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 10px 10px;
+    
+}
+table.mypage_userManager thead th {
+    width: 190px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #e7708d;
+    margin: 20px 10px;
+}
+
+table.mypage_userManager tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table.mypage_userManager td {
+    width: 350px;
+    padding: 10px;
+}
+
+.dothesort{
+	cursor:pointer;	
+}
+
+div#mypage_tablepage{
+	text-align: center;
+}

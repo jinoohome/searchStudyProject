@@ -1,0 +1,47 @@
+
+/*********** JinHyung ***********/
+
+/****** ÆË¾÷Ã¢ °ü·Ã ******/
+/* µÞÈ­¸é ¾îµÓ°Ô ÇÏ±â*/
+#lean_overlay {
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	display: none;
+}
+
+/*·Î±×ÀÎ ÆË¾÷Ã¢*/
+.main_loginPopup {
+	position: absolute;
+	width: 600px;
+	height: auto;
+	left: 45%;
+	top: 60px;
+	background: #FFF;
+}
+/*È¸¿ø°¡ÀÔ ÆË¾÷Ã¢*/
+.main_joinPopup {
+	position: absolute;
+	width: 600px;
+	height: auto;
+	left: 45%;
+	top: 60px;
+	background: #FFF;
+}
+/*ºñ¹Ð¹øÈ£Ã£±â ÆË¾÷Ã¢*/
+.main_pwSearchPopup {
+	position: absolute;
+	width: 600px;
+	height: auto;
+	left: 45%;
+	top: 60px;
+	background: #FFF;
+}
+/*È¸¿ø°ü¸® select */
+div#searchNickname, div#searchDate{
+	display: none;
+}
