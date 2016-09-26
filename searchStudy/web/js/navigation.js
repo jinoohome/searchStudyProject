@@ -313,5 +313,21 @@ $(document).ready(function(){
    			$("#nav_shading.shading_bg").click();
    		});
    		
+   		/*
+   		$(".element>.image>.shading").hover(function(e){ 
+   			$('div.shading').css("opacity","0.5");
+   			e.stopPropagation();
+   		}, function(e) { 
+   			$('div.shading').css("opacity","0.3");
+   			e.stopPropagation();
+   		});*/
+   		
+   		$('.element.large>.image').on("mouseover", function () {
+   		    $(this).find('div:first').css('opacity','0.5');
+   		});
+
+   		$('.element.large>.image>div').on("mouseout", function () {
+   		 $('.element.large>.image>div.shading').css('opacity','0.3');
+   		});
    		
 });

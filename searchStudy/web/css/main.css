@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -31,7 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
    line-height: 1;
    font-size: 13px;
-    font-family: 'Noto Sans',sans-serif;
+    font-family: 'Noto Sans KR',sans-serif;
     color: #444;
     background-color: #f3f3f3;
 }
@@ -131,8 +133,8 @@ div#header {
 }
 
 i.logo, img.logo {
-    width: 86px;
-    height: 33px;
+    width: 95px;
+    height: auto;
 }
 
 a {
@@ -190,7 +192,7 @@ a {
 }
 
 #nav_container>#nav_area.search {
-	margin-left:179px;
+	margin-left:170px;
     width: 160px;
 }
 
@@ -263,9 +265,9 @@ a {
 }
 
 
-#nav_container>.search>.box>.search_catagory {
+#nav_container>.search>.box>.search_category {
     width: 200px;
-    height: 136px;
+    height: 102px;
     float:left;
 }
 
@@ -302,7 +304,7 @@ a {
 #nav_container>.search>.box .content>li>input:checked+label {
     color: #c91b3c;
 }
-#nav_container>.search>.box>.search_catagory.content>li>label {
+#nav_container>.search>.box>.search_category.content>li>label {
     width: 93px;
     background-position: 98px -35px;
 }
@@ -340,11 +342,11 @@ input[type=checkbox]+label, input[type=radio]+label {
     color: #c91b3c;
 }
 
-#nav_container>.search>.box>.search_catagory.content>li>label {
+#nav_container>.search>.box>.search_category.content>li>label {
     width: 142px;
     background-position: 156px -35px;
 }
-#nav_container>.search>.box>.search_catagory>li>input:checked+label {
+#nav_container>.search>.box>.search_category>li>input:checked+label {
     background-position: 156px 1px;
     color: #c91b3c;
 }
@@ -621,6 +623,52 @@ button {
     filter: alpha(opacity=30);
 }
 
+.element>.image>.shading:hover {
+    height: 100%;
+    background: #000;
+    -moz-opacity: .5;
+    -khtml-opacity: .5;
+    opacity: .5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=50);
+    filter: alpha(opacity=50);
+}
+
+.element>.image>.top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    color: #fff;
+    font-size: 9pt;
+    padding: 10px 8px;
+}
+
+.element>.image>.top>button {
+    background: 0 0;
+    border: none;
+    margin-top: 0px;
+    margin-right: -7px;
+}
+
+div.icon {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/recent_sheet.png);
+}
+
+div.icon.favorite {
+    background-position: -249px -257px;
+    width: 33px;
+    height: 29px;
+}
+
+i.icon.favorite.on {
+    background-position: -283px -257px;
+}
+
+button:active { outline: none }
+button:focus { outline:none }
+
 .element>.image>.bottom {
     position: absolute;
     bottom: 5px;
@@ -676,6 +724,7 @@ button {
     line-height: 23px;
 }
 
+
 /*search page 중간 container> content_warp > content */
 
 #content.search {
@@ -729,6 +778,7 @@ button {
 }
 
 
+
 /* 검색된 카테고리 정렬 버튼 추천순|조회순|평점순  */
 
 ul.sort_order_spread {
@@ -764,6 +814,32 @@ ul.sort_order_spread>li:last-child {
 }
 
 /* 평점 별 */
+.element>.desc .rating>.grade {
+    line-height: 22px;
+    border: 1px solid #c91b3c;
+    width: 41px;
+    height: 22px;
+    border-radius: 5px;
+    text-align: center;
+    color: #c91b3c;
+    font-size: 13px;
+}
+
+.element>.desc>.place_info>.rating{    
+	width: 211px;
+    height: 20px;
+    }
+
+.element>.desc>.place_info>.rating>.grade {
+    float: right;
+}
+
+.element>.desc>.place_info>.rating>.stars {
+    float: left;
+}
+
+
+
 
 span.star {
     background-image: url(../images/recent_sheet.png);
@@ -785,39 +861,25 @@ span.star.even.active {
     background-position: -287px -42px;
 }
 
-.element>.desc>.place_info>.rating>.stars {
-    float: left;
-}
-
-.element>.desc .rating>.grade {
-    line-height: 22px;
-    border: 1px solid #c91b3c;
-    width: 41px;
-    height: 22px;
-    border-radius: 5px;
-    text-align: center;
-    color: #c91b3c;
-    font-size: 13px;
-}
-
-
-.element>.desc>.place_info>.rating>.grade {
-    float: right;
-}
-
 /* 가격 정보 */
 .element>.desc>.place_info>.budget {
     padding: 2px 0 5px;
     font-size: 12px;
-    margin-top: 3px;
-    line-height:130%;
+    margin-top: 5px;
+    line-height:140%;
    /* text-indent: -35px;
     padding-left: 35px;*/
 }
 
+.element>.desc>.place_info>.budget>.price{
+	font-size:13px;
+    font-weight: 500;
+    color: #898582;;
+}
+
 /*홈페이지 주소 */
 .element>.desc>.place_info>.comment {
-    margin-top: 2px;
+    margin-top: 0px;
     line-height: 16px;
     color: #828282;
     font-size: 11px;
@@ -828,19 +890,10 @@ span.star.even.active {
     word-break: break-all;
 }
 
-
-
 .element>.btn {
     position: absolute;
     bottom: -33px;
 }
-
-
-.element>.btn>*, span.star {
-    float: left;
-    display: inline-block;
-}
-
 
 .element>.btn>* {
     margin: 0;
@@ -855,23 +908,11 @@ span.star.even.active {
     line-height: 16px;
 }
 
-.element>.btn>.review {
-    height: 16px;
-    color: #444;
-    -webkit-border-top-right-radius: 4px;
-    -webkit-border-bottom-right-radius: 4px;
-    -moz-border-radius-topright: 4px;
-    -moz-border-radius-bottomright: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+.element>.btn>*, span.star {
+    float: left;
+    display: inline-block;
 }
 
-.element>.btn>.review.full {
-    width: 233px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
 
 
 /* << page list number >> */
@@ -976,14 +1017,7 @@ div.page-list>ul.pagination>li.active {
     margin-bottom: 5px;
     line-height: 14px;
 }
-#nav_container>#nav_area.search {
-   margin-left:170px;
-    width: 160px;
-}
-i.logo, img.logo {
-    width: 95px;
-    height: auto;
-}
+
 
 
 /* footer 카피라이터 */
