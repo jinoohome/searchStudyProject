@@ -118,6 +118,17 @@ body{width:100%}
 #main_login_chk{
 	width:20px;
 }
+
+#main_login>.sel>#main_sendLoginBtn>.content>li>label {
+	width: 130px;
+    background-position: 0px -35px;
+}
+
+#main_sendLoginBtn>.content>li>input:checked+label {
+    background-position: 0px 1px;
+    color: #c91b3c;
+}
+
 #main_find_info{
 	width:350px;
 	border-top: 1px solid darkgray;
@@ -236,7 +247,7 @@ input:-moz-placeholder { font-size:10pt }
 
 
 /********** myPage **********/
-/*ÀüÃ¼ÀûÀÎ div*/
+/*ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ div*/
 div#mypages{
     width: 850px;
     height: 850px;
@@ -287,7 +298,7 @@ div#mypage_bookmarkList{
 }
 
 
-/* search ÆäÀÌÁö  ÀÌ¹ÌÁö description */
+/* search ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½Ì¹ï¿½ï¿½ï¿½ description */
 .element>.desc {
     background-color: #fff;
     position: relative;
@@ -298,7 +309,7 @@ div#mypage_bookmarkList{
     height: 95px;
 }
 
-/* °¡°Ý Á¤º¸ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .element>.desc>.place_info>.budget {
     padding: 2px 0 5px;
     font-size: 12px;
@@ -308,7 +319,7 @@ div#mypage_bookmarkList{
     padding-left: 35px;*/
 }
 
-/*È¨ÆäÀÌÁö ÁÖ¼Ò */
+/*È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ */
 .element>.desc>.place_info>.comment {
     margin-top: 2px;
     line-height: 16px;

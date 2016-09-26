@@ -9,10 +9,10 @@ import static common.JDBCTemplate.*;
 public class StoreService {
 	public StoreService(){}
 
-	public ArrayList<SearchStore> searchStoreInfo(String[] ctg, String[] areas, int limit, int currentPage) {
+	public ArrayList<SearchStore> searchStoreInfo(String[] ctg, String[] areas, int limit, int currentPage, String sort) {
 		ArrayList<SearchStore> list = null;
 		Connection con = getConnection();
-		list = new StoreDao().searchStoreInfo(con, ctg, areas, limit, currentPage);
+		list = new StoreDao().searchStoreInfo(con, ctg, areas, limit, currentPage, sort);
 		close(con);
 		return list;
 	}

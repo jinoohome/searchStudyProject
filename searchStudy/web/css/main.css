@@ -297,25 +297,7 @@ a {
     color: #828282;
 }
 
-/*
-#nav_container>.search>.box>.foods.content>li>input:checked+label {
-    background-position: 98px 1px;
-}
-#nav_container>.search>.box .content>li>input:checked+label {
-    color: #c91b3c;
-}
-#nav_container>.search>.box>.search_category.content>li>label {
-    width: 93px;
-    background-position: 98px -35px;
-}
 
-input[type=checkbox]:checked+label, input[type=radio]:checked+label {
-    background-position: 0 1px;
-    color: #c91b3c;
-}
-
-
-*/
 
 /*채크박스*/
 input[type=checkbox]+label, input[type=radio]+label {
@@ -662,9 +644,11 @@ div.icon.favorite {
     height: 29px;
 }
 
-i.icon.favorite.on {
+div.icon.favorite.on {
     background-position: -283px -257px;
 }
+
+
 
 button:active { outline: none }
 button:focus { outline:none }

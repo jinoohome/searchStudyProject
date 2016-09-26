@@ -43,7 +43,13 @@ public class StoreSearchServlet extends HttpServlet {
 		String categorys[] = {"none","none","none","none"};
 		String areas[] = {"none","none","none"};
 		
-		//contents에서 검색되는 정보
+		//search_content sort
+		String sort="view_count";
+		if(request.getParameter("sort") != null){
+			sort = request.getParameter("sort");
+		}
+		
+		//index_content에서 검색되는 정보
 		String gn = request.getParameter("gn");
 		String jl = request.getParameter("jl");
 		String sc = request.getParameter("sc");
@@ -59,7 +65,7 @@ public class StoreSearchServlet extends HttpServlet {
 		//페이징하는 곳에서 처음 검색된 정보 받아오기 
 		String reCategory = request.getParameter("categorys");
 		String reArea= request.getParameter("areas");
-		System.out.println(reCategory+" : "+reArea);
+		
 		if(reCategory != null || reArea != null){
 			category = reCategory.split(",");
 			area = reArea.split(",");
@@ -67,23 +73,7 @@ public class StoreSearchServlet extends HttpServlet {
 		
 		
 			if(area !=null){
-				for(int i=0; i<area.length; i++){
-					if(i<area.length-1){
-					switch(area[i]){
-					case "GN" : local +="강남/"; break;
-					case "JL" : local +="종로/"; break;
-					case "SC" : local +="신촌/"; break;
-					}
-					}else{
-						switch(area[i]){
-						case "GN" : local +="강남"; break;
-						case "JL" : local +="종로"; break;
-						case "SC" : local +="신촌"; break;
-
-					}
-					}
-				}
-				
+			
 				for(int i=0; i<area.length; i++){
 					areas[i]= area[i];
 				}
@@ -109,28 +99,38 @@ public class StoreSearchServlet extends HttpServlet {
 					areas[0] = "GN";
 					areas[1] = "JL";
 					areas[2] = "SC";
+					local="강남/종로/신촌";
+				}
+			}
+			
+			if(area != null){
+				for(int i=0; i<area.length; i++){
+					if(i==0){
+						switch(area[i]){
+						case "GN" : local +="강남"; break;
+						case "JL" : local +="종로"; break;
+						case "SC" : local +="신촌"; break;
+						}
+					}else if(i<area.length-1){
+						switch(area[i]){
+						case "GN" : local +="/강남"; break;
+						case "JL" : local +="/종로"; break;
+						case "SC" : local +="/신촌"; break;
+						}
+					}else{
+						switch(area[i]){
+						case "GN" : local +="/강남"; break;
+						case "JL" : local +="/종로"; break;
+						case "SC" : local +="/신촌"; break;
+
+						}
+					}
 				}
 			}
 				
 				
 				
 			if(category != null){
-				for(int i=0; i<category.length; i++){
-					if(i<category.length-1){
-					switch(category[i]){
-					case "S10" : cate +="도서관/독서실/"; break;
-					case "S20" : cate +="스터디룸/"; break;
-					case "S30" : cate +="스터디카페/"; break;
-					}
-					}else{
-						switch(category[i]){
-						case "S10" : cate +="도서관/독서실"; break;
-						case "S20" : cate +="스터디룸"; break;
-						case "S30" : cate +="스터디카페"; break;
-
-					}
-					}
-				}
 				for(int i=0; i<category.length; i++){
 					categorys[i]= category[i];
 				}
@@ -158,6 +158,34 @@ public class StoreSearchServlet extends HttpServlet {
 				}
 			}
 			
+			
+			if(category != null){
+				for(int i=0; i<category.length; i++){
+					if(i==0){
+						switch(category[i]){
+						case "S10" : cate +="도서관/독서실"; break;
+						case "S20" : cate +="스터디룸"; break;
+						case "S30" : cate +="스터디카페"; break;
+						}
+					}
+					else if(i<category.length-1){
+						switch(category[i]){
+						case "S10" : cate +="/도서관/독서실"; break;
+						case "S20" : cate +="/스터디룸"; break;
+						case "S30" : cate +="/스터디카페"; break;
+						}
+					}else{
+						switch(category[i]){
+						case "S10" : cate +="/도서관/독서실"; break;
+						case "S20" : cate +="/스터디룸"; break;
+						case "S30" : cate +="/스터디카페"; break;
+						}
+					}
+				}
+			}else{
+				cate = "독서실/도서관/스터디룸/스터디카페";
+				}
+			
 		//페이지 수 처리용 변수 
 		int currentPage = 1;
 		int limit = 9;	//한 페이지에 9개씩 출력
@@ -169,7 +197,7 @@ public class StoreSearchServlet extends HttpServlet {
 		StoreService storeS = new StoreService();
 		
 		int listCount = storeS.getListCount(categorys, areas);
-		ArrayList<SearchStore> list = storeS.searchStoreInfo(categorys, areas, limit, currentPage);
+		ArrayList<SearchStore> list = storeS.searchStoreInfo(categorys, areas, limit, currentPage, sort);
 		
 		//총 페이지수 계산 : 목록이 최소 1개일 때, 1 page 로 처리하기 위해 0.9 더함
 		int maxPage = (int)((double)listCount / limit + 0.9);
@@ -207,6 +235,7 @@ public class StoreSearchServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		if(list != null){
 			view = request.getRequestDispatcher("search1.jsp");
+			request.setAttribute("sort", sort);
 			request.setAttribute("list", list);
 			request.setAttribute("categorys", cg); 
 			request.setAttribute("areas", as); 

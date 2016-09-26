@@ -9,12 +9,21 @@ import static common.JDBCTemplate.*;
 public class StoreDao {
 	public StoreDao(){}
 
-	public ArrayList<SearchStore> searchStoreInfo(Connection con, String[] ctg, String[] areas, int limit, int currentPage) {
+	public ArrayList<SearchStore> searchStoreInfo(Connection con, String[] ctg, String[] areas, int limit, int currentPage, String sort) {
 		ArrayList<SearchStore> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		String query = "select * from (select rownum rnum, STORE_ID, STORE_NAME, CATEGORY_ID, "
+				+ "CATEGORY_NAME, LOCAL_CODE, LOCAL_NAME, PRICE, HOMEPAGE, PHOTO_N1, AVG "
+				+ "from(select * from search_store where local_code in(?,?,?) and category_id in(?,?,?,?) "
+				+ "order by count asc)) where rnum>=? and rnum <=?";
 		
-		String query = "select * from (select rownum rnum, STORE_ID, STORE_NAME, CATEGORY_ID, CATEGORY_NAME, LOCAL_CODE, LOCAL_NAME, PRICE, HOMEPAGE, PHOTO_N1, AVG from(select * from search_store where local_code in(?,?,?) and category_id in(?,?,?,?))) where rnum>=? and rnum <=?";
+		if(sort.equals("avg_grade")){
+			query = "select * from (select rownum rnum, STORE_ID, STORE_NAME, CATEGORY_ID, "
+					+ "CATEGORY_NAME, LOCAL_CODE, LOCAL_NAME, PRICE, HOMEPAGE, PHOTO_N1, AVG "
+					+ "from(select * from search_store where local_code in(?,?,?) and category_id in(?,?,?,?) "
+					+ "order by AVG asc)) where rnum>=? and rnum <=?";
+		}
 		
 		int startRow = (currentPage - 1) * 9 + 1; // 읽기 시작할 row 번호.
 		int endRow = startRow + limit - 1; // 읽을 마지막 row 번호.

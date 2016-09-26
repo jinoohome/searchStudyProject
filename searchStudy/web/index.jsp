@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <link rel="stylesheet" type="text/css" href="css/main.css"/>
+ <link rel="stylesheet" href="css/main.css" type="text/css"/>
  <link rel="stylesheet" href="css/layout.css" type="text/css">  
  <link rel="stylesheet" href="css/function.css" type="text/css"> 
  <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
@@ -123,16 +123,6 @@ $( document ).ready(function() {
 	});
 
 
-
-</script>
-<script>
-$(function(){
-	$('#nav_btn').click(function(){
-		//$.post("search.store", {place_area : "ㅇㅇ", category_types :"카테고리"});
-		$.post("search.store", {place_area : "ㅇㅇ", category_types :"카테고리"});
-			
-	});
-});
 
 </script>
 <script>
@@ -423,7 +413,7 @@ $( document ).ready(function() {
 					<img src="images/down_arrow.png" class="searchbox arrow">
 				</div>
 				<div class="box" id="box2">
-					<ul class="search_catagory content">
+					<ul class="search_category content">
 						<li>
 						<input type="checkbox" name="category" id="S10" value="S10">
 						<label for="S10">도서관/독서실</label>
@@ -649,7 +639,7 @@ $( document ).ready(function() {
 							<ul class="content">
 								<li>
 									<input type="checkbox" id="main_login_chk" value="off" >
-									<label>로그인 상태 저장</label>
+									<label for="main_login_chk">로그인 상태 저장</label>
 								</li>
 							</ul>
 						</div>
