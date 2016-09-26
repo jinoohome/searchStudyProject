@@ -32,16 +32,20 @@
 						<div id="content_wrap">
 <!-- 			content			 -->
 		<div id="content" class="detail review">
+			
+			<%	if(list == null){%>
+					<br>
+					<div id="mypage_noContents"> 해당 유저가 작성한 리뷰가 없습니다.<br></div>
+					<div id="mypage_noContentsgomain">
+		   			  	<a href="/easyStudy/main.jsp">창 닫기</a>
+		   			</div>	
+			<% }else{ %>	
 			<div class="review_titleWrap">
 				<div class="title" id="review_title">
 								MY Review
 				</div>
 			</div>
-			<%	if(list == null){%>
-					<br>
-					<div style="text-align:center">리뷰가 없습니다.</div>
-					
-			<% }else{ %>	
+			
 				
 			<%	for(int i = 0; i < list.size(); i++){ %>
 			
@@ -262,17 +266,16 @@
 					<%	}else{ %>
 						<div style="text-align: center">사진 없음</div>
 					<%	} %>
-					
-					<%	if(loginUser.getNickName().equals(list.get(i).getNickName())){ %>
-						<div class="mypage_reviewButton">
- 						<a href="rdelete?listNo=<%= list.get(i).getListNo()%>&storeId=<%=list.get(i).getStoreId()  %>" class="func">
-								<input type="button" value="삭제하기">
-							</a>
-							<a href="rupdate?listNo=<%= list.get(i).getListNo()%>&storeId=<%=list.get(i).getStoreId()  %>" class="func">
-								<input type="button" value="수정하기">
-							</a>
-						</div>
-						<%	} %>
+					<br>
+					<br>					
+						<div id="mypage_reviewButtonDiv">
+										<div  id="mypage_reviewButton">
+											<a	href="rdelete?listNo=<%=list.get(i).getListNo()%>&storeId=<%=list.get(i).getStoreId()%>" class="func"> 
+												<input type="button" class="reviewBtn"
+												value="삭제하기">
+											</a> 
+										</div>
+									</div>
 						
 					</div>
 				</div>
