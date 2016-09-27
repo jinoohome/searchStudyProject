@@ -50,7 +50,25 @@ public class DetailDao {
 			close(rset);
 			close(pstmt);
 		}
-//			System.out.println(store.toString());
+		switch (store.getCategoryId()) {
+			case "S10": store.setCategoryName("도서관/독서실"); 		break;
+			case "S20": store.setCategoryName("스터디룸"); 			break;
+			case "S30": store.setCategoryName("스터디카페"); 			break;
+			case "S40": store.setCategoryName("스터디룸/스터디카페"); 	break;
+
+		default:
+			break;
+		}
+		
+		switch (store.getLocalCode()) {
+		case "GN": store.setLocalName("강남"); 	break;
+		case "SC": store.setLocalName("신촌"); 	break;
+		case "JL": store.setLocalName("종로"); 	break;
+		
+		default:
+			break;
+		}
+		
 		return store;
 	}
 

@@ -7,7 +7,9 @@ public class Store implements Serializable{
 	private String storeId;
 	private String storeName;
 	private String categoryId;
+	private String categoryName;
 	private String localCode;
+	private String localName;
 	private String address;
 	private String homepage;
 	private String tell;
@@ -19,6 +21,26 @@ public class Store implements Serializable{
 	//Constructor
 	public Store(){}
 	
+
+	public Store(String storeId, String storeName, String categoryId, String categoryName, String localCode,
+			String localName, String address, String homepage, String tell, String price, String weekDayTime,
+			String weekEndTime, String etc) {
+		super();
+		this.storeId = storeId;
+		this.storeName = storeName;
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.localCode = localCode;
+		this.localName = localName;
+		this.address = address;
+		this.homepage = homepage;
+		this.tell = tell;
+		this.price = price;
+		this.weekDayTime = weekDayTime;
+		this.weekEndTime = weekEndTime;
+		this.etc = etc;
+	}
+
 
 	public Store(String storeName, String categoryId, String localCode, String address, String homepage,
 			String tell, String price, String weekDayTime, String weekEndTime, String etc) {
@@ -62,6 +84,26 @@ public class Store implements Serializable{
 	}
 
 	
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+
+	public String getLocalName() {
+		return localName;
+	}
+
+
+	public void setLocalName(String localName) {
+		this.localName = localName;
+	}
+
 
 	public String getStoreId() {
 		return storeId;
