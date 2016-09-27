@@ -166,7 +166,7 @@
 								}
 							}else{
 								alert("성공");
-								$("#mypageGo<%=list.get(0).getStoreId() %>").addClass("on");
+								$("#mypageGo<%=list.get(1).getStoreId() %>").addClass("on");
 								str1 = true;
 							}
 							
@@ -574,13 +574,16 @@ a {
 		<div id="nav_warp_shading"></div>
 		<div id="nav_wrap" class="fixed">
 	<div class="container_wrap">
-		<form action="/easyStudy/search.store" method="get">
+	<form action="/easyStudy/search.store" method="get">
 		<div id="nav_container" class="">
 			<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 				<!-- logo section -->
-				<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
-				
-				<!-- area search section -->
+			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
+
+			<!-- area search section -->
+			<%if(member != null){ %>
+			<input type="hidden" name="userid" value="<%=member.getUserId() %>" >
+			<%} %>
 			<div id="nav_area" class="search sel">
 				<div class="input">
 					<div class="selected">지역 선택 </div>
@@ -624,26 +627,30 @@ a {
 				</div>
 					
 			</div>
-				<!-- search -->
-				<button type="submit" id="nav_btn" class="search" tabindex="-1">검색</button>
-				
+			<button type="submit" id="nav_btn" class="search">검색</button>
+			
 				<!-- account section -->
 				<div id="nav_account">
 						<div id="nav_guest">
-							<span id="nav_login">로그인</span>
+						<%if(member !=null){ %>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
+						<%}else{ %>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
 							&nbsp;|&nbsp;
-							<span id="nav_join">회원가입</span>
+						<%} %>	
+							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal">회원가입</a></span>
 						</div>
 				</div>
 		</div>
 		</form>
+		
 	</div>
 		<div class="menu_wrap">
 			<div id="nav_menu">
-				<!-- <a href="#" class="underline ">메뉴</a>
+			<!-- 	 <a href="#" class="underline ">메뉴</a>
 				<a href="#" class="underline ">메뉴</a>
 				<a href="#" class="underline ">메뉴</a>
-				<a href="#" class="underline ">메뉴<i class="text new"></i></a> -->		
+				<a href="#" class="underline ">메뉴<i class="text new"></i></a> -->	
 			
 				<% if(member != null){
 					if("admin".equals(member.getUserId())) { %>	
@@ -657,6 +664,7 @@ a {
 						<a href="/easyStudy/mypage/myinfo.jsp">내 정보 변경</a> 		
 					<%}
 				}else{} %>
+			
 			</div>
 		</div>
 	</div>
@@ -686,11 +694,11 @@ a {
 
     		<ul class="sort_order_spread">
     		<%if(sort.equals("view_count")) {%>
-    			<li class="selected"><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>">조회순</a></li>
-        		<li class=""><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>">별점순</a></li></a>
+    			<li class="selected"><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
+        		<li class=""><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
         	<%} else{ %>
-        		<li class=""><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>">조회순</a></li>
-        		<li class="selected"><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>">별점순</a></li></a>
+        		<li class=""><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
+        		<li class="selected"><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
         	<%} %>
     		</ul>
 			
