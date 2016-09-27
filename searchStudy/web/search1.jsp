@@ -176,19 +176,35 @@ a {
             		</div>
 <%if(member != null){ %> 
 <script type="text/javascript">
-
 $(document).ready(function() {
-	for(var j = 0 ; j < <%= bookmarks.length %>; j++ ){
-		alert("Aaaaaadsf");
-		if(<%=list.get(i).getStoreId()%> == bookmarks[j] ){
-			alert("성공이다!!!");
+		if(<%=list.get(i).getStoreId().equals(bookmarks[0]) %>){
 			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
 		}
-	}
-
-	
+		if(<%=list.get(i).getStoreId().equals(bookmarks[1]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[2]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[3]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[4]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[5]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[6]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[7]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[8]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
 });
-
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -419,9 +435,92 @@ $(document).ready(function() {
                     <div class="shading"></div>
         				<div class="top"> 
         				<button class="" onclick="return false;" tabindex="-1">
-                    		<div class="icon favorite "></div>
+                    		<div class="icon favorite " id="mypageGo<%=list.get(i).getStoreId() %>"></div>
                 		</button>
             			</div>
+
+<%if(member != null){ %> 
+<script type="text/javascript">
+$(document).ready(function() {	
+		if(<%=list.get(i).getStoreId().equals(bookmarks[0]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[1]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[2]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[3]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[4]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[5]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[6]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[7]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+		if(<%=list.get(i).getStoreId().equals(bookmarks[8]) %>){
+			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+		}
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
+		if($(this).data.type != 'on'){//현재 상태 확인
+			if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+				$.ajax({
+					type:'GET',
+					url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
+					success: function(data) {
+						if(data.result == 10){
+							alert("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?");
+						}else{
+							alert("성공");
+							$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+						}
+						
+					},
+					error: function(data) {
+						alert("에러");
+					}			
+				});
+			}else{
+				return false;
+			}
+				
+		}else{
+			if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+			$.ajax({
+				type:'GET',
+				url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
+				success: function(data) {
+					alert("성공");
+					$("#mypageGo<%=list.get(i).getStoreId() %>").removeClass("on");
+					
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+			}else{
+				return false;
+			}
+		}
+
+		
+	});
+});
+</script>            		
+ <% }%>              	            			
                        <div class="bottom">
                                 <span class="name"><%=list.get(i).getStoreName() %></span>                
                                 <span class="area"><%=list.get(i).getLocalName() %>/<%=list.get(i).getCategoryName() %></span>            

@@ -141,21 +141,10 @@ $(document).ready(function() {
 	
 	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
 				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
-					$.ajax({
-						type:'GET',
-						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-						success: function(data) {
-							alert("성공");
-							$("#mypageGo").removeClass("on");
-							
-						},
-						error: function(data) {
-							alert("에러");
-						}			
-					});
-					}else{
-						return false;
-					}
+						location.href="/easyStudy/mbookmarkdel?userid=<%=member.getUserId() %>&storeid=<%=list.get(i).getStoreId() %>";
+				}else{
+					return false;
+				}
 	});
 
 });
@@ -205,21 +194,10 @@ $(document).ready(function() {
 	
 	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
 				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
-					$.ajax({
-						type:'GET',
-						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-						success: function(data) {
-							alert("성공");
-							$("#mypageGo").removeClass("on");
-							
-						},
-						error: function(data) {
-							alert("에러");
-						}			
-					});
-					}else{
-						return false;
-					}
+						location.href="/easyStudy/mbookmarkdel?userid=<%=member.getUserId() %>&storeid=<%=list.get(i).getStoreId() %>";
+				}else{
+					return false;
+				}
 	});
 
 });
