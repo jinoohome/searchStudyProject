@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="member.model.vo.Member" %>
-<% Member member = (Member)session.getAttribute("member"); %>
+<% Member member = (Member)session.getAttribute("member"); 
+	System.out.println("ADSF");
+	System.out.println("member" + member );
+%>
 
 <!DOCTYPE html>
 <html>

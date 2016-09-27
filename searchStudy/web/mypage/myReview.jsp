@@ -95,6 +95,10 @@ function clickModify(listNo){
 	$("#mypage_myreviewModify").show();
 
 		alert("sssss : " + listNo );
+		//alert("dddd : " + contents );
+		
+		/* $("#upBtn").hide();
+		$("#modiBtn").show(); */
 		$.ajax({
 			url : "rupdate",
 			data : {listNo : listNo},
@@ -248,9 +252,21 @@ $(function(){
 		
 		if(n < 6){
 			$("#upBtn" + n).click();         
+			//var ext = $("input[name=reviewPhoto"+n+"]").val().split(".").pop();
 			console.log("123123123123123");
 			console.log("n값이다111111111111111: " + n);
 			
+			//if("#upBtn" + n)
+			/* var ext = $("#upBtn"+(n-1)).val().split(".").pop();
+			console.log($("#upBtn"+n).val().split(".").pop());
+			ext.toLowerCase();
+			if(ext.length > 0){
+				//if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+				if($.inArray(['gif','png','jpg','jpeg'], ext) == -1) { 
+					alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
+					return false;  
+				}                  
+			} */
 			$("input:file").val().toLowerCase();
 		}else{
 			alert("사진은 최대 5장까지만 업로드할 수 있습니다.")
@@ -258,6 +274,60 @@ $(function(){
 		
 	});       
 	
+	
+	/* $("input[type=file]").each(function(index){
+		$("upBtn" + index).change(function(){
+			n++;
+			console.log("변화된 n값 : " + n)
+		});
+	});  */
+	
+	/* $("input[type=file]").on("change", function(){
+			$("#upBtn" + index).change(function(index){
+				n++;
+				console.log("변화된 n값 : " + n)
+			});
+	}); */
+	
+	/* $("#upBtn" + 1).change(function(){
+		n++;
+		console.log("변화된 n값 : " + n);
+	});
+	$("#upBtn" + 2).change(function(){
+		n++;
+		console.log("변화된 n값 : " + n);
+	});
+	$("#upBtn" + 3).change(function(){
+		n++;
+		console.log("변화된 n값 : " + n);
+	});
+	$("#upBtn" + 4).change(function(){
+		n++;
+		console.log("변화된 n값 : " + n);
+	});
+	$("#upBtn" + 5).change(function(){
+		n++;
+		console.log("변화된 n값 : " + n);
+	}); */
+	
+	
+	
+	/* $(".upBtn").change(function(){
+		console.log("변화된 n값 : " + n);
+		
+		var ext = $("#upBtn"+(n)).val().split(".").pop();
+		console.log($("#upBtn"+n).val().split(".").pop());
+		ext.toLowerCase();
+		if(ext.length > 0){
+			//if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+			if($.inArray(['gif','png','jpg','jpeg'], ext) == -1) { 
+				alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
+				this.value = "";
+				return;  
+			}                  
+		}
+		n++;
+	}); */
 			
 });
 </script>
@@ -265,6 +335,18 @@ $(function(){
 </head>
 
 <body>
+
+<!-- <div id="review_loginWrap">
+			<div id="review_loginModal" class="review_loginPopup" style="display: none;">
+				로그인 페이지
+				<div id="">
+					<img>
+				
+				</div>
+			</div>
+</div> -->
+
+
 
 <div id="wrap">
 	<!-- header 시작	-->
@@ -276,20 +358,39 @@ $(function(){
 				<div id="nav_container" class="">
 					<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 					<!-- logo section -->
-					<a id="nav_logo" href=""><img class="logo" src="images/logo.png"></a>					
+					<a id="nav_logo" href=""><img class="logo" src="images/logo.png"></a>
+
+					<!--<div id="nav_city">
+							<span>서울</span>
+							<i class="icon"></i>	
+					</div>  -->
+
 					<!-- area search section -->
 					<div id="nav_area" class="search sel">
 						<div class="input">
 							<div class="selected">지역 선택</div>
-						</div>						
+						</div>
+						<!-- <div class="box">
+						<ul class="district">
+							<li data-dist="c1038633da6870c2a84a6b58a82283a6" class="selected">강남<span>&gt;</span></li>
+							<li data-dist="1aac31587cc4cfffdaf450724a554aaa">종로<span>&gt;</span></li>
+							<li data-dist="4431507c0830b8cd256dca4762f83c9c">신촌<span>&gt;</span></li>
+						</ul>
+						
+
+						<button class="confirm red_fill border_radius soft" type="button" tabindex="-1">확인</button>
+					</div>-->
 					</div>
 					<!-- genre search section -->
 					<div id="nav_genre" class="search sel">
 						<div class="input">
 							<div class="selected">카테코리 선택</div>
-						</div>						
-					</div>				
-					<button type="button" id="nav_btn" class="search" tabindex="-1">검색</button>				
+						</div>
+						
+					</div>
+				
+					<button type="button" id="nav_btn" class="search" tabindex="-1">검색</button>
+				
 					<!-- account section -->
 					<div id="nav_account">
 							<div id="nav_guest">
@@ -303,16 +404,27 @@ $(function(){
 		</div>
 	</div>
 	<!-- header 끝	-->
+	
+	
+	<!--<div class="menu_wrap">
+			<div id="nav_menu">
+			</div>
+	</div>-->
+	
+	
 	<!-- container -->
-	<div id="container">	
+	<div id="container">
+	
 		<!--배너 슬라이더 이미지 banner_warp-->
 		<div id="banner_warp">
 			<div class="trislider">
 				<div></div>
 			</div>
 		</div>
-		<!--배너 슬라이더 이미지 banner_warp-->		
-<!-- 	-------------------------------------------------------------------------------------------- -->			
+		<!--배너 슬라이더 이미지 banner_warp-->
+		
+<!-- 	-------------------------------------------------------------------------------------------- -->
+				
 		<div id="content_wrap">
 <!-- 			content			 -->
 		<div id="content" class="detail review" >
@@ -385,8 +497,11 @@ $(function(){
 							</ul> -->
 						</div>
 					</li>
-				</ul>				
+				</ul>
+				
+				
 			</div>
+
 			<div class="body review write">
 				<button type="submit" id="myreviewModifyBtn" >
 					리뷰 수정하기
@@ -420,6 +535,9 @@ $(function(){
 						<div class="name ">
 						<a href="#"><%= reviewPageList.get(i).getNickName() %></a>									
 						</div>
+						
+						
+						
 						<%
 							if(reviewPageList.get(i).getScore() == 5){
 						%>
@@ -575,9 +693,13 @@ $(function(){
 						<!-- <div class="time">하루 전<br><span>하루 전 수정됨</span></div> -->
 						<div class="text">
 						<pre><%= reviewPageList.get(i).getContents() %></pre>
-						</div>						
+						</div>
 						
 					<%	if(reviewImagePageList != null){ %>
+					
+					
+						<%-- <%	for(int j = 0; j < listRImage.size(); j++){ %>
+						<%	} %> --%>
 						<ul class="photo_list">
 							<li class="item">
 								<a class="review_loginPopupBtn" href="#review_loginModal">
@@ -627,7 +749,7 @@ $(function(){
 						<div id="mypage_modifyNdelbtns">
 							<div>
 							<a href="rdelete?listNo=<%= reviewPageList.get(i).getListNo()%>" class="func">
-								<button class="mypage_btns">삭제하기</button>
+							<button class="mypage_btns">삭제하기</button>
 							</a> 
 							<a href="#" class="modify" id="review_updateBtn" onclick="clickModify(<%= reviewPageList.get(i).getListNo()%>);">
 								<button class="mypage_btns">수정하기</button>
@@ -654,7 +776,26 @@ $(function(){
 			
 				<%		} %>
 				
-		
+				<%-- <%	if(list.size() > 5){ %>
+				<div id="review_pagination">
+					<div class="page-list">
+						<ul class="pagination" onselectstart="return false;">
+							<li class="prevAll">&lt;&lt;</li>
+							<li class="prev">&lt;</li>
+							<li class="page active" data-page="1">1</li>
+							<li class="page" data-page="2">2</li>
+							<li class="page" data-page="3">3</li>
+							<li class="page" data-page="4">4</li>
+							<li class="page" data-page="5">5</li>
+							<li class="next">&gt;</li>
+							<li class="nextAll">&gt;&gt;</li>
+						</ul>
+					</div>
+				</div>
+				<%	} %> --%>
+				
+				
+				<%if(member != null){ %>
 				<div id="pager">
 			    	<div class="page-list">
 			    	 <ul class="pagination">
@@ -684,10 +825,38 @@ $(function(){
 			            </ul>
 			    	</div>
 			    </div>
+				<%}else{ %>
+					<div id="pager">
+			    	<div class="page-list">
+			    	 <ul class="pagination">
+			    	
+			    	<% if(currentPage <= 1){ %> 
+			             <li>&lt;&lt;</li>
+			            <%}else{ %> 
+			           	<li><a href="/easyStudy/mreview?page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
+			            <% } %> 
+			          
+			            
+			            <% for(int p = startPage; p <= endPage; p++){ 
+			                if(p == currentPage){ %> 
+			                	<li class="active"><%= p %></li>
+			                <%}else{ %> 
+			               <li> <a href="/easyStudy/mreview?page=<%= p %>"><%= p %></a></li>
+			                <% } %> 
+			            <% } %> 
+			            
+			 			
+			            <% if(currentPage >= maxPage){ %> 
+			            	<li>&gt;&gt;</li>
+			            <%}else{ %> 
+			            <li><a href="/easyStudy/mreview?page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
+			            <% } %>
+			            
+			            </ul>
+			    	</div>
+			    </div>			
 				
-				
-				
-				
+				<%} %>
 				
 				
 				

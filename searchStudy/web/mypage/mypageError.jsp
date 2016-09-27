@@ -1,7 +1,8 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.Member"%>
 <%
-	
+	Member member = (Member) session.getAttribute("member");
 	String code = (String)request.getAttribute("code");
 %>
 <!DOCTYPE html>
@@ -32,6 +33,9 @@
 			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
 
 			<!-- area search section -->
+			<%if(member != null){ %>
+			<input type="hidden" name="userid" value="<%=member.getUserId() %>" >
+			<%} %>
 			<div id="nav_area" class="search sel">
 				<div class="input">
 					<div class="selected">지역 선택 </div>
@@ -59,7 +63,7 @@
 					<img src="images/down_arrow.png" class="searchbox arrow">
 				</div>
 				<div class="box" id="box2">
-					<ul class="search_catagory content">
+					<ul class="search_category content">
 						<li>
 						<input type="checkbox" name="category" id="S10" value="S10">
 						<label for="S10">도서관/독서실</label>
@@ -150,4 +154,4 @@
 
 
 </body>
-</html> --%>
+</html>
