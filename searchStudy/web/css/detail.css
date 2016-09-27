@@ -1,4 +1,3 @@
-/*container 占쎌읈筌ｋ똾�넅筌롳옙  */
 #container {
     z-index: 10;
     position: relative;
@@ -333,7 +332,7 @@ div.page-list>ul.pagination>li.active {
     font-weight: 600;
     font-size: 11pt;
 }
-/*side bar 筌≪뼚釉섋퉪占� 占쎈읂占쎌뵠筌욑옙  */
+/*side bar 嶺뚢돦堉싮뇡�꼱�돦�뜝占� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕  */
 div#sidebar{
 	position: relative;
     width: 220px;
@@ -374,7 +373,7 @@ div#sidebar>div.sidebar-list>div.section {
 
 
 
-/* footer 燁삳똾逾억옙�뵬占쎌뵠占쎄숲 */
+/* footer �뇖�궠�샑�얠뼲�삕占쎈뎄�뜝�럩逾졾뜝�럡�댉 */
 #footer_wrap {
     padding: 26px 32px 10px;
     background: #373737;
@@ -892,7 +891,7 @@ i.icon.star.medium.even {
 #content.review>.body.first>form .list>.item.photo>.detail {
     height: 74px;
 }
-/*�궗吏꾩삱由ш린 湲��뵪 �쁿�뿉 �엳�뒗 +踰꾪듉*/
+/*占쎄텢筌욊쑴�궞�뵳�덈┛ 疫뀐옙占쎈뎁 占쎌겳占쎈퓠 占쎌뿳占쎈뮉 +甕곌쑵�뱣*/
 button {
     -webkit-appearance: button;
 }
@@ -960,7 +959,7 @@ button {
     text-align: center;
     vertical-align: middle;
 }
-/*�궗吏꾩삱由ш린 湲��뵪 �쁿�뿉 �엳�뒗 +踰꾪듉 �떎�쓬�뿉�엳�뒗 ul review_photo_list*/
+/*占쎄텢筌욊쑴�궞�뵳�덈┛ 疫뀐옙占쎈뎁 占쎌겳占쎈퓠 占쎌뿳占쎈뮉 +甕곌쑵�뱣 占쎈뼄占쎌벉占쎈퓠占쎌뿳占쎈뮉 ul review_photo_list*/
 
 ul ul, ol ul {
     list-style-type: circle;
@@ -1061,7 +1060,7 @@ hr {
 .review_detail {
     margin-left: 8px;
 }
-/*由щ럭�쓽 �옉�꽦�옄 �궗吏� a�깭洹�*/
+/*�뵳�됰윮占쎌벥 占쎌삂占쎄쉐占쎌쁽 占쎄텢筌욑옙 a占쎄묶域뱄옙*/
 a:-webkit-any-link {
     color: -webkit-link;
  /*    text-decoration: underline; */
@@ -1103,7 +1102,7 @@ i.image, i.profile_image {
     font-size: 13px;
     font-weight: 600;
 }
-		/*�씠由꾩쓽 a�깭洹�*/
+		/*占쎌뵠�뵳袁⑹벥 a占쎄묶域뱄옙*/
 a:-webkit-any-link {
     color: -webkit-link;
     text-decoration: underline;
@@ -1117,7 +1116,7 @@ a {
     min-width: 125px;
     color: #444;
 }
-	/*count �궗�슜 �븞�븿*/
+	/*count 占쎄텢占쎌뒠 占쎈툧占쎈맙*/
 	/*grade*/
 .review_detail>.user>.grade {
     margin-bottom: 12px;
@@ -1191,10 +1190,6 @@ button.empty {
     height: 84px;
 }
 
-	/*action -醫뗭븘�슂,李쒗븯湲�, �뙎湲� �벑�벑 �궗�슜�븞�븿*/
-	/*comment_list -�뙎湲� �궗�슜�븞�븿*/
-	/*comment_write -�뙎湲��벐湲곕쾭�듉 �궗�슜�븞�븿*/
-
 /*7_4. script */
 script {
     display: none;
@@ -1248,17 +1243,30 @@ div.page-list>ul.pagination>li {
 	width:730px;
 	
 }
-/* table */
+/****** table ******/
+#detail_table{
+	margin: 20px 0px 40px 0px;
+	
+}
+
 #detail_table tr{
-	height:80px;
+	height:20px;
 	margin-top:5px;
-	border-top:4px solid aliceblue;
-	font-size : 17pt;
+	border-top:2px solid #ddd;
+	font-size : 10pt;
 	vertical-align: middle;	
 	line-height: 80px; 
 }
+#detail_table tr:first-child {
+	border-top:2px solid #c91b3c;
+	
+}
+	
 #detail_table th{
-	width
+	width: 120px;
+	text-align:left;
+	padding:0px 20px;
+	font-weight:bold;
 }
 
 #detail_title{
@@ -1271,6 +1279,7 @@ div.page-list>ul.pagination>li {
 	width:1280px;
 
 }
+
 #detail_titleImage{
 	
 	width:100%;
@@ -1279,6 +1288,65 @@ div.page-list>ul.pagination>li {
 	 text-decoration: none;
 }
 
+/***** first image *****/
+#detail_firstImageWrap{
+/* 	width:730px; */
+/* 	height:500px; */
+	margin-bottom:30px;
+	
+}
+#detail_firstImage{
+	background:black;
+	/* width:100%; */
+	height:100%;
+}
+#detail_h{
+	font-size:11pt;
+}
+p:after{
+    width: 20px;
+    content: '';
+    height: 4px;
+    background-color: #ffd014;
+}
 
+#map-canvas{
+	margin-top:20px;
+}
 
+/******* Button Area*****/
+#detail_btnAera{
+	margin-top:20px;
+}
 
+#detail_updateBtn{
+    width: 250px;
+    height: 35px;
+    float: left;
+    background: #fff;
+    border-radius: 3px;
+    margin-top: 12px;
+    margin-right: 7px;
+    position: relative;
+    padding-left: 5px;
+    color: #fff;
+    background: #920021!important;
+    border: 0;
+    font-size: 13px;
+}
+#detail_deleteBtn{
+	width: 250px;
+    height: 35px;
+    float: right;
+    background: #fff;
+    border-radius: 3px;
+    margin-top: 12px;
+    margin-right: 7px;
+    position: relative;
+    padding-left: 5px;
+    color: #fff;
+    background: #808080!important;
+    border: 0;
+    font-size: 13px;
+	
+}
