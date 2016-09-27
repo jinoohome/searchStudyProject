@@ -210,7 +210,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
-		if($(this).data.type != 'on'){//현재 상태 확인
+		if(!($(this).hasClasss('on'))){//현재 상태 확인
 			if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
 				$.ajax({
 					type:'GET',
@@ -475,7 +475,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
-		if($(this).data.type != 'on'){//현재 상태 확인
+		if(!($(this).hasClasss('on'))){//현재 상태 확인
 			if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
 				$.ajax({
 					type:'GET',

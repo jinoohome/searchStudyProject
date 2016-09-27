@@ -386,6 +386,7 @@ $( document ).ready(function() {
 			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
 
 			<!-- area search section -->
+			<input type="hidden" name="userid" value="<%=member.getUserId() %>" >
 			<div id="nav_area" class="search sel">
 				<div class="input">
 					<div class="selected">지역 선택 </div>
@@ -531,7 +532,11 @@ $( document ).ready(function() {
     				</div>
     				
 					<div class="element large">
-    					<a href="/easyStudy/search.store?jl=JL" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+					<%if(member != null){%>
+    					    <a href="/easyStudy/search.store?jl=JL&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?jl=JL" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>
        						<div class="shading"></div>
         		
                     		<div class="center">
@@ -544,7 +549,11 @@ $( document ).ready(function() {
     				</div>
     				
     				<div class="element large">
-    					<a href="/easyStudy/search.store?sc=SC" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    				<%if(member != null){%>
+    					    <a href="/easyStudy/search.store?sc=SC&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?sc=SC"" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>
        						<div class="shading"></div>
         		
                     		<div class="center">
@@ -562,7 +571,11 @@ $( document ).ready(function() {
       			<div class="title">종류별</div>
     			<div class="body">
        				 <div class="element large first ">
-    					<a href="/easyStudy/search.store?room=S20" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				 <%if(member != null){%>
+    					    <a href="/easyStudy/search.store?room=S20&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?room=S20" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>
        						<div class="shading"></div>
         		
                     		<div class="center">
@@ -575,7 +588,11 @@ $( document ).ready(function() {
     				</div>
     				
 					<div class="element large">
-    					<a href="/easyStudy/search.store?cafe=S30" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+					<%if(member != null){%>
+    					    <a href="/easyStudy/search.store?cafe=S30&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?cafe=S30"  class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>
        						<div class="shading"></div>
         		
                     		<div class="center">
@@ -588,7 +605,11 @@ $( document ).ready(function() {
     				</div>
     				
     				<div class="element large">
-    					<a href="/easyStudy/search.store?library=S10" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+					<%if(member != null){%>
+    					    <a href="/easyStudy/search.store?library=S10&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?library=S10"  class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>    				
        						<div class="shading"></div>
         		
                     		<div class="center">

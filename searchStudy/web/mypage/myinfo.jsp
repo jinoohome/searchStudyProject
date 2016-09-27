@@ -235,7 +235,7 @@
 
 						<form id="mypage_modifypwd_form" action="/easyStudy/myinfo" method="post" >
 							<!-- 변경을 위한 userID -->
-							<input type="text" style="display:none" name="userid" value="<%=member.getUserId() %>">
+							<input type="hidden" name="userid" value="<%=member.getUserId() %>">
 							
 							<!-- 실제 보이는 부분 -->
 							<div id="mypage_infoPwArea" >
