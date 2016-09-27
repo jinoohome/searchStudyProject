@@ -26,6 +26,539 @@
  <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
  <script type="text/javascript" src="js/navigation.js"> </script>
 
+<%if(member != null){ %> 
+<script type="text/javascript">
+	$(document).ready(function() {
+			var str0 = false;
+			var str1 = false;
+			var str2 = false;
+			var str3 = false;
+			var str4 = false;
+			var str5 = false;
+			var str6 = false;
+			var str7 = false;
+			var str8 = false;
+			
+			if(<%=list.get(0).getStoreId().equals(bookmarks[0]) %>){
+				$("#mypageGo<%=list.get(0).getStoreId() %>").addClass("on");
+				str0 = true;
+			}
+			if(<%=list.get(1).getStoreId().equals(bookmarks[1]) %>){
+				$("#mypageGo<%=list.get(1).getStoreId() %>").addClass("on");
+				str1 = true;
+			}
+			if(<%=list.get(2).getStoreId().equals(bookmarks[2]) %>){
+				$("#mypageGo<%=list.get(2).getStoreId() %>").addClass("on");
+				str2 = true;
+			}
+			if(<%=list.get(3).getStoreId().equals(bookmarks[3]) %>){
+				$("#mypageGo<%=list.get(3).getStoreId() %>").addClass("on");
+				str3 = true;
+			}
+			if(<%=list.get(4).getStoreId().equals(bookmarks[4]) %>){
+				$("#mypageGo<%=list.get(4).getStoreId() %>").addClass("on");
+				str4 = true;
+			}
+			if(<%=list.get(5).getStoreId().equals(bookmarks[5]) %>){
+				$("#mypageGo<%=list.get(5).getStoreId() %>").addClass("on");
+				str5 = true;
+			}
+			if(<%=list.get(6).getStoreId().equals(bookmarks[6]) %>){
+				$("#mypageGo<%=list.get(6).getStoreId() %>").addClass("on");
+				str6 = true;
+			}
+			if(<%=list.get(7).getStoreId().equals(bookmarks[7]) %>){
+				$("#mypageGo<%=list.get(7).getStoreId() %>").addClass("on");
+				str7 = true;
+			}
+			if(<%=list.get(8).getStoreId().equals(bookmarks[8]) %>){
+				$("#mypageGo<%=list.get(8).getStoreId() %>").addClass("on");
+				str8 = true;
+			}
+	
+		//0번째
+		$("#mypageGo<%=list.get(0).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str0 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(0).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(0).getStoreId() %>").removeClass("on");
+							str0 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(0).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(0).getStoreId() %>").addClass("on");
+								str0 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//1번째
+		$("#mypageGo<%=list.get(1).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str1 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(1).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(1).getStoreId() %>").removeClass("on");
+							str1 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(1).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(0).getStoreId() %>").addClass("on");
+								str1 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		
+		//2번째
+		$("#mypageGo<%=list.get(2).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str2 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(2).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(2).getStoreId() %>").removeClass("on");
+							str2 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(2).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(2).getStoreId() %>").addClass("on");
+								str2 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//3번째
+		$("#mypageGo<%=list.get(3).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str3 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(3).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(3).getStoreId() %>").removeClass("on");
+							str3 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(3).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(3).getStoreId() %>").addClass("on");
+								str3 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//4번째
+		$("#mypageGo<%=list.get(4).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str4 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(4).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(4).getStoreId() %>").removeClass("on");
+							str4 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(4).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(4).getStoreId() %>").addClass("on");
+								str4 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//5번째
+		$("#mypageGo<%=list.get(5).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str5 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(5).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(5).getStoreId() %>").removeClass("on");
+							str5 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(5).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(5).getStoreId() %>").addClass("on");
+								str5 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//6번째
+		$("#mypageGo<%=list.get(6).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str6 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(6).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(6).getStoreId() %>").removeClass("on");
+							str6 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(6).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(6).getStoreId() %>").addClass("on");
+								str6 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//7번째
+		$("#mypageGo<%=list.get(7).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str7 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(7).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(7).getStoreId() %>").removeClass("on");
+							str7 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(7).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(7).getStoreId() %>").addClass("on");
+								str7 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		//8번째
+		$("#mypageGo<%=list.get(8).getStoreId() %>").click(function(){
+			alert("클릭");
+			if( str8 == true ){
+				alert("해제!");
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(8).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo<%=list.get(8).getStoreId() %>").removeClass("on");
+							str8 = false;
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+			}else{
+				alert("등록");
+				if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(8).getStoreId() %>",
+						success: function(data) {
+							if(data.result == 10){
+								if(confirm("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?")){
+									location.href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>";
+								}else{
+									return false;
+								}
+							}else{
+								alert("성공");
+								$("#mypageGo<%=list.get(8).getStoreId() %>").addClass("on");
+								str8 = true;
+							}
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+				}else{
+					return false;
+				}
+			}
+			
+		});
+		
+		
+		
+	});
+</script>            		
+ <% }%>           	
 <title>main</title>
 <script>
 </script>
@@ -174,88 +707,6 @@ a {
                     		<div class="icon favorite" id="mypageGo<%=list.get(i).getStoreId() %>"></div>
                 		</button>
             		</div>
-<%if(member != null){ %> 
-<script type="text/javascript">
-$(document).ready(function() {
-		if(<%=list.get(i).getStoreId().equals(bookmarks[0]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[1]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[2]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[3]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[4]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[5]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[6]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[7]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[8]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-
-	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
-		if(!($(this).hasClasss('on'))){//현재 상태 확인
-			if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
-				$.ajax({
-					type:'GET',
-					url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-					success: function(data) {
-						if(data.result == 10){
-							alert("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?");
-						}else{
-							alert("성공");
-							$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-						}
-						
-					},
-					error: function(data) {
-						alert("에러");
-					}			
-				});
-			}else{
-				return false;
-			}
-				
-		}else{
-			if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
-			$.ajax({
-				type:'GET',
-				url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-				success: function(data) {
-					alert("성공");
-					$("#mypageGo<%=list.get(i).getStoreId() %>").removeClass("on");
-					
-				},
-				error: function(data) {
-					alert("에러");
-				}			
-			});
-			}else{
-				return false;
-			}
-		}
-
-		
-	});
-});
-</script>            		
- <% }%>           	
                        <div class="bottom">
                                 <span class="name"><%=list.get(i).getStoreName() %></span>                
                                 <span class="area"><%=list.get(i).getLocalName() %>/<%=list.get(i).getCategoryName() %></span>            
@@ -437,90 +888,7 @@ $(document).ready(function() {
         				<button class="" onclick="return false;" tabindex="-1">
                     		<div class="icon favorite " id="mypageGo<%=list.get(i).getStoreId() %>"></div>
                 		</button>
-            			</div>
-
-<%if(member != null){ %> 
-<script type="text/javascript">
-$(document).ready(function() {	
-		if(<%=list.get(i).getStoreId().equals(bookmarks[0]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[1]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[2]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[3]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[4]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[5]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[6]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[7]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-		if(<%=list.get(i).getStoreId().equals(bookmarks[8]) %>){
-			$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-		}
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-
-	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
-		if(!($(this).hasClasss('on'))){//현재 상태 확인
-			if(confirm("즐겨찾기에 등록하시겠습니까?")){ //등록
-				$.ajax({
-					type:'GET',
-					url:"/easyStudy/mbookmarkins?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-					success: function(data) {
-						if(data.result == 10){
-							alert("즐겨찾기 갯수가 초과되었습니다. 즐겨찾기 페이지로 이동하시겠습니까?");
-						}else{
-							alert("성공");
-							$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
-						}
-						
-					},
-					error: function(data) {
-						alert("에러");
-					}			
-				});
-			}else{
-				return false;
-			}
-				
-		}else{
-			if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
-			$.ajax({
-				type:'GET',
-				url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
-				success: function(data) {
-					alert("성공");
-					$("#mypageGo<%=list.get(i).getStoreId() %>").removeClass("on");
-					
-				},
-				error: function(data) {
-					alert("에러");
-				}			
-			});
-			}else{
-				return false;
-			}
-		}
-
-		
-	});
-});
-</script>            		
- <% }%>              	            			
+            			</div>          	            			
                        <div class="bottom">
                                 <span class="name"><%=list.get(i).getStoreName() %></span>                
                                 <span class="area"><%=list.get(i).getLocalName() %>/<%=list.get(i).getCategoryName() %></span>            
