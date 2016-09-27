@@ -6,6 +6,7 @@
 	ArrayList<Review> reviewPageList = (ArrayList<Review>)request.getAttribute("list");
 	ArrayList<ReviewImage> reviewImagePageList = (ArrayList<ReviewImage>)request.getAttribute("reviewImagePageList");
 	
+	String nickname = (String)request.getAttribute("nickname");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue(); 
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue(); 
 	int maxPage =((Integer)request.getAttribute("maxPage")).intValue(); 
@@ -795,7 +796,7 @@ $(function(){
 				<%	} %> --%>
 				
 				
-				<%if(member != null){ %>
+				
 				<div id="pager">
 			    	<div class="page-list">
 			    	 <ul class="pagination">
@@ -803,7 +804,7 @@ $(function(){
 			    	<% if(currentPage <= 1){ %> 
 			             <li>&lt;&lt;</li>
 			            <%}else{ %> 
-			           	<li><a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
+			           	<li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
 			            <% } %> 
 			          
 			            
@@ -811,7 +812,7 @@ $(function(){
 			                if(p == currentPage){ %> 
 			                	<li class="active"><%= p %></li>
 			                <%}else{ %> 
-			               <li> <a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= p %>"><%= p %></a></li>
+			               <li> <a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= p %>"><%= p %></a></li>
 			                <% } %> 
 			            <% } %> 
 			            
@@ -819,44 +820,13 @@ $(function(){
 			            <% if(currentPage >= maxPage){ %> 
 			            	<li>&gt;&gt;</li>
 			            <%}else{ %> 
-			            <li><a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
+			            <li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
 			            <% } %>
 			            
 			            </ul>
 			    	</div>
 			    </div>
-				<%}else{ %>
-					<div id="pager">
-			    	<div class="page-list">
-			    	 <ul class="pagination">
-			    	
-			    	<% if(currentPage <= 1){ %> 
-			             <li>&lt;&lt;</li>
-			            <%}else{ %> 
-			           	<li><a href="/easyStudy/mreview?page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
-			            <% } %> 
-			          
-			            
-			            <% for(int p = startPage; p <= endPage; p++){ 
-			                if(p == currentPage){ %> 
-			                	<li class="active"><%= p %></li>
-			                <%}else{ %> 
-			               <li> <a href="/easyStudy/mreview?page=<%= p %>"><%= p %></a></li>
-			                <% } %> 
-			            <% } %> 
-			            
-			 			
-			            <% if(currentPage >= maxPage){ %> 
-			            	<li>&gt;&gt;</li>
-			            <%}else{ %> 
-			            <li><a href="/easyStudy/mreview?page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
-			            <% } %>
-			            
-			            </ul>
-			    	</div>
-			    </div>			
 				
-				<%} %>
 				
 				
 				

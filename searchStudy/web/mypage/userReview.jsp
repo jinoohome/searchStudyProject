@@ -23,7 +23,9 @@
  <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
 <title>main</title>
 <script>
-
+$(document).ready(function() {
+ alert("");
+});
 </script>
 
 </head>

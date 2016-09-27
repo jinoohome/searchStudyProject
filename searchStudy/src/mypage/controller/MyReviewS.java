@@ -85,6 +85,7 @@ public class MyReviewS extends HttpServlet {
 		
 			view = request.getRequestDispatcher("mypage/myReview.jsp");
 			request.setAttribute("list", list);
+			request.setAttribute("nickname", nickname);
 			request.setAttribute("currentPage", currentPage);	//현재 페이지
 			request.setAttribute("maxPage", maxPage); //최대 페이지 수
 			request.setAttribute("startPage", startPage); //현재 페이지에 표시할 첫 페이지값
