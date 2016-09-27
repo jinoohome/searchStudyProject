@@ -25,6 +25,17 @@
 <title>DetailView</title>
 <!-- GoogoleMap Asynchronously Loading the API ********************************************* -->
 <script type="text/javascript">
+/*WebStorge 로그인 상태저장 */
+$.fnWebStorge = function() {
+		var  = $('#main_loginUserId').val();
+		var password = $('#main_loginUserPwd').val();
+		if(id.length != 0 && password !=0){
+			localStorage.setItem(id, password);
+			
+		}
+
+}
+
     function initialize() {
         var mapOptions = {
                             zoom: 18, // 지도를 띄웠을 때의 줌 크기
@@ -445,11 +456,14 @@ $( document ).ready(function() {
 						<!-- 정보 탭 관련 정보  -->
 						<div id="tabs-1">
 							<form action="DView" method="post">
-							
-							
+								<div id="detail_firstImageWrap">
+								<%=i.getPhoto1()%>
+									<img src="/easyStudy/images/<%=i.getPhoto1()%>" id="detail_firstImage">
+								</div>
+								
 								<table border="1" width="1000" id="detail_table" style="">
 									<tr>
-										<th>이 름 </th>
+										<th>상점명</th>
 										<td><%=s.getStoreName() %></td>
 									</tr>
 									<tr>
@@ -466,27 +480,25 @@ $( document ).ready(function() {
 										<td><%=s.getHomepage() %></td>
 									</tr>
 									<tr>
-										<th>평일 영업 :</th>
+										<th>평일 영업</th>
 										<td><%=s.getWeekDayTime() %></td>
 									</tr>
-									<th>주말 영업 :</th>
+									<th>주말 영업</th>
 									<td><%=s.getWeekEndTime() %></td>
 									</tr>
 									<tr>
-										<th>가 격 :</th>
+										<th>가 격</th>
 										<td><%=s.getPrice() %></td>
 									</tr>
 									<tr>
-										<th>전화번호 :</th>
+										<th>전화번호</th>
 										<td><%=s.getTell() %></td>
 									</tr>
 									<tr>
-										<th>비 고 :</th>
+										<th>비 고</th>
 										<td><%=s.getEtc() %></td>
 									</tr>
-									<tr>
-										<th colspan="2"></th>
-									</tr>
+									
 								</table>
 							</form>
 						</div>
