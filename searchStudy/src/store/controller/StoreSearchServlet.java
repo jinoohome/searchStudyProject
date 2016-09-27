@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mypage.model.service.MemberService;
 import store.model.service.StoreService;
 import store.model.vo.SearchStore;
 
@@ -231,6 +232,16 @@ public class StoreSearchServlet extends HttpServlet {
 		}
 		System.out.println(as);
 		
+		//즐겨찾기 등록 유무 확인하기
+		String userid = request.getParameter("userid");
+		String[] bookmarks = null;
+		
+		System.out.println("userid는?? : " + userid);
+		//로그인했으면 사용!
+		if(userid != null){
+			bookmarks = new MemberService().selectBookmarksList(userid);
+		}
+	
 		
 		RequestDispatcher view = null;
 		if(list != null){
@@ -246,6 +257,7 @@ public class StoreSearchServlet extends HttpServlet {
 			request.setAttribute("startPage", startPage); //현재 페이지에 표시할 첫 페이지값
 			request.setAttribute("endPage", endPage);  //현재 페이지에 표시할 끝 페이지 값
 			request.setAttribute("listCount", listCount); //총 글 수
+			request.setAttribute("bookmarks", bookmarks); //로그인시 북마크 넘기기
 			
 			view.forward(request, response);
 		}else{

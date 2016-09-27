@@ -46,7 +46,7 @@ public class MemberManagementS extends HttpServlet {
 		
 		//전체 목록 갯수와 목록 전체를 리턴받음
 		MemberService ms = new MemberService();
-		try{
+
 			int listCount = ms.getUserListCount();
 	        ArrayList<Member> list = ms.selectUserList(currentPage, limit);
 	        
@@ -71,12 +71,7 @@ public class MemberManagementS extends HttpServlet {
 			request.setAttribute("endPage", endPage);  //현재 페이지에 표시할 끝 페이지 값
 			request.setAttribute("listCount", listCount); //총 글 수
 			view.forward(request, response);			
-		} catch (Exception e) {
-			System.out.println("에러발생");
-			RequestDispatcher error = request.getRequestDispatcher("view/board/boardError.jsp");
-			request.setAttribute("message", e.getMessage());
-			error.forward(request, response);
-		}
+	
 	}
 
 	/**

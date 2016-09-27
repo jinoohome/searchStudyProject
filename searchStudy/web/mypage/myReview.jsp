@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="mypage.model.vo.Member, mypage.model.vo.Review, mypage.model.vo.ReviewImage, java.util.ArrayList"%>
+<%@ page import="member.model.vo.Member, mypage.model.vo.Review, mypage.model.vo.ReviewImage, java.util.ArrayList"%>
 <%
 	Member member = (Member)session.getAttribute("loginUser");
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
@@ -145,6 +145,7 @@
 			<% }else{ %>	
 				
 			<div class="review_titleWrap">
+			
 				<div class="title" id="review_title">
 								MY Review
 				</div>
@@ -315,15 +316,15 @@
 					</div>
 				
 				<!--리뷰 내용 리스트  -->
-					<div class="review">
-						<div class="text">
-						<pre><%= list.get(i).getContents() %></pre>
-						</div>
-						
-					<%	if(reviewImagePageList != null){ %>
-					
-					
-						<%-- <%	for(int j = 0; j < listRImage.size(); j++){ %>
+								<div class="review">
+									<div class="text">
+										<pre><%= list.get(i).getContents() %></pre>
+									</div>
+
+									<%	if(reviewImagePageList != null){ %>
+
+
+									<%-- <%	for(int j = 0; j < listRImage.size(); j++){ %>
 						<%	} %> --%>
 									<ul class="photo_list">
 										<li class="item"><a class="review_loginPopupBtn"

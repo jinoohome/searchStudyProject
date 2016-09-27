@@ -30,13 +30,13 @@
 					$("#mypage_loginPwCheckArea").css('display', 'block');
 					$("#mypage_loginPwCheckArea").css('background', '#ffeeee');
 					$("#mypage_loginPwCheckLabel").css('color', 'red');
-					$("#mypage_loginPwCheckLabel").html("비밀번호가 동일하지 않습니다");
+					$("#mypage_loginPwCheckLabel").html("<br>비밀번호가 동일하지 않습니다");
 				} else if(loginPassword == loginPasswordChk){
 					console.log("assssss");
 					$("#mypage_loginPwCheckArea").css('display', 'block');
 					$("#mypage_loginPwCheckArea").css('background', '#def7de');
 					$("#mypage_loginPwCheckLabel").css('color', 'green');
-					$("#mypage_loginPwCheckLabel").html("비밀번호가 동일합니다");
+					$("#mypage_loginPwCheckLabel").html("<br>비밀번호가 동일합니다");
 					exPwdChkCheck = true;
 				}
 			}
@@ -51,12 +51,12 @@
 					$("#mypage_infoPwCheckArea").css('display','block');
 					$("#mypage_infoPwCheckArea").css('background','#ffeeee');
 					$("#mypage_infoPwCheckLabel").css('color','red');
-					$("#mypage_infoPwCheckLabel").html("비밀번호는 8글자이상 입력하시기 바랍니다");
+					$("#mypage_infoPwCheckLabel").html("<br>비밀번호는 8글자이상 입력하시기 바랍니다");
 				}else{
 					$("#mypage_infoPwCheckArea").css('display','block');
 					$("#mypage_infoPwCheckArea").css('background','#def7de');
 					$("#mypage_infoPwCheckLabel").css('color','green');
-					$("#mypage_infoPwCheckLabel").html("사용가능한 비밀번호 입니다");
+					$("#mypage_infoPwCheckLabel").html("<br>사용가능한 비밀번호 입니다");
 					myPwdCheck = true;
 				}
 			}
@@ -72,12 +72,12 @@
 					$("#mypage_infoPwCheckChkArea").css('display', 'block');
 					$("#mypage_infoPwCheckChkArea").css('background', '#ffeeee');
 					$("#mypage_infoPwCheckChkLabel").css('color', 'red');
-					$("#mypage_infoPwCheckChkLabel").html("비밀번호가 동일하지 않습니다");
+					$("#mypage_infoPwCheckChkLabel").html("<br>비밀번호가 동일하지 않습니다");
 				} else {
 					$("#mypage_infoPwCheckChkArea").css('display', 'block');
 					$("#mypage_infoPwCheckChkArea").css('background', '#def7de');
 					$("#mypage_infoPwCheckChkLabel").css('color', 'green');
-					$("#mypage_infoPwCheckChkLabel").html("비밀번호가 동일합니다");
+					$("#mypage_infoPwCheckChkLabel").html("<br>비밀번호가 동일합니다");
 					myPwdChkCheck = true;
 				}
 			}

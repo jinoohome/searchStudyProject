@@ -53,7 +53,7 @@ public class UserReviewS extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("page"));
 
 		// 전체 목록 갯수와 목록 전체를 리턴받음
-		try {
+		
 			int listCount = new MemberService().getReviewListCount(nickname);
 
 			System.out.println("listCount : " + listCount);
@@ -90,7 +90,7 @@ public class UserReviewS extends HttpServlet {
 			request.setAttribute("reviewImagePageList", listRImage);
 			view.forward(request, response);
 
-			
+		
 	}
 
 	/**

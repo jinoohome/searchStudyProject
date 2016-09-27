@@ -447,8 +447,8 @@ String query = null;
 		
 		try {
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(2, storeid);
-			pstmt.setString(3, userid);
+			pstmt.setString(1, storeid);
+			pstmt.setString(2, userid);
 			
 			result = pstmt.executeUpdate();
 			
@@ -593,6 +593,50 @@ String query = null;
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public String[] selectBookmarksList(Connection con, String userid) {
+
+		String[] bookmarks = new String[9];
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "select * from USER_BOOKMARKS WHERE USER_ID = ? ";
+		
+		System.out.println("다오 userid" + userid);
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userid);			
+			rset = pstmt.executeQuery();
+			
+			System.out.println("성공여부");
+			if(rset.next() ){
+				System.out.println("성공!");
+				 bookmarks[0] = rset.getString("BOOKMARK_N1");
+				 bookmarks[1] = rset.getString("BOOKMARK_N2");
+				 bookmarks[2] = rset.getString("BOOKMARK_N3");
+				 bookmarks[3] = rset.getString("BOOKMARK_N4");
+				 bookmarks[4] = rset.getString("BOOKMARK_N5");
+				 bookmarks[5] = rset.getString("BOOKMARK_N6");
+				 bookmarks[6] = rset.getString("BOOKMARK_N7");
+				 bookmarks[7] = rset.getString("BOOKMARK_N8");
+				 bookmarks[8] = rset.getString("BOOKMARK_N9");
+				 for(int i = 0; i < bookmarks.length; i++){
+					 System.out.println("왜 안나옴??" + bookmarks[i]);
+				 }
+			}
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		
+
+		
+		return bookmarks;
 	}
 
 

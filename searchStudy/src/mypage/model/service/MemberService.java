@@ -164,6 +164,13 @@ public class MemberService {
 		return result;
 	}
 
+	public String[] selectBookmarksList(String userid) {
+		Connection con = getConnection();
+		String[] bookmarks = new MemberDao().selectBookmarksList(con, userid);
+		close(con);
+		return bookmarks;
+	}
+
 
 
 

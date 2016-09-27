@@ -10,9 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>main</title>
-<script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css" >
+<script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"></script>
 
 </head>
 <body>
@@ -129,7 +129,37 @@
                   <a href="#" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
             
                     <div class="shading"></div>
-        
+        			<div class="top"> 
+        				<button class="" onclick="return false;" tabindex="-1">
+                    		<div class="icon favorite" id="mypageGo<%=list.get(i).getStoreId() %>"></div>
+                		</button>
+            			</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+	
+	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo").removeClass("on");
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+	});
+
+});
+</script>            			
                        <div class="mypage_bottom">
                                 <span class="name"><%=list.get(i).getStoreName() %></span>                
                                 <span class="area"><%=list.get(i).getLocalName() %>/<%=list.get(i).getCategoryName() %></span>            
@@ -154,12 +184,7 @@
                                   <div class="grade"><%=list.get(i).getScore() %></div>
                               </div>
                              <div class="budget">금액 : <%=list.get(i).getPrice() %></div>                    
-                             <div class="comment">전화번호 : <%=list.get(i).getHomepage() %> </div>
-                              <div id="mypage_bookmarkbuttondiv">
-           					 	<a href="/easyStudy/mbookmarkdel?userid=<%=member.getUserId() %>&storeid=<%=list.get(i).getStoreId() %>" onclick="return confirm('<%=list.get(i).getStoreName() %>을(를) 즐겨찾기에서 해제하시겠습니까?')" >
-           					 					<input type="button" value="즐겨찾기 해제" id="bookmarkdelBtn"></a>
-           					 </div>
-           
+                             <div class="comment">전화번호 : <%=list.get(i).getHomepage() %> </div>           
                            </div>
                        </div>
           </div>
@@ -168,7 +193,37 @@
                 <div class="element medium">
                   <a href="#" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
                     <div class="shading"></div>
-        
+        				<div class="top"> 
+        				<button class="" onclick="return false;" tabindex="-1">
+                    		<div class="icon favorite " id="mypageGo<%=list.get(i).getStoreId() %>"></div>
+                		</button>
+            			</div>        
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#mypageGo<%=list.get(i).getStoreId() %>").addClass("on");
+	
+	$("#mypageGo<%=list.get(i).getStoreId() %>").click(function(){
+				if(confirm("즐겨찾기에 해지하시겠습니까?")){ //해지
+					$.ajax({
+						type:'GET',
+						url:"/easyStudy/mbookmarkdel?userid=<%=member.getUserId()%>&storeid=<%=list.get(i).getStoreId() %>",
+						success: function(data) {
+							alert("성공");
+							$("#mypageGo").removeClass("on");
+							
+						},
+						error: function(data) {
+							alert("에러");
+						}			
+					});
+					}else{
+						return false;
+					}
+	});
+
+});
+</script>                     			
                        <div class="mypage_bottom">
                                 <span class="name"><%=list.get(i).getStoreName() %></span>                
                                 <span class="area"><%=list.get(i).getLocalName() %>/<%=list.get(i).getCategoryName() %></span>            
@@ -194,10 +249,6 @@
                               </div>
                              <div class="budget">금액 : <%=list.get(i).getPrice() %></div>                    
                              <div class="comment">전화번호 : <%=list.get(i).getHomepage() %> </div>
-           					 <div id="mypage_bookmarkbuttondiv">
-           					 	<a href="/easyStudy/mbookmarkdel?userid=<%=member.getUserId() %>&storeid=<%=list.get(i).getStoreId() %>" onclick="return confirm('<%=list.get(i).getStoreName() %>을(를) 즐겨찾기에서 해제하시겠습니까?')">
-           					 					<input type="button" value="즐겨찾기 해제" id="bookmarkdelBtn"></a>
-           					 </div>
                            </div>
                        </div>
           </div>

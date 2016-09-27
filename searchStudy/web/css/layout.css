@@ -345,11 +345,23 @@ div#mypage_bookmarkList{
 	cursor:pointer;
 }
 
+/*즐겨찾기와 리뷰 없음*/
+#mypage_noContents{
+	text-align: center;
+	font-size: 25px;	
+	margin-top: 70px;
+	line-height: 40px;
+}
+#mypage_noContentsgomain{
+	text-align: center;
+	font-size: 18px;
+	margin-top: 40px;
+}
 
 /*my review*/
 div#mypage_myreview{
 	   width: 750px;
-    height: 1200px;
+    height: 1400px;
     position: relative;
     margin: 0 auto;
     padding: 50px;    
@@ -404,7 +416,7 @@ ul.mypage_pwdGuide{
 }
 
  .labelRow{
-	width: 200px;
+	width: 100px;
 	height: 40px;
 }
 

@@ -514,7 +514,11 @@ $( document ).ready(function() {
     			<div class="title">지역별</div>
     			<div class="body">
        				 <div class="element large first ">
-    					  <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				 <%if(member != null){%>
+    					    <a href="/easyStudy/search.store?gn=GN&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%}else{ %>	
+       				   <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				<%} %>
        						<div class="shading"></div>
         		
                     		<div class="center">
