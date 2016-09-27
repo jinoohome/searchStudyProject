@@ -386,7 +386,9 @@ $( document ).ready(function() {
 			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
 
 			<!-- area search section -->
+			<%if(member != null){ %>
 			<input type="hidden" name="userid" value="<%=member.getUserId() %>" >
+			<%} %>
 			<div id="nav_area" class="search sel">
 				<div class="input">
 					<div class="selected">지역 선택 </div>
@@ -518,7 +520,7 @@ $( document ).ready(function() {
        				 <%if(member != null){%>
     					    <a href="/easyStudy/search.store?gn=GN&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				        <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -533,7 +535,7 @@ $( document ).ready(function() {
     				
 					<div class="element large">
 					<%if(member != null){%>
-    					    <a href="/easyStudy/search.store?jl=JL&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					<a href="/easyStudy/search.store?jl=JL&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%}else{ %>	
        				   <a href="/easyStudy/search.store?jl=JL" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%} %>
@@ -550,9 +552,9 @@ $( document ).ready(function() {
     				
     				<div class="element large">
     				<%if(member != null){%>
-    					    <a href="/easyStudy/search.store?sc=SC&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					<a href="/easyStudy/search.store?sc=SC&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?sc=SC"" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?sc=SC" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
