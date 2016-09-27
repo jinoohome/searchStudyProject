@@ -276,7 +276,8 @@ $(function() {
 				<div id="mypage_usercount">
 				<br><br><br>
 					현재 &nbsp;
-					<span class="mypage_usercount_num"><%=listCount %></span> 
+					<!-- 관리자 1명 제외 -->
+					<span class="mypage_usercount_num"><%=listCount - 1 %></span> 
 					&nbsp;명의 회원이 존재합니다.
 				</div>
 				<!-- 다수의 회원 정리 기능 -->

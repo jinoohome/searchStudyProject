@@ -28,7 +28,8 @@ public class MemberDao{
 		//관리자 제외 회원 조회
 		String query = " SELECT USER_ID, USER_PWD, NICKNAME, ENROLL_DATE "
 				+ " FROM (SELECT USER_ID, USER_PWD, NICKNAME, ENROLL_DATE,  ROW_NUMBER() OVER (ORDER BY USER_ID DESC) RANK "
-					    	+ " FROM USERS ) "
+					    	+ " FROM USERS "
+					    	+ " WHERE USER_ID != 'admin' ) "
 					+ " WHERE RANK >= ? AND RANK <= ? "; 
 		
 		int startRow = (currentPage - 1) * 10 + 1; // 읽기 시작할 row 번호.
