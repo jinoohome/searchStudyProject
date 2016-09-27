@@ -143,7 +143,6 @@ $( document ).ready(function() {
 	
 	/*로그인 패스워드 확인여부*/
 	$("#main_loginBtn").click(function(){
-			alert("");
 		if ($("#main_login_chk").is(":checked")) {
 			$.fnWebStorge();
 		}
