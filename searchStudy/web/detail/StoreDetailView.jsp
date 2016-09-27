@@ -7,10 +7,10 @@
 	Store s=(Store)request.getAttribute("store");
 	Image i=(Image)request.getAttribute("image"); 
 	Member member = (Member)session.getAttribute("member");
-	
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	ArrayList<ReviewImage> listRImage = (ArrayList<ReviewImage>)request.getAttribute("listRImage");
 	
+	int score = (Integer)request.getAttribute("score");
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();	//현재 페이지
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
 	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
@@ -116,7 +116,7 @@ ol, ul {
 }
 #bannerSlider{
 	position: relative;
-    overflow: hidden;
+    overflow: hidden; 
     width: 100%;
     height: 420px;
  	background-size: cover; 
@@ -134,7 +134,7 @@ ol, ul {
     width: 30000px;
     height: 100%;
     position: relative; 
-    left: -850px;
+    left: -730px;
     overflow: hidden; 
  	display: none; 
 
@@ -142,7 +142,7 @@ ol, ul {
 .pieces .piece{
     float: left;
     height: 100%;
-    width: 850px;
+    width: 730px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -150,8 +150,8 @@ ol, ul {
 .nav{
     position: absolute;
     top: 10%;
-    width: 900px;
-    margin: -25px auto 0 -10px;
+    width: 730px;
+    margin: -25px auto 0 -130px;
    }
 
 .nav i {
@@ -164,13 +164,12 @@ ol, ul {
 .left{
 		position: absolute;
  	 	 background-image: url(/easyStudy/images/detail_leftArrow.png);
-    	width: 900px;
-    	margin-left:35px;
+    	width: 730px;
+    	margin-left:155px;
 }
 .right{
      background-image: url(/easyStudy/images/detail_rightArrow.png);
      background-repeat: no-repeat;
-     margin-right:0px;
     
 }
 .shadow{
@@ -184,12 +183,12 @@ ol, ul {
 
 .left.shadow{
     right: 0;
-    margin-right: 850px;
+    margin-right: 730px;
 
 }
 .right.shadow{
     left: 0;
-    margin-left: 850px;
+    margin-left: 730px;
 
 }
 
@@ -297,7 +296,7 @@ $("#bannerSlider").on("selectstart", function()
 		    var pieces = slider.children(".pieces");
 		    var max = pieces.data('max');
 		    var fake_pieces = options.fake_pieces? options.fake_pieces:2;
-		    var width = 850;
+		    var width = 730;
 		    var start_point = -width * (fake_pieces-1);
 		    var start_index = options.start_index? options.start_index:0;
 		    var isSliding = false;
@@ -701,21 +700,25 @@ $(function(){
 			<div id="banner_warp">
 				<div id="banner">
 					<div class="detail_imageArea">
+						<%if(i !=null){ %>
 						<img src="/easyStudy/images/<%=i.getPhoto1()%>" id="detail_titleImage">
+						<%} %>
 					</div>
 				</div>
 			</div>
 
 			<div id="tabs">
 				<div id="content_wrap">
-					<%-- <div id="content" class="detail info">
+					<div id="content" class="detail info">
+					<%if(s !=null){ %>
 					<div id="detail_title"><%=s.getStoreName() %></div>
 					<div><%=s.getLocalName() %> / <%=s.getCategoryName() %></div>
-						<ul class="tab">
+					<%} %>
+						<!-- <ul class="tab">
 							<li class="item "><a href="">정보</a></li>
 							<li class="item"><a href="">포토</a></li>
 							<li class="item"><a href="">리뷰</a></li>
-						</ul>
+						</ul> -->
 						
 						<!-- 정보 탭 관련 정보  -->
 						<div id="tabs-1">
@@ -726,11 +729,11 @@ $(function(){
 										<div id="bannerSlider">
 										    <div class="trislider">
 										    	<div class="pieces" data-index="0" data-max="5" style="left: -1700px; display: block;">
-										    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto1() %>);"></a>
-										    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto2() %>)"></a>
-										    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto3() %>)"></a>
-										    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto4() %>)"></a>
-										    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto5() %>)"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto1() %>);"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto2() %>)"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto3() %>)"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto4() %>)"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto5() %>)"></a>
 										    		    		
 										    		    	</div>
 										   		<div class="left shadow"></div>
@@ -750,7 +753,6 @@ $(function(){
 										</div></div>
 									
 									
-									<img src="/easyStudy/images/<%=i.getPhoto1()%>" id="detail_firstImage">
 								</div>
 									<% } %>
 								<p class="detail_h">공간소개</p>
@@ -760,8 +762,163 @@ $(function(){
 										<td><%=s.getStoreName() %></td>
 									</tr>
 									<tr>
-										<th> </th>
-										<td></td>
+										<th>평가</th>
+										<td>
+											 <div class="rating" id="detail_score">
+	                                             <%
+													if(score <= 0.5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+													<span class="star even active"></span>
+													<span class="star odd"></span>
+													<span class="star even"></span>
+													<span class="star odd"></span>
+													<span class="star even"></span>
+													<span class="star odd"></span>
+													<span class="star even"></span>
+													<span class="star odd"></span>
+													<span class="star even"></span>
+												</div>
+												<%
+													}else if(score <= 1){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+			                                        <span class="star even active"></span>
+			                                        <span class="star odd"></span>
+			                                        <span class="star even"></span>
+			                                        <span class="star odd"></span>
+			                                        <span class="star even"></span>
+			                                        <span class="star odd"></span>
+			                                        <span class="star even"></span>
+			                                        <span class="star odd"></span>
+			                                        <span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 1.5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 2){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 2.5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 3){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 3.5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%
+													}else if(score<= 4){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%	}else if(score<= 4.5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even"></span>
+												</div>
+												<%	
+													}else if(score<= 5){
+												%>
+												<div class="stars">
+													<span class="star odd active"></span>
+	                                      			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+	                                      			<span class="star odd active"></span>
+	                                       			<span class="star even active"></span>
+												</div>
+												<%
+													}
+												%>
+			                              </div>
+										</td>
 									</tr>
 									
 									<tr>
@@ -776,6 +933,7 @@ $(function(){
 										<th>평일 영업</th>
 										<td><%=s.getWeekDayTime() %></td>
 									</tr>
+									<tr>
 									<th>주말 영업</th>
 									<td><%=s.getWeekEndTime() %></td>
 									</tr>
@@ -797,19 +955,19 @@ $(function(){
 						
 								<form action="DMap" method="post">
 								<p class="detail_h">지도</p>
-									<div id="map-canvas" style="width: 850px; height: 500px"></div>
+									<div id="map-canvas" style="width: 730px; height: 500px"></div>
 									<br>
 									
 								</form>
-						</div> --%>
+						</div>
 						<!--reivew area  -->
 						<div id="tabs-2">
 						<div id="content" class="detail review">
-						<ul class="tab">
+					<!-- 	<ul class="tab">
 							<li class="item "><a href="">정보</a></li>
 							<li class="item"><a href="">포토</a></li>
 							<li class="item"><a href="">리뷰</a></li>
-						</ul>
+						</ul> -->
 							<form action="radd?storeId=<%=s.getStoreId() %>" method="post" enctype="multipart/form-data" style="margin:0;" >
 								<div class="body first">
 									<div class="title">
@@ -894,329 +1052,302 @@ $(function(){
 								Review
 						</div>
 					</div>
-						<%	if(reviewPageList == null){%>
-					<br>
-					<div style="text-align:center">리뷰가 없습니다.</div>
-					
-			<% }else{ %>	
-				
-			<%	for(int j = 0; j < reviewPageList.size(); j++){ %>
+					<!-- reviewPageList != null -->
+					<%	if(reviewPageList != null){%>
+					<%	for(int z = 0; z < reviewPageList.size(); z++){ %>
 			
-			<div class="body review list ">
-				<div class="review_detail">
-					<a class="i_wrap" href="/timeline/50b6dc12d20c781e6700004b">
-					<i class="image border_radius circle" style="display: inline-block; background-image: url(&quot;http://c4.poing.co.kr/55ea410bd820b94b140000f7.jpg&quot;);"></i>
-					</a>
-					<div class="user">
-						<div class="name ">
-						<a href="#"><%= reviewPageList.get(j).getNickName() %></a>									
-						</div>
-						
-						
-						
-						<%
-							if(reviewPageList.get(j).getScore() == 5){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even active" data-index="5" style=""></i>
-							<i class="icon star medium odd active" data-index="6" style=""></i>
-							<i class="icon star medium even active" data-index="7" style=""></i>
-							<i class="icon star medium odd active" data-index="8" style=""></i>
-							<i class="icon star medium even active" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 4.5){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even active" data-index="5" style=""></i>
-							<i class="icon star medium odd active" data-index="6" style=""></i>
-							<i class="icon star medium even active" data-index="7" style=""></i>
-							<i class="icon star medium odd active" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 4){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even active" data-index="5" style=""></i>
-							<i class="icon star medium odd active" data-index="6" style=""></i>
-							<i class="icon star medium even active" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 3.5){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even active" data-index="5" style=""></i>
-							<i class="icon star medium odd active" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 3){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even active" data-index="5" style=""></i>
-							<i class="icon star medium odd" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 2.5){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd active" data-index="4" style=""></i>
-							<i class="icon star medium even" data-index="5" style=""></i>
-							<i class="icon star medium odd" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 2){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even active" data-index="3" style=""></i>
-							<i class="icon star medium odd" data-index="4" style=""></i>
-							<i class="icon star medium even" data-index="5" style=""></i>
-							<i class="icon star medium odd" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 1.5){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even active" data-index="1" style=""></i>
-							<i class="icon star medium odd active" data-index="2" style=""></i>
-							<i class="icon star medium even" data-index="3" style=""></i>
-							<i class="icon star medium odd" data-index="4" style=""></i>
-							<i class="icon star medium even" data-index="5" style=""></i>
-							<i class="icon star medium odd" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}else if(reviewPageList.get(j).getScore() == 1){
-						%>
-						<div class="grade">
-							<i class="icon star medium odd active" data-index="0" style=""></i>
-							<i class="icon star medium even" data-index="1" style=""></i>
-							<i class="icon star medium odd" data-index="2" style=""></i>
-							<i class="icon star medium even" data-index="3" style=""></i>
-							<i class="icon star medium odd" data-index="4" style=""></i>
-							<i class="icon star medium even" data-index="5" style=""></i>
-							<i class="icon star medium odd" data-index="6" style=""></i>
-							<i class="icon star medium even" data-index="7" style=""></i>
-							<i class="icon star medium odd" data-index="8" style=""></i>
-							<i class="icon star medium even" data-index="9" style=""></i>
-							<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(j).getScore() %> 점</span>
-						</div>
-						<%
-							}
-						%>
-						
-					</div>
-				
-				<!--리뷰 내용 리스트  -->
-					<div class="review">
-						<!-- <div class="time">하루 전<br><span>하루 전 수정됨</span></div> -->
-						<div class="text">
-						<pre><%= reviewPageList.get(j).getContents() %></pre>
-						</div>
-						
-					<%	if(reviewImagePageList != null){ %>
-					
-					
-						<%-- <%	for(int j = 0; j < listRImage.size(); j++){ %>
-						<%	} %> --%>
-						<ul class="photo_list">
-							<li class="item">
-								<a class="review_loginPopupBtn" href="#review_loginModal">
-							<%if(reviewImagePageList != null){ %>
-							
-								<%if( reviewImagePageList.get(j).getRenamePhoto1()!=null){ %>
-								<img src="uploadFiles/<%= reviewImagePageList.get(j).getRenamePhoto1() %>" width="84" height="84">
-								<%}else{ %>
-								<%} %>
-								
-								<%if( reviewImagePageList.get(j).getRenamePhoto2()!=null){ %>
-								<img src="uploadFiles/<%= reviewImagePageList.get(j).getRenamePhoto2() %>" width="84" height="84">
-								<%}else{ %>
-								<%} %>
-								
-								<%if( reviewImagePageList.get(j).getRenamePhoto3()!=null){ %>
-								<img src="uploadFiles/<%= reviewImagePageList.get(j).getRenamePhoto3() %>" width="84" height="84">
-								<%}else{ %>
-								<%} %>
-								
-								<%if( reviewImagePageList.get(j).getRenamePhoto4()!=null){ %>
-								<img src="uploadFiles/<%= reviewImagePageList.get(j).getRenamePhoto4() %>" width="84" height="84">
-								<%}else{ %>
-								<%} %>
-								
-								<%if( reviewImagePageList.get(j).getRenamePhoto5()!=null){ %>
-								<img src="uploadFiles/<%= reviewImagePageList.get(j).getRenamePhoto5() %>" width="84" height="84">
-								<%}else{ %>
-								<%} %>
-								
-							<%} %>
-								
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+1).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+2).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+3).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+4).getRenamePhoto1() %>" width="84" height="84"> --%>
-								</a>
-							</li>
-						</ul>
-						
-						
-					<%	}else{ %>
-						<div style="text-align: center">사진 없음</div>
-					<%	} %>
-					
-						<%	if(member.getNickName().equals(reviewPageList.get(j).getNickName())){ %>
-						<div class="action">
-							<a href="rdelete?listNo=<%= reviewPageList.get(j).getListNo()%>&storeId=<%= s.getStoreId() %>" class="func">
-								삭제하기
+					<div class="body review list ">
+						<div class="review_detail">
+							<a class="i_wrap" href="/timeline/50b6dc12d20c781e6700004b">
+							<i class="image border_radius circle" style="display: inline-block; background-image: url(&quot;http://c4.poing.co.kr/55ea410bd820b94b140000f7.jpg&quot;);"></i>
 							</a>
-							<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(j).getListNo()%>);">
-												
-								수정하기  
-							</a>
-						</div>
-						<%	} %>
-						
-					</div>
-				</div>
-			</div>
-			
-			
-				<!-- 리뷰페이지 사진 클릭시 다이얼로그  -->
-			<div id="review_loginWrap">
-				<div id="review_loginModal" class="review_loginPopup" style="display: none;">
-					로그인 페이지
-					<div id="review_model">
-						<img>
-					</div>
-				</div>
-			</div>
-			
-			
-				<%		} %>
-				
-				<%-- <%	if(list.size() > 5){ %>
-				<div id="review_pagination">
-					<div class="page-list">
-						<ul class="pagination" onselectstart="return false;">
-							<li class="prevAll">&lt;&lt;</li>
-							<li class="prev">&lt;</li>
-							<li class="page active" data-page="1">1</li>
-							<li class="page" data-page="2">2</li>
-							<li class="page" data-page="3">3</li>
-							<li class="page" data-page="4">4</li>
-							<li class="page" data-page="5">5</li>
-							<li class="next">&gt;</li>
-							<li class="nextAll">&gt;&gt;</li>
-						</ul>
-					</div>
-				</div>
-				<%	} %> --%>
-				
-				<div id="pager">
-			    	<div class="page-list">
-			    	 <ul class="pagination">
-			    	
-			    	<% if(currentPage <= 1){ %> 
-			             <li>&lt;&lt;</li>
-			            <%}else{ %> 
-			           	<li><a href="/easyStudy-1/rlist?page=<%= currentPage - 1 %>&storeId=<%= s.getStoreId() %>">&lt;&lt;</a></li>
-			            <% } %> 
-			          
-			            
-			            <% for(int p = startPage; p <= endPage; p++){ 
-			                if(p == currentPage){ %> 
-			                	<li class="active"><%= p %></li>
-			                <%}else{ %> 
-			               <li> <a href="/easyStudy-1/rlist?page=<%= p %>&storeId=<%= s.getStoreId() %>"><%= p %></a></li>
-			                <% } %> 
-			            <% } %> 
-			            
-			 			
-			            <% if(currentPage >= maxPage){ %> 
-			            	<li>&gt;&gt;</li>
-			            <%}else{ %> 
-			            <li><a href="/easyStudy-1/rlist?page=<%= currentPage + 1 %>&storeId=<%= s.getStoreId() %>">&gt;&gt;</a></li>
-			            <% } %>
-			            
-			            </ul>
-			    	</div>
-			    </div>
-				
-				<%	} %>
-						</div><!-- class= review  -->
-							
-						<%-- 	<%
-								if(member !=null){
-									if(member.getUserId().equals("admin")){
-								%> --%>
-								<div id="detail_btnAera">
-								<a href="/easyStudy/StoreUpdateView?storeId=<%= s.getStoreId() %>">
-								<input type="button" value="수정하기" id="detail_updateBtn"></a> &nbsp; &nbsp; 
-								<a href="/easyStudy/StoreDelete?storeId=<%= s.getStoreId() %>" >
-								<input type="button" value="삭제하기" id="detail_deleteBtn"></a> &nbsp; &nbsp;
+							<div class="user">
+								<div class="name ">
+								<a href="#"><%= reviewPageList.get(z).getNickName() %></a>									
 								</div>
-								<%-- <% 		} 
-									}		
-									%> --%>
+								
+								
+								
+								<%
+									if(reviewPageList.get(z).getScore() == 5){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even active" data-index="5" style=""></i>
+									<i class="icon star medium odd active" data-index="6" style=""></i>
+									<i class="icon star medium even active" data-index="7" style=""></i>
+									<i class="icon star medium odd active" data-index="8" style=""></i>
+									<i class="icon star medium even active" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 4.5){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even active" data-index="5" style=""></i>
+									<i class="icon star medium odd active" data-index="6" style=""></i>
+									<i class="icon star medium even active" data-index="7" style=""></i>
+									<i class="icon star medium odd active" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 4){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even active" data-index="5" style=""></i>
+									<i class="icon star medium odd active" data-index="6" style=""></i>
+									<i class="icon star medium even active" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 3.5){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even active" data-index="5" style=""></i>
+									<i class="icon star medium odd active" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 3){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even active" data-index="5" style=""></i>
+									<i class="icon star medium odd" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 2.5){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd active" data-index="4" style=""></i>
+									<i class="icon star medium even" data-index="5" style=""></i>
+									<i class="icon star medium odd" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 2){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even active" data-index="3" style=""></i>
+									<i class="icon star medium odd" data-index="4" style=""></i>
+									<i class="icon star medium even" data-index="5" style=""></i>
+									<i class="icon star medium odd" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 1.5){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even active" data-index="1" style=""></i>
+									<i class="icon star medium odd active" data-index="2" style=""></i>
+									<i class="icon star medium even" data-index="3" style=""></i>
+									<i class="icon star medium odd" data-index="4" style=""></i>
+									<i class="icon star medium even" data-index="5" style=""></i>
+									<i class="icon star medium odd" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}else if(reviewPageList.get(z).getScore() == 1){
+								%>
+								<div class="grade">
+									<i class="icon star medium odd active" data-index="0" style=""></i>
+									<i class="icon star medium even" data-index="1" style=""></i>
+									<i class="icon star medium odd" data-index="2" style=""></i>
+									<i class="icon star medium even" data-index="3" style=""></i>
+									<i class="icon star medium odd" data-index="4" style=""></i>
+									<i class="icon star medium even" data-index="5" style=""></i>
+									<i class="icon star medium odd" data-index="6" style=""></i>
+									<i class="icon star medium even" data-index="7" style=""></i>
+									<i class="icon star medium odd" data-index="8" style=""></i>
+									<i class="icon star medium even" data-index="9" style=""></i>
+									<span style="display:inline-block;vertical-align:super;" data-id="57d11962668a4835bd000012" data-grade="50"><%= reviewPageList.get(z).getScore() %> 점</span>
+								</div>
+								<%
+									}
+								%>
+								
+							</div>
+						
+						<!--리뷰 내용 리스트  -->
+							<div class="review">
+								<!-- <div class="time">하루 전<br><span>하루 전 수정됨</span></div> -->
+								<div class="text">
+								<pre><%= reviewPageList.get(z).getContents() %></pre>
+								</div>
+							<%	if(reviewImagePageList != null){ %>
+											
+								<ul class="photo_list">
+									<li class="item">
+										<a class="review_loginPopupBtn" href="#review_loginModal">
+									
+										<%if( reviewImagePageList.get(z).getRenamePhoto1()!=null){ %>
+										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto1() %>" width="84" height="84">
+										<%}else{ %>
+										<%} %>
+										
+										<%if( reviewImagePageList.get(z).getRenamePhoto2()!=null){ %>
+										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto2() %>" width="84" height="84">
+										<%}else{ %>
+										<%} %>
+										
+										<%if( reviewImagePageList.get(z).getRenamePhoto3()!=null){ %>
+										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto3() %>" width="84" height="84">
+										<%}else{ %>
+										<%} %>
+										
+										<%if( reviewImagePageList.get(z).getRenamePhoto4()!=null){ %>
+										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto4() %>" width="84" height="84">
+										<%}else{ %>
+										<%} %>
+										
+										<%if( reviewImagePageList.get(z).getRenamePhoto5()!=null){ %>
+										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto5() %>" width="84" height="84">
+										<%}else{ %>
+										<%} %>
+										
+										</a>
+									</li>
+								</ul>
+								
+								
+							<%	}else{ %>
+								<div style="text-align: center">사진 없음</div>
+							<%	} %>
+								<%if(member !=null){ %>
+									<%	if(member.getNickName().equals(reviewPageList.get(z).getNickName())){ %>
+									<div class="action">
+										<a href="rdelete?listNo=<%= reviewPageList.get(z).getListNo()%>&storeId=<%= s.getStoreId() %>" class="func">
+											삭제하기
+										</a>
+										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
+															
+											수정하기  
+										</a>
+									</div>
+								<%		} 
+									}
+								%>
+								
+							</div>
+						</div>
+					</div>
+					<%} %>
+					<div id="pager">
+				    	<div class="page-list">
+				    	 <ul class="pagination">
+				    	
+				    	<% if(currentPage <= 1){ %> 
+				             <li>&lt;&lt;</li>
+				            <%}else{ %> 
+				           	<li><a href="/easyStudy-1/rlist?page=<%= currentPage - 1 %>&storeId=<%= s.getStoreId() %>">&lt;&lt;</a></li>
+				            <% } %> 
+				          
+				            
+				            <% for(int p = startPage; p <= endPage; p++){ 
+				                if(p == currentPage){ %> 
+				                	<li class="active"><%= p %></li>
+				                <%}else{ %> 
+				               <li> <a href="/easyStudy-1/rlist?page=<%= p %>&storeId=<%= s.getStoreId() %>"><%= p %></a></li>
+				                <% } %> 
+				            <% } %> 
+				            
+				 			
+				            <% if(currentPage >= maxPage){ %> 
+				            	<li>&gt;&gt;</li>
+				            <%}else{ %> 
+				            <li><a href="/easyStudy-1/rlist?page=<%= currentPage + 1 %>&storeId=<%= s.getStoreId() %>">&gt;&gt;</a></li>
+				            <% } %>
+				            
+				            </ul>
+				    	</div>
+				    </div>
+							
+					<!--reviewPageList ==null  -->		
+					<% }else{ %>	
+						<br>
+						<div style="text-align:center">리뷰가 없습니다.</div>
+							
+					<%	} %>	
+						</div><!-- class= review  -->
 					</div><!--tab2  -->
+					<!--reviewPageList ==null 끝 -->			
+					<%
+						if(member !=null){
+							if(member.getUserId().equals("admin")){
+					%>
+						<div id="detail_btnAera">
+						<a href="/easyStudy/StoreUpdateView?storeId=<%= s.getStoreId() %>">
+						<input type="button" value="수정하기" id="detail_updateBtn"></a> &nbsp; &nbsp; 
+						<a href="/easyStudy/StoreDelete?storeId=<%= s.getStoreId() %>" >
+						<input type="button" value="삭제하기" id="detail_deleteBtn"></a> &nbsp; &nbsp;
+						</div>
+					<% 		
+							} 
+						}		
+					%>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<!-- 리뷰페이지 사진 클릭시 다이얼로그  -->
+	<div id="review_loginWrap">
+		<div id="review_loginModal" class="review_loginPopup" style="display: none;">
+			로그인 페이지
+			<div id="review_model">
+				<img>
 			</div>
 		</div>
 	</div>

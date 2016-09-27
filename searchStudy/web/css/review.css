@@ -526,11 +526,21 @@ pre {
 }
 	/*photo_list*/
 
-.review_detail>.review>.action, .review_detail>.review>.photo_list {
+.review_detail>.review>.action, 
+.review_detail>.review>.photo_list {
     padding-left: 60px;
     margin-top: 50px;
     margin-bottom: 20px;
+    
 }
+
+.photo_list>.item>a img {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
 .review_detail>.review>.photo_list>.item {
     display: inline-block;
     margin-right: 3px;
@@ -596,7 +606,40 @@ div.page-list>ul.pagination>li {
     background: 0 0;
 }
 
+/* 수정하기,삭제하기 a태그 */
 div.action a.func{
-	text-decoration: none;
-	color: black;
+    float: right;
+    padding: 0;
+    margin: 0 3px;
+    color: #969696;
 }
+
+#content.review>form .body.review.write>button#cBtn {
+	width: 50%;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    background: #c0c0c0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#content.review>form .body.review.write>button#uBtn {
+	width: 50%;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #c91b3c;
+    background: #c91b3c;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#content.review>form .body.review.write.hidden {
+	display: inline-flex;
+}
+
+

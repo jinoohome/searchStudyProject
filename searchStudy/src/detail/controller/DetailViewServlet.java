@@ -41,7 +41,7 @@ public class DetailViewServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String storeId = request.getParameter("storeId");
-		String score = request.getParameter("score");
+		int score = Integer.parseInt(request.getParameter("score"));
 		Store store = new DetailService().selectRow(storeId);
 		Image image = new DetailService().selectPhoto(storeId);
 		
@@ -84,8 +84,11 @@ public class DetailViewServlet extends HttpServlet {
 		
 		if(store !=null){
 			view = request.getRequestDispatcher("detail/StoreDetailView.jsp");
-			reviewPageList.sort(new DescReview());
-			reviewImagePageList.sort(new DescReview());
+			if(reviewPageList !=null){
+				reviewPageList.sort(new DescReview());
+				reviewImagePageList.sort(new DescReview());
+				
+			}
 			request.setAttribute("list", list);
 			request.setAttribute("storeId", storeId);
 			request.setAttribute("listRImage", listRImage);

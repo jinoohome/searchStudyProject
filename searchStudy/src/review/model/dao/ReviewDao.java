@@ -208,10 +208,7 @@ public class ReviewDao {
 				
 				listRImage.add(RI);
 			}
-			System.out.println("ReviewImage list size : " + listRImage.size());
-			for(ReviewImage r : listRImage){
-				System.out.println(r);
-			}
+			
 			System.out.println("----------------------------------------------------------------------------");
 		} catch (Exception e) {
 			e.printStackTrace();
