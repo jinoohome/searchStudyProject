@@ -1073,7 +1073,7 @@ a {
     	<% if(currentPage <= 1){ %> 
              <li>&lt;&lt;</li>
             <%}else{ %> 
-           	<li><a href="/easyStudy/search.store?page=<%= currentPage - 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>">&lt;&lt;</a></li>
+           	<li><a href="/easyStudy/search.store?page=<%= currentPage - 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&lt;&lt;</a></li>
             <% } %> 
           
             
@@ -1081,7 +1081,7 @@ a {
                 if(p == currentPage){ %> 
                 	<li class="active"><%= p %></li>
                 <%}else{ %> 
-               <li> <a href="/easyStudy/search.store?page=<%= p %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>"><%= p %></a></li>
+               <li> <a href="/easyStudy/search.store?page=<%= p %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>"><%= p %></a></li>
                 <% } %> 
             <% } %> 
             
@@ -1089,7 +1089,7 @@ a {
             <% if(currentPage >= maxPage){ %> 
             	<li>&gt;&gt;</li>
             <%}else{ %> 
-            <li><a href="/easyStudy/search.store?page=<%= currentPage + 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>">&gt;&gt;</a></li>
+            <li><a href="/easyStudy/search.store?page=<%= currentPage + 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&gt;&gt;</a></li>
             <% } %>
             
             </ul>
