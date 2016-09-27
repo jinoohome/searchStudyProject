@@ -558,7 +558,39 @@
 		
 	});
 </script>            		
- <% }%>           	
+ <% }else{%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#mypageGo<%=list.get(0).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(1).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(2).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(3).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(4).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(5).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(6).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(7).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+		$("#mypageGo<%=list.get(8).getStoreId() %>").click(function(){
+			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
+		});
+	});
+</script>
+ <%} %>           	
 <title>main</title>
 <script>
 </script>
@@ -691,17 +723,28 @@ a {
                  <span class="highlight"><%=categoryW %></span>이(가)<br>
 				 총 <span class="highlight"><%=listCount %></span>개가 검색되었습니다.
     		</div>
-
-    		<ul class="sort_order_spread">
-    		<%if(sort.equals("view_count")) {%>
-    			<li class="selected"><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
-        		<li class=""><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
-        	<%} else{ %>
-        		<li class=""><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
-        		<li class="selected"><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
-        	<%} %>
-    		</ul>
-			
+				
+			<% if(member != null){ %>	
+		    		<ul class="sort_order_spread">
+		    		<%if(sort.equals("view_count")) {%>
+		    			<li class="selected"><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
+		        		<li class=""><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
+		        	<%} else{ %>
+		        		<li class=""><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">조회순</a></li>
+		        		<li class="selected"><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>&userid=<%=member.getUserId() %>">별점순</a></li></a>
+		        	<%} %>
+		    		</ul>
+			<%}else{ %>
+		    		<ul class="sort_order_spread">
+		    		<%if(sort.equals("view_count")) {%>
+		    			<li class="selected"><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>">조회순</a></li>
+		        		<li class=""><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>">별점순</a></li></a>
+		        	<%} else{ %>
+		        		<li class=""><a href="/easyStudy/search.store?sort=view_count&categorys=<%=cg%>&areas=<%=as%>">조회순</a></li>
+		        		<li class="selected"><a href="/easyStudy/search.store?sort=avg_grade&categorys=<%=cg%>&areas=<%=as%>">별점순</a></li></a>
+		        	<%} %>
+		    		</ul>			
+			<%} %>
 			<div class="list">
              <%for(int i=0; i<list.size(); i++){ %>
                 <%if(i%3==0){ %>
@@ -1076,31 +1119,55 @@ a {
     	</div>
     <div id="pager">
     	<div class="page-list">
+    	<% if(member != null){ %>
     	 <ul class="pagination">
-    	
-    	<% if(currentPage <= 1){ %> 
-             <li>&lt;&lt;</li>
-            <%}else{ %> 
-           	<li><a href="/easyStudy/search.store?page=<%= currentPage - 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&lt;&lt;</a></li>
-            <% } %> 
-          
-            
-            <% for(int p = startPage; p <= endPage; p++){ 
-                if(p == currentPage){ %> 
-                	<li class="active"><%= p %></li>
-                <%}else{ %> 
-               <li> <a href="/easyStudy/search.store?page=<%= p %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>"><%= p %></a></li>
-                <% } %> 
-            <% } %> 
-            
- 			
-            <% if(currentPage >= maxPage){ %> 
-            	<li>&gt;&gt;</li>
-            <%}else{ %> 
-            <li><a href="/easyStudy/search.store?page=<%= currentPage + 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&gt;&gt;</a></li>
-            <% } %>
-            
+		    	<% if(currentPage <= 1){ %> 
+		             <li>&lt;&lt;</li>
+		            <%}else{ %> 
+		           			<li><a href="/easyStudy/search.store?page=<%= currentPage - 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&lt;&lt;</a></li>
+		            <% } %> 
+		          
+		            
+		            <% for(int p = startPage; p <= endPage; p++){ 
+				                if(p == currentPage){ %> 
+				                	<li class="active"><%= p %></li>
+				                <%}else{ %> 
+				               <li> <a href="/easyStudy/search.store?page=<%= p %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>"><%= p %></a></li>
+				                <% } %> 
+		            <% } %> 
+		            
+		 			
+		            <% if(currentPage >= maxPage){ %> 
+		       				     	<li>&gt;&gt;</li>
+		            <%}else{ %> 
+		     				       <li><a href="/easyStudy/search.store?page=<%= currentPage + 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>&userid=<%=member.getUserId() %>">&gt;&gt;</a></li>
+		            <% } %>
             </ul>
+            <%}else{ %>
+    	 <ul class="pagination">
+		    	<% if(currentPage <= 1){ %> 
+		             <li>&lt;&lt;</li>
+		            <%}else{ %> 
+		           			<li><a href="/easyStudy/search.store?page=<%= currentPage - 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>">&lt;&lt;</a></li>
+		            <% } %> 
+		          
+		            
+		            <% for(int p = startPage; p <= endPage; p++){ 
+				                if(p == currentPage){ %> 
+				                	<li class="active"><%= p %></li>
+				                <%}else{ %> 
+				               <li> <a href="/easyStudy/search.store?page=<%= p %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>"><%= p %></a></li>
+				                <% } %> 
+		            <% } %> 
+		            
+		 			
+		            <% if(currentPage >= maxPage){ %> 
+		       				     	<li>&gt;&gt;</li>
+		            <%}else{ %> 
+		     				       <li><a href="/easyStudy/search.store?page=<%= currentPage + 1 %>&categorys=<%=cg%>&areas=<%=as%>&sort=<%=sort%>">&gt;&gt;</a></li>
+		            <% } %>
+            </ul>           
+            <%} %>
     	</div>
     </div>
     
