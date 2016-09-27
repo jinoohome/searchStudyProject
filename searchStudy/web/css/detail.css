@@ -151,7 +151,7 @@
 #content {
     float: left;
     position: relative;
-    width: 730px;
+    width: 850px;
 }
 
 #content>.result {
@@ -728,7 +728,7 @@ Pseudo ::after element
 #content {
     float: left;
     position: relative;
-    width: 730px;
+    width: 850px;
 	left: 50%;
     transform: translateX(-50%);
 }
@@ -1240,7 +1240,7 @@ div.page-list>ul.pagination>li {
 
 #detail_table{
 	background: white;
-	width:730px;
+	width:850px;
 	
 }
 /****** table ******/
@@ -1291,13 +1291,13 @@ div.page-list>ul.pagination>li {
 /***** first image *****/
 #detail_firstImageWrap{
 /* 	width:730px; */
-/* 	height:500px; */
+	height:500px;
 	margin-bottom:30px;
 	
 }
 #detail_firstImage{
 	background:black;
-	/* width:100%; */
+	width:100%;
 	height:100%;
 }
 #detail_h{

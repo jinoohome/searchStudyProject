@@ -1000,7 +1000,7 @@ a {
                 <%if(i%3==0){ %>
              <div class="element medium first ">
                   
-                  <a href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
+                  <a href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>&score=<%=list.get(i).getScore() %>" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
             
                     <div class="shading"></div>
         			<div class="top"> 

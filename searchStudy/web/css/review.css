@@ -1,0 +1,602 @@
+/*1. content_wrap*/
+	/*2. content*/
+		/*3. ul class=tab*/
+			/*3_1. li class=item */
+			/*3_2. li class=item */
+			/*3_3. li class=item selected*/
+			/*3_4. li class=item */
+			/*3_5. li class=item */
+		/*4. div class=body first*/
+			/*4_1. div class=title */
+			/*4_2. ul class=list */
+				/*4_2_1. li class=item grade */
+				/*4_2_2. li class=item text */
+				/*4_2_3. li class=item photo */
+		/*5. div class=body review write*/
+			/*5_1. button class=border_radius soft */
+		/*6. div class=sort_wrap*/
+			/*6_1. ul class=sort_list */
+		/*7. div class=body review list*/
+			/*7_1. div class=title */
+			/*7_2. hr */
+			/*7_3. div class=review_detail */
+			/*7_4. script */
+		/*8. div class=body review list last*/
+			/*8_1. div id=review_pagination */
+/*--------------------------------------------------------*/
+
+#content, 
+#content>.body:after, 
+#content>.tab:after, 
+#content_wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/*1. content_wrap*/
+#content_wrap {
+    position: relative;
+    width: 970px;
+    margin: 20px auto 150px;
+}
+
+
+	/*2. content*/
+
+#content {
+    float: left;
+    position: relative;
+    width: 730px;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+		/*3. ul class=tab*/
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+ol, ul {
+    list-style: none;
+}
+#content>.tab {
+    width: 716px;
+    padding: 0 6px;
+    border: 1px solid #e3e3e3;
+    border-top: 2px solid #c91b3c;
+    background: #fff;
+}
+
+
+/*3_1. li class=item */
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+#content>.tab>.item {
+    float: left;
+    width: 80px;
+    height: 37px;
+    color: #444;
+    font-size: 12pt;
+    font-weight: 600;
+    text-align: center;
+    line-height: 34px;
+}
+			
+		/*4. div class=body first*/
+#content>form .body {
+    position: relative;
+    width: 668px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #e3e3e3;
+    background: #fff;
+}
+#content>.body {
+    position: relative;
+    width: 668px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #e3e3e3;
+    background: #fff;
+}
+
+#content>form .body.first {
+    border-top: none;
+}
+#content.review>form .body.first {
+    margin-bottom: 10px;
+}
+
+			/*4_1. div class=title */
+#content.detail>.body>.section>.title, 
+#content.detail>.body>.title {
+    margin-left: 8px;
+    margin-bottom: 26px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 600;
+}
+
+#content.detail>form .body>.section>.title, 
+#content.detail>form .body>.title {
+    margin-left: 8px;
+    margin-bottom: 26px;
+    font-size: 15px;
+    color: #444;
+    font-weight: 600;
+}
+
+			/*4_2. ul class=list */
+
+#content.review>form .body.first>.list {
+    margin-left: 8px;
+}
+
+/*4_2_1. li class=item grade */
+/*별점*/
+
+
+form ul.list {
+	padding: 0;
+}
+
+form li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+#content.review>form .body.first>.list>.item {
+    margin-bottom: 30px;
+}
+#content.review>form .body.first>#reviewPhoto,
+#content.review>form .body.first>#reviewPhoto>div #thumnailArea {
+	margin-left: 8px;
+}
+
+
+#content.review>form .body.first>.list>.item>.name {
+    display: inline-block;
+    width: 115px;
+}
+
+#content.review>form .body.first>.list>.item>.detail {
+    display: inline-block;
+    width: 540px;
+    vertical-align: top;
+}
+#content.review>form .body.first>.list>.item.grade>.detail {
+    vertical-align: middle;
+}
+i, input[type=checkbox].slide-toggle+label span {
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+#nav_city, i {
+    position: relative;
+}
+i {
+    width: 100%;
+    height: 100%;
+    background-image: url(http://c1.poing.co.kr/original/images/recent_sheet.png);
+}
+i.icon.star.medium {
+    width: 10px;
+    height: 19px;
+}
+i.icon.star.medium.odd {
+    background-position: -277px -66px;
+}
+element.style {
+    cursor: pointer;
+}
+i.icon.star.medium.even {
+    background-position: -287px -66px;
+    padding-right: 2px;
+}
+
+
+/*4_2_2. li class=item text */
+#content.review>form .body.first>.list>.item {
+    margin-bottom: 30px;
+}
+
+#content.review>form .body.first>.list>.item>.detail {
+    display: inline-block;
+    width: 540px;
+    vertical-align: top;
+}
+#content.review>form .body.first>.list>.item.text>.detail>textarea {
+	overflow-y: auto;
+    resize: none;
+    width: 540px;
+    height: 84px;
+    border: 1px solid #d0d0d0;
+    font-size: 13px;
+}
+#content.review>form .body.first>.list>.item.text>.detail>#review_text_state {
+	width: 545px;
+    height: 16px;
+    margin-top: -2px;
+    font-size: 7pt;
+    color: #fff;
+    background: #444;
+    text-align: center;
+    line-height: 16px;
+}
+
+/*4_2_3. li class=item photo */
+#content.review>form .body.first>.list>.item:last-child {
+    margin-bottom: 0;
+}
+#content.review>form .body.first>.list>.item.photo>.detail {
+    height: 74px;
+    display: inline-flex;
+}
+/*사진올리기 글씨 옆에 있는 +버튼*/
+button {
+    -webkit-appearance: button;
+}
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+}
+input[type="button" i], 
+input[type="submit" i], 
+input[type="reset" i], 
+input[type="file" i]::-webkit-file-upload-button, 
+button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+}
+input[type="button" i], 
+input[type="submit" i], 
+input[type="reset" i], 
+input[type="file" i]::-webkit-file-upload-button, 
+button {
+    padding: 1px 6px;
+}
+button {
+    cursor: pointer;
+}
+.border_radius.medium {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+#content.review>form .body.first>.list>.item.photo>.detail>#review_photo_upload {
+    display: inline-block;
+    width: 74px;
+    height: 74px;
+    margin-right: 4px;
+    border: 2px dotted #c91b3c;
+    font-size: 20px;
+    color: #c91b3c;
+    background: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+/*사진올리기 글씨 옆에 있는 +버튼 다음에있는 ul review_photo_list*/
+
+ul ul, ol ul {
+    list-style-type: circle;
+}
+ol ul, ul ol, ul ul, ol ol {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+}
+
+#content.review>form .body.first>.list>.item.photo>.detail>#review_photo_list {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+/*5. div class=body review write*/
+#content.review>form .body.review.write {
+    border: none;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    margin: 10px 0 40px;
+    background: 0 0;
+}
+
+			/*5_1. button class=border_radius soft */
+.border_radius.soft {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+#content.review>form .body.review.write>button {
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #c91b3c;
+    background: #c91b3c;
+}
+
+
+/*6. div class=sort_wrap*/
+#content>.sort_wrap {
+    float: right;
+}
+
+
+/*6_1. ul class=sort_list */
+#content>.body>.sort_wrap>ul, #content>.sort_wrap>ul {
+    margin-bottom: 5px;
+    font-size: 9pt;
+}
+
+
+/*7. div class=body review list*/
+
+#content>.list {
+    overflow: hidden;
+}
+#content.review>.body.review.list {
+    margin-bottom: 10px;
+}
+
+
+/*7_1. div class=title */
+#content.review>.body.review.list>.title {
+    margin-top: -14px;
+}
+.review_titleWrap{
+	height: 50px;
+	background: white;
+	margin-bottom: 2px;
+	border:1px solid #e3e3e3;
+}
+#review_title{
+	font-size:15px;
+	font-weight: 600;
+	margin:12px 0px 0px 30px;
+}
+
+/*7_2. hr */
+hr {
+    display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+hr {
+    margin: 0;
+    border: none;
+    background: #e3e3e3;
+    height: 1px;
+}
+#content.detail>.body>hr {
+    margin-bottom: 20px;
+}
+#content.review>.body.review.list>hr {
+    width: 730px;
+    margin-top: -15px;
+    margin-left: -31px;
+    margin-bottom: 40px;
+}
+
+
+/*7_3. div class=review_detail */
+.review_detail {
+    margin-left: 8px;
+}
+/*리뷰의 작성자 사진 a태그*/
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: none;
+    cursor: auto;
+}
+
+.i_wrap {
+    display: inline-block;
+}
+.review_detail>.i_wrap {
+    float: left;
+    width: 46px;
+    height: 46px;
+}
+i {
+    width: 100%;
+    height: 100%;
+    background-image: url(http://c1.poing.co.kr/original/images/recent_sheet.png);
+}
+i.image, i.profile_image {
+    background-size: cover;
+    background-position: center center;
+}
+.border_radius.circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+/*div class=user*/
+.review_detail>.user {
+    padding-left: 60px;
+}
+	/*name*/
+.review_detail>.user>.name {
+    position: relative;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+		/*이름의 a태그*/
+
+a {
+    text-decoration: none;
+}
+
+.review_detail>.user>.name>a {
+    display: inline-block
+    ;
+    min-width: 125px;
+    color: #444;
+}
+	/*count 사용 안함*/
+	/*grade*/
+.review_detail>.user>.grade {
+    margin-bottom: 12px;
+	display: inline-table;
+}
+i {
+    width: 100%;
+    height: 100%;
+    background-image: url(http://c1.poing.co.kr/original/images/recent_sheet.png);
+}
+i.icon.star.medium {
+    width: 10px;
+    height: 19px;
+}
+i.icon.star.medium.odd.active {
+    background-position: -277px -42px;
+}
+i.icon.star.medium.even {
+    background-position: -287px -66px;
+    padding-right: 2px;
+}
+i.icon.star.medium.even.active {
+    background-position: -287px -42px;
+}
+
+
+/*div class=review*/
+
+	/*text*/
+.review_detail>.review>.text {
+    width: 540px;
+    padding-left: 60px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-all;
+    word-wrap: break-word;
+}
+.review_detail>.review>.text>pre {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 400px;
+    line-height: 18px;
+}
+	/*photo_list*/
+
+.review_detail>.review>.action, .review_detail>.review>.photo_list {
+    padding-left: 60px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.review_detail>.review>.photo_list>.item {
+    display: inline-block;
+    margin-right: 3px;
+}
+.i_wrap {
+    display: inline-block;
+}
+
+.review_detail>.review>.photo_list>.item>button {
+    width: 84px;
+    height: 84px;
+}
+
+	/*action -좋아요,찜하기, 댓글 등등 사용안함*/
+	/*comment_list -댓글 사용안함*/
+	/*comment_write -댓글쓰기버튼 사용안함*/
+
+/*7_4. script */
+script {
+    display: none;
+}
+
+		/*8. div class=body review list last*/
+			/*8_1. div id=review_pagination */
+div.page-list {
+    text-align: center;
+}
+div.page-list>ul.pagination {
+    margin-top: 10px;
+}
+	/*li .preAll .pre .next .nextAll*/
+div.page-list>ul.pagination>li {
+    display: inline-block;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #969696;
+}
+div.page-list>ul.pagination>li.active {
+    color: #c91b3c;
+    font-weight: 600;
+    font-size: 11pt;
+}
+div.page-list>ul.pagination>li {
+    display: inline-block;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #969696;
+}
+#content.review>.body.review.write {
+/*     border: none; */
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    margin: 10px 0 40px;
+    background: 0 0;
+}
+
+div.action a.func{
+	text-decoration: none;
+	color: black;
+}
