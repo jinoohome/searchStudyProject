@@ -23,8 +23,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css"/>
- <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
- <script type="text/javascript" src="js/navigation.js"> </script>
+<link rel="stylesheet" href="css/layout.css" type="text/css">  
+<link rel="stylesheet" href="css/function.css" type="text/css"> 
+
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
+<script type="text/javascript" src="js/navigation.js"> </script>
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script> <!--dialog -->
 
 <%if(member != null){ %> 
 <script type="text/javascript">
@@ -590,7 +594,253 @@
 		});
 	});
 </script>
- <%} %>           	
+ <%} %> 
+ <script>
+$( document ).ready(function() {
+	/*WebStorge 최근 저장된 로그인정보 가져오기 */
+	if(!window.localStorage) { 
+		alert('이 Browser 는 Local Storage 를 지원하지 않습니다.'); 
+	}else { 
+			var key = localStorage.key(0); 
+			var value = localStorage[key];
+			$('#main_loginUserId').val(key);
+			$('#main_loginUserPwd').val(value);
+	};
+	/* localStorage.clear(); */
+	
+	/*로그인 패스워드 확인여부*/
+	$("#main_loginBtn").click(function(){
+		if ($("#main_login_chk").is(":checked")) {
+			$.fnWebStorge();
+		}
+		var str = $("#loginForm").serialize();
+		$.ajax({
+			type:'POST',
+			url:"/easyStudy/pwCheck",
+			data: str,
+			success: function(data) {
+				if(data.result==0){
+					$("#main_loginPwCheckArea").css('display','block');
+					$("#main_loginPwCheckArea").css('background','#ffeeee');
+					$("#main_loginPwCheckLabel").css('color','red');
+					$("#main_loginPwCheckLabel").html("이메일 또는 비밀번호를 다시 확인해주세요");
+				}else{
+					$("#main_loginPwCheckArea").css('display','none');
+					$("#loginForm").submit();
+				}			
+			},
+			error: function(data) {
+				alert("에러");
+			}			
+		});
+	});
+
+	/*회원가입 아이디 존재여부확인*/
+	var joinIdCheck = false;
+	$("#main_joinUserId").blur(function(){
+		if($("#main_joinUserId").val().length != 0){
+			var str = $("#joinForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/idCheck",
+				data: str,
+				success: function(data) {
+					var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (re.test($("#main_joinUserId").val())) {
+						if(data.result>0){
+							$("#main_joinIdCheckArea").css('display','block');
+							$("#main_joinIdCheckArea").css('background','#ffeeee');
+							$("#main_joinIdCheckLabel").css('color','red');
+							$("#main_joinIdCheckLabel").html("이미 존재하는 이메일 입니다");
+						}else{
+							$("#main_joinIdCheckArea").css('display','block');
+							$("#main_joinIdCheckArea").css('background','#def7de');
+							$("#main_joinIdCheckLabel").css('color','green');
+							$("#main_joinIdCheckLabel").html("사용가능한 이메일입니다");
+							joinIdCheck = true;
+						}	
+					 
+				   return false;
+				 }else{
+					 $("#main_joinIdCheckArea").css('display','block');
+						$("#main_joinIdCheckArea").css('background','#ffeeee');
+						$("#main_joinIdCheckLabel").css('color','red');
+						$("#main_joinIdCheckLabel").html("올바른 이메일 형식이 아닙니다.");
+				 }
+				
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+		
+	});
+	
+	/*회원가입 비밀번호 사용가능여부확인*/
+	var joinPwdCheck= false;
+	$("#main_joinUserPwd").blur(function(){
+		var joinPassword = $("#main_joinUserPwd").val();
+		if(joinPassword.length !=0){
+			if(joinPassword.length > 0 && joinPassword.length < 8){
+				$("#main_joinPwCheckArea").css('display','block');
+				$("#main_joinPwCheckArea").css('background','#ffeeee');
+				$("#main_joinPwCheckLabel").css('color','red');
+				$("#main_joinPwCheckLabel").html("비밀번호는 8글자이상 입력하시기 바랍니다");
+			}else{
+				$("#main_joinPwCheckArea").css('display','block');
+				$("#main_joinPwCheckArea").css('background','#def7de');
+				$("#main_joinPwCheckLabel").css('color','green');
+				$("#main_joinPwCheckLabel").html("사용가능한 비밀번호 입니다");
+				joinPwdCheck = true;
+			}
+		}
+	});
+	
+	
+	/*회원가입 비밀번호 동일여부확인*/
+	var joinPwdChkCheck = false;
+	$("#main_joinUserPwdChk").blur(function(){
+		var joinPassword = $("#main_joinUserPwd").val();
+		var joinPasswordChk = $("#main_joinUserPwdChk").val();
+		if(joinPasswordChk.length !=0){
+			if(joinPassword != joinPasswordChk ){
+				$("#main_joinPwCheckChkArea").css('display','block');
+				$("#main_joinPwCheckChkArea").css('background','#ffeeee');
+				$("#main_joinPwCheckChkLabel").css('color','red');
+				$("#main_joinPwCheckChkLabel").html("비밀번호가 동일하지 않습니다");
+			}else{
+				$("#main_joinPwCheckChkArea").css('display','block');
+				$("#main_joinPwCheckChkArea").css('background','#def7de');
+				$("#main_joinPwCheckChkLabel").css('color','green');
+				$("#main_joinPwCheckChkLabel").html("비밀번호가 동일합니다");
+				joinPwdChkCheck = true;
+			}
+		}
+	});
+	
+	/*회원가입 nickname 동일여부확인*/
+	var joinNicknameCheck= false;
+	$("#main_joinUserNickName").blur(function(){
+		if($("#main_joinUserNickName").val().length != 0){
+			var str = $("#joinForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/nickNameCheck",
+				data: str,
+				success: function(data) {
+					if(data.result>0){
+						$("#main_joinNickCheckArea").css('display','block');
+						$("#main_joinNickCheckArea").css('background','#ffeeee');
+						$("#main_joinNickCheckLabel").css('color','red');
+						$("#main_joinNickCheckLabel").html("이미 존재하는 nickname 입니다");
+					}else{
+						$("#main_joinNickCheckArea").css('display','block');
+						$("#main_joinNickCheckArea").css('background','#def7de');
+						$("#main_joinNickCheckLabel").css('color','green');
+						$("#main_joinNickCheckLabel").html("사용가능한 nickname");
+						joinNicknameCheck =true;
+					}	
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+	});
+	/*회원가입 가능 여부 확인*/
+	$("#main_joinBtn").click(function(){
+		if(joinIdCheck == true && joinPwdCheck == true && 
+				joinPwdChkCheck == true && joinNicknameCheck == true){
+			$("#joinForm").submit();
+		}
+			
+	});
+	
+	/*비밀번호 찾기 아이디 존재여부확인*/
+	$("#main_sendEamilBtn").click(function(){
+		if($("#main_pwSearchUser").val().length != 0){
+			var str = $("#pwSearchForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/idCheck",
+				data: str,
+				success: function(data) {
+					if(data.result>0){
+						$("#main_pwSearchCheckArea").css('display','none');
+						$("#pwSearchForm" ).submit();
+					}else{
+						$("#main_pwSearchCheckArea").css('display','block');
+						$("#main_pwSearchCheckArea").css('background','#ffeeee');
+						$("#main_pwSearchCheckLabel").css('color','red');
+						$("#main_pwSearchCheckLabel").html("존재하지 않은 이메일 입니다. 다시 확인해주세요");
+					}	
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+		
+	});
+	
+
+		/*********팝업창 관련 jQeury**********/
+		// 로그인 버튼 클릭시
+		$(".main_loginPopupBtn").leanModal({
+			top : 100,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+		$(".main_loginPopupBtn").click(function() {
+			$("#main_login").show();
+			$("#main_join").hide();
+			$("#main_pwSearch").hide();
+
+			return false;
+		});
+
+		// 회원가입 버튼 클릭시
+		$(".main_joinPopupBtn").leanModal({
+			top : 100,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+
+		$(".main_joinPopupBtn").click(function() {
+			$("#main_join").show();
+			$("#main_login").hide();
+			$("#main_pwSearch").hide();
+
+			return false;
+		});
+		
+		// 비밀번호찾기 버튼 클릭시
+		$(".main_pwSearchBtn").leanModal({
+			top : 100,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+
+		$(".main_pwSearchBtn").click(function() {
+			$("#main_pwSearch").show();
+			$("#main_login").hide();
+			$("#main_join").hide();
+
+			return false;
+		});
+		
+		/* 주변 화면으로 팝업 종료 */
+		$("#lean_overlay").click(function(){
+			$("#main_loginWrap input[type=text]").val("");
+			$("#main_loginWrap input[type=email]").val("");
+			$("#main_loginWrap input[type=password]").val("");
+			$("#main_loginWrap input[type=checkbox]").prop('checked', false);
+			$(".main_labelRow").css("display","none");
+		});
+		
+	});
+</script>          	
 <title>main</title>
 <script>
 </script>
@@ -1199,6 +1449,125 @@ a {
 	
 	<div id="footer_wrap">
 		<div style="width:970px; height:208px; background:gray;"></div>
+	</div>
+	
+	<div id="main_loginWrap">
+		<div id="main_loginModal" class="main_loginPopup" style="display: none;">
+			<!-- 로그인 페이지-->
+			<div id="main_login">
+				<div id="main_loginHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+				
+				<div class="sel">
+					<form action="login" method="post" id="loginForm">
+						<div class="main_inputRow" id="main_loginIdArea">
+							<input type="email" placeholder="이메일" id="main_loginUserId" name="main_loginUserId" class="inputBox1">
+						</div>
+						<div class="main_labelRow"  id="main_loginIdCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_loginIdCheckLabel"> </label>							
+						</div>
+						<div class="main_inputRow" id="main_passwordArea">
+							<input type="password" placeholder="비밀번호" id="main_loginUserPwd" name="main_loginUserPwd" class="inputBox1">
+						</div>
+						<div class="main_labelRow"  id="main_loginPwCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_loginPwCheckLabel"> 패스워드를 다시 확인해주세요</label>							
+						</div>
+						<div id="main_loginBtn_area">
+							<input type="button" value="로그인" id="main_loginBtn">
+						</div>
+						<div id="main_sendLoginBtn" class="box">
+							<ul class="content">
+								<li>
+									<input type="checkbox" id="main_login_chk" value="off" >
+									<label for="main_login_chk">로그인 상태 저장</label>
+								</li>
+							</ul>
+						</div>
+					</form>
+				</div>
+
+				<div id="main_find_info">
+					<div>
+						<!-- <a href="#"> 아이디 찾기</a> <span>|</span> -->
+						<a href="#main_pwSearchModal" class="main_pwSearchBtn"> 비밀번호 찾기</a> <span>|</span>
+						<a href="#main_joinModal" class="main_joinPopupBtn"> 회원가입</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div id="main_joinModal" class="main_joinPopup" style="display: none;">
+			<!-- 회원가입 페이지-->
+			<div id="main_join" >
+				<div id="main_joinHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+
+				<div>
+					<form action="mjoin" method="post" id="joinForm">
+						<div id="main_joinIdArea" class="divBox1">
+							<input type="email" placeholder="이메일" class="inputBox1" name="main_joinUserId" id="main_joinUserId">
+						</div>
+						<div class="main_labelRow"  id="main_joinIdCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinIdCheckLabel"> </label>							
+						</div>
+						<div id="main_joinPwArea" class="divBox1">
+							<input type="password" placeholder="비밀번호" class="inputBox1" name="main_joinUserPwd" id="main_joinUserPwd">
+						</div>
+						<div class="main_labelRow"  id="main_joinPwCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinPwCheckLabel"> </label>							
+						</div>
+						<div id="main_joinPwcheckArea" class="divBox1">
+							<input type="password" placeholder="비밀번호확인" class="inputBox1" name="main_joinUserPwdChk" id="main_joinUserPwdChk">
+						</div>
+						<div class="main_labelRow"  id="main_joinPwCheckChkArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinPwCheckChkLabel"> </label>							
+						</div>
+						<div id="main_joinNickArea" class="divBox1">
+							<input type="text" placeholder="닉네임" class="inputBox1" name="main_joinUserNickName" id="main_joinUserNickName">
+						</div>
+						<div class="main_labelRow"  id="main_joinNickCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinNickCheckLabel"> </label>							
+						</div>
+						<div id="main_sendInfoBtn">
+							<input type="button" value="가입하기" id="main_joinBtn">
+						</div>
+					</form>
+				</div>
+				<div id="main_backArea">
+					<a href="#main_loginModal" class="main_loginPopupBtn"> 로그인</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="main_pwSearchModal" class="main_pwSearchPopup" style="display: none;">
+			<!-- 비밀번호찾기 페이지-->
+			<div id="main_pwSearch" >
+				<div id="main_pwSearchHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+
+				<div>
+					<form action="sendEmail" method="post" id="pwSearchForm">
+						<div id="main_pwSearchArea" class="divBox1">
+							<input type="text" placeholder="이메일" class="inputBox1" name="main_pwSearchUser" id="main_pwSearchUser">
+						</div>
+						<div class="main_labelRow"  id="main_pwSearchCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_pwSearchCheckLabel"> </label>							
+						</div>
+						<div id="main_sendEamilBtn">
+							<input type="button" value="이메일로 보내기">
+						</div>
+					</form>
+				</div>
+				<div id="main_backArea">
+					<a href="#main_loginModal" class="main_loginPopupBtn"> 로그인</a>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 	
 </div>
