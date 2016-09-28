@@ -636,37 +636,83 @@ if(list.size() >= 9){ %>
 
 <!-- 비로그인시 버튼 클릭 관련 -->
 <% }else{%>
+<!-- 로그아웃상태 -->
+<% if(list.size() >= 1){  %>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#mypageGo<%=list.get(0).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 2){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(1).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 3){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(2).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 4){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(3).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 5){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(4).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 6){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(5).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 7){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(6).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 8){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(7).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
+	});
+</script>
+<%} if(list.size() >= 9){  %>
+<script type="text/javascript">
+	$(document).ready(function() {
 		$("#mypageGo<%=list.get(8).getStoreId() %>").click(function(){
 			alert("즐겨찾기 기능은 로그인 후에 사용 가능합니다.");
 		});
 	});
 </script>
+<%} %>
+
+
+
 <%} %>
 <script>
 $( document ).ready(function() {
