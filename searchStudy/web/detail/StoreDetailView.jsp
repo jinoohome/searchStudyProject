@@ -724,7 +724,7 @@ function update(listNo){
 					reader.readAsDataURL(input.files[0]);
 				}
 			}
-			
+			location.href="/easyStudy/DView?storeId=<%=s.getStoreId() %>&score=<%=score %>";
 			
 			
 		},
