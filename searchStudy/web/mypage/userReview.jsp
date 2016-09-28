@@ -287,11 +287,6 @@
 								<%} %>
 								
 							<%} %>
-								
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+1).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+2).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+3).getRenamePhoto1() %>" width="84" height="84"> --%>
-								<%-- <img src="uploadFiles/<%= listRImage.get(i+4).getRenamePhoto1() %>" width="84" height="84"> --%>
 								</a>
 							</li>
 						</ul>
@@ -327,8 +322,8 @@
 			    	
 			    	<% if(currentPage <= 1){ %> 
 			             <li>&lt;&lt;</li>
-			            <%}else{ %> 
-			           	<li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
+			            <%}else{ %>
+			           	<li><a href="/easyStudy/ureview?nickname=<%=nickname %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
 			            <% } %> 
 			          
 			            
@@ -336,7 +331,7 @@
 			                if(p == currentPage){ %> 
 			                	<li class="active"><%= p %></li>
 			                <%}else{ %> 
-			               <li> <a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= p %>"><%= p %></a></li>
+			               <li> <a href="/easyStudy/ureview?nickname=<%=nickname %>&page=<%= p %>"><%= p %></a></li>
 			                <% } %> 
 			            <% } %> 
 			            
@@ -344,7 +339,7 @@
 			            <% if(currentPage >= maxPage){ %> 
 			            	<li>&gt;&gt;</li>
 			            <%}else{ %> 
-			            <li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
+			            <li><a href="/easyStudy/ureview?nickname=<%=nickname %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
 			            <% } %>
 			            
 			            </ul>

@@ -303,7 +303,7 @@ $(function() {
 									<td><input type="checkbox" name="userids_del" value="<%=m.getUserId()%>"></td>
 									<td><%=m.getUserId()%></td>
 									<!-- 리뷰 페이지로 이동... -->
-									<td><a href="/easyStudy/ureview?page=1&nickname=<%=m.getNickName() %>"  onClick="window.open(this.href, '', 'width=990, height=500'); return false;"><%=m.getNickName()%></a></td>
+									<td><a href="/easyStudy/ureview?page=1&nickname=<%=m.getNickName() %>"  onClick="window.open(this.href, '', 'width=990, height=500, left=100px,top=100px'); return false;"><%=m.getNickName()%></a></td>
 									<td><%=m.getEnrollDate()%></td>
 									<td><a href="/easyStudy/mdelete?userid=<%=m.getUserId()%>,admin"
 										onclick="return confirm('정말 <%=m.getNickName()%> 회원을 정리하시겠습니까?')">
