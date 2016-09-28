@@ -303,8 +303,8 @@ $(function() {
 										for (Member m : list) {
 								%>
 								<tr>
-									<td><div id="checkboxdiv"><input type="checkbox" name="userids_del" id="mypage_allcheck" value="<%=m.getUserId()%>" >
-											<label for="mypage_allcheck"></label>
+									<td><div id="checkboxdiv"><input type="checkbox" name="userids_del" id="<%=m.getUserId()%>" value="<%=m.getUserId()%>" >
+											<label for="<%=m.getUserId()%>"></label>
 									</div></td>
 									<td><%=m.getUserId()%></td>
 									<!-- 리뷰 페이지로 이동... -->
