@@ -626,7 +626,7 @@ $( document ).ready(function() {
 			score = 0.5;
 		}
 		alert("고!");
-		location.href = "/easyStudy/updateQ?listno=" + listno + "&updatescore=" + score + "&contents=" + contents + "&storeId=" + <%=s.getStoreId() %> + "&score=" + <%=score %>;
+		location.href = "/easyStudy/updateQ?listno=" + listno + "&updatescore=" + score + "&contents=" + contents + "&storeId=<%=s.getStoreId() %>&score=<%=score %>";
 		
 		
 		
