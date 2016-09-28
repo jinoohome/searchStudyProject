@@ -43,11 +43,8 @@ public class ReviewUpdateServlet extends HttpServlet {
 		int listNo = Integer.parseInt(request.getParameter("listNo"));
 		System.out.println("ajax를 통해 들어옴 : listNo : " + listNo);
 		Review review = new ReviewService().selectReview(listNo);
+		System.out.println("ajax를 통해 들어옴1 : listNo : " + listNo);
 		ReviewImage reviewImage = new ReviewService().selectRImage(listNo);
-		System.out.println(reviewImage.getOriginPhoto1());
-		System.out.println(reviewImage.getRenamePhoto1());
-		System.out.println(reviewImage.getOriginPhoto2());
-		System.out.println(reviewImage.getRenamePhoto2());
 		
 		JSONObject r = new JSONObject();
 		r.put("listNo", Integer.valueOf(review.getListNo()));
