@@ -950,12 +950,14 @@ $(function(){
 						<div id="nav_account">
 								<div id="nav_guest">
 								<%if(member !=null){ %>
-									<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
-								<%}else{ %>
-									<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
-									&nbsp;|&nbsp;
-								<%} %>	
-									<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal">회원가입</a></span>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
+							&nbsp;|&nbsp;
+							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal"><%=member.getNickName() %></a></span>
+						<%}else{ %>
+							<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
+							
+							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal">회원가입</a></span>
+						<%} %>	
 								</div>
 						</div>
 				</div>
@@ -971,11 +973,9 @@ $(function(){
 				
 					<% if(member != null){
 						if("admin".equals(member.getUserId())) { %>	
-							<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
 							<a href="/easyStudy/mmanagement?page=1">회원 관리</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 							<a href="#">글쓰기</a>		
 						<%}else{ %>		
-							<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
 							<a href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>">즐겨찾기</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 							<a href="/easyStudy/mreview?page=1&nickname=<%=member.getNickName() %>">내가 쓴 리뷰</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 							<a href="/easyStudy/mypage/myinfo.jsp">내 정보 변경</a> 		

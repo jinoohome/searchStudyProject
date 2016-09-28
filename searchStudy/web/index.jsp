@@ -463,11 +463,9 @@ $( document ).ready(function() {
 			
 				<% if(member != null){
 					if("admin".equals(member.getUserId())) { %>	
-						<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
 						<a href="/easyStudy/mmanagement?page=1">회원 관리</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						<a href="#">글쓰기</a>		
 					<%}else{ %>		
-						<%=member.getNickName() %>님  &nbsp; &nbsp; &nbsp;
 						<a href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>">즐겨찾기</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						<a href="/easyStudy/mreview?page=1&nickname=<%=member.getNickName() %>">내가 쓴 리뷰</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						<a href="/easyStudy/mypage/myinfo.jsp">내 정보 변경</a> 		
