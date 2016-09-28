@@ -42,7 +42,7 @@ public class ReviewAddServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("///////////////////////////////////////////////AddServlet Start///////////////////////////////////////////");
+		System.out.println("///////////////////////////////////////////////111AddServlet Start///////////////////////////////////////////");
 		//전송 파일에 용량 제한을 두고 싶으면 정함 : 10 메가바이트로 할 경우
 		int sizeLimit = 1024 * 1024 * 10;
 		
