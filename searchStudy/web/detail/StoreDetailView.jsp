@@ -600,6 +600,53 @@ $("#bannerSlider").on("selectstart", function()
 });
 </script>
 <script type="text/javascript">
+//시작하자마자 수정버튼 숨기기
+$( document ).ready(function() {
+	$('#review_modify').hide();	
+	
+	alert("adsfa");
+	$('#modifyGo').click(function(){
+		alert("수정하기");
+		var contents = $("#review_text").val();
+		var score = 0;
+		if($("#p10").is(":checked")){
+			score = 5.0;
+		}
+		if($("#p9").is(":checked")){
+			score = 4.5;
+		}
+		if($("#p8").is(":checked")){
+			score = 4.0;
+		}
+		if($("#p7").is(":checked")){
+			score = 3.5;
+		}
+		if($("#p6").is(":checked")){
+			score = 3.0;
+		}
+		if($("#p5").is(":checked")){
+			score = 2.5;
+		}
+		if($("#p4").is(":checked")){
+			score = 2.0;
+		}
+		if($("#p3").is(":checked")){
+			score = 1.5;
+		}
+		if($("#p2").is(":checked")){
+			score = 1.0;
+		}
+		if($("#p1").is(":checked")){
+			score = 0.5;
+		}
+		alert($("listnohidden").val());
+		
+		
+		
+	});
+});
+
+
 function update(listNo){
 	alert("sssss : " + listNo );
 	//alert("dddd : " + contents );
@@ -1735,5 +1782,3 @@ $(function(){
 
 </body>
 </html>
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
