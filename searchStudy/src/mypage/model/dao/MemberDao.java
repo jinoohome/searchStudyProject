@@ -553,11 +553,11 @@ String query = null;
 		ResultSet rset = null;
 		ArrayList<Review> list = null;
 		System.out.println("dao실행");
-		String query = " SELECT LIST_NO, STORE_ID, STORE_NAME, NICKNAME, ENROLL_DATE, SCORE, CONTENTS "
-						+ " FROM ( SELECT LIST_NO, STORE_ID, STORE_NAME, NICKNAME, ENROLL_DATE, "
+		String query = " SELECT LIST_NO, STORE_ID, STORE_NAME, AVG, NICKNAME, ENROLL_DATE, SCORE, CONTENTS "
+						+ " FROM ( SELECT LIST_NO, STORE_ID, STORE_NAME,  AVG, NICKNAME, ENROLL_DATE, "
 											+ "	 SCORE, CONTENTS, ROW_NUMBER() OVER (ORDER BY ENROLL_DATE DESC) RANK "
 									+ " FROM REVIEW"
-									+ " JOIN STORE USING( STORE_ID ) "
+									+ " JOIN search_store USING( STORE_ID ) "
 									+ " WHERE NICKNAME = ? ) "
 						+ " WHERE RANK >= ? AND RANK <= ? ";
 		
@@ -583,6 +583,7 @@ String query = null;
 				r.setListNo(rset.getInt("list_no"));
 				r.setStoreName(rset.getString("store_name"));
 				r.setStoreId(rset.getString("store_id"));
+				r.setAvgScore(rset.getInt("AVG"));
 				r.setNickName(rset.getString("nickname"));
 				r.setEnrollDate(rset.getDate("enroll_date"));
 				r.setScore(rset.getInt("score"));

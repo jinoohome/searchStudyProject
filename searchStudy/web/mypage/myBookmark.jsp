@@ -10,9 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>main</title>
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css">
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css" >
-<script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
+ <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
+ <script type="text/javascript" src="js/navigation.js"> </script>
+ <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 
 </head>
 <body>

@@ -3,17 +3,22 @@
 <%@ page import="member.model.vo.Member"%>
 <%
 	Member member = (Member) session.getAttribute("member");
-	System.out.println(member);
+	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>main</title>
-<script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css">
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css" >
 
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
+ <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
+ <script type="text/javascript" src="js/navigation.js"> </script>
+ <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -128,7 +133,7 @@
 		<div id="nav_container" class="">
 			<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 				<!-- logo section -->
-			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
+			<a id="nav_logo" href="/easyStudy/index.jsp"><img class="logo" src="/easyStudy/images/logo.png"></a>
 
 			<!-- area search section -->
 			<%if(member != null){ %>
@@ -137,7 +142,7 @@
 			<div id="nav_area" class="search sel">
 				<div class="input">
 					<div class="selected">지역 선택 </div>
-					<img src="images/down_arrow.png" class="searchbox arrow">
+					<img src="/easyStudy/images/down_arrow.png" class="searchbox arrow">
 				</div>
 				<div class="box" id="box1">
 					<ul class="district content">
@@ -158,7 +163,7 @@
 			<div id="nav_genre" class="search sel">
 				<div class="input">
 					<div class="selected">카테고리 선택</div>
-					<img src="images/down_arrow.png" class="searchbox arrow">
+					<img src="/easyStudy/images/down_arrow.png" class="searchbox arrow">
 				</div>
 				<div class="box" id="box2">
 					<ul class="search_category content">

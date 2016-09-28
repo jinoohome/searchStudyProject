@@ -9,6 +9,7 @@ public class Review implements Serializable {
 	private int listNo;	//리뷰 글 번호
 	private String storeId; //상점 아이디
 	private String storeName;
+	private int avgScore;
 	private String nickName; //닉네임
 	private Date enrollDate; //등록날짜
 	private double score;		//점수
@@ -33,11 +34,12 @@ public class Review implements Serializable {
 		this.contents = contents;
 	}
 
-	public Review(int listNo, String storeId, String storeName, String nickName, Date enrollDate, double score, String contents) {
+	public Review(int listNo, String storeId, String storeName, int avgScore, String nickName, Date enrollDate, double score, String contents) {
 		super();
 		this.listNo = listNo;
 		this.storeId = storeId;
 		this.storeName = storeName;
+		this.avgScore = avgScore;
 		this.nickName = nickName;
 		this.enrollDate = enrollDate;
 		this.score = score;
@@ -74,6 +76,16 @@ public class Review implements Serializable {
 
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
+
+	
+	
+	public int getAvgScore() {
+		return avgScore;
+	}
+
+	public void setAvgScore(int avgScore) {
+		this.avgScore = avgScore;
 	}
 
 	public String getNickName() {
