@@ -77,7 +77,7 @@ public class ReviewAddServlet extends HttpServlet {
 		
 		
 		String storeId = multi.getParameter("storeId");
-		String nickName = "easyStudy";
+		String nickName = multi.getParameter("nickname");
 		//String nickName = "CandyCrushSoda";
 		
 		
@@ -168,10 +168,8 @@ public class ReviewAddServlet extends HttpServlet {
 		}else if(originalFileNames.size() == 1){ // 사진 1장 업로드
 			reviewimage = new ReviewImage(listNo, originalFileNames.get(0), renameFileNames.get(0));
 		}else if(originalFileNames.size() == 2){ // 사진 2장 업로드
-			System.out.println("dddddddddddddddddddddddddddddddd");
 			reviewimage = new ReviewImage(listNo, originalFileNames.get(0), renameFileNames.get(0), 
 					originalFileNames.get(1), renameFileNames.get(1));
-			System.out.println("111111111111111111: " +reviewimage.toString());
 		}else if(originalFileNames.size() == 3){ // 사진 3장 업로드
 			reviewimage = new ReviewImage(listNo, originalFileNames.get(0), renameFileNames.get(0), 
 					originalFileNames.get(1), renameFileNames.get(1), 
@@ -194,7 +192,7 @@ public class ReviewAddServlet extends HttpServlet {
 		//reivew 등록 성공&실패시 , reviewImage 등록 성공&실패시
 		RequestDispatcher view = null;
 		if(result > 0){
-			response.sendRedirect("DView?storeId=" + storeId);
+			response.sendRedirect("DView?storeId=" + storeId + "&score="+score);
 		}else{
 			view = request.getRequestDispatcher("review/reviewError.jsp");
 			request.setAttribute("code", "radd");

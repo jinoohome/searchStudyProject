@@ -35,12 +35,14 @@ public class ReviewDeleteServlet extends HttpServlet {
 		
 		String listNo = request.getParameter("listNo");
 		String storeId = request.getParameter("storeId");
+		Double score = Double.parseDouble(request.getParameter("score"));
+		System.out.println("삭제 서블릿" + score);
 		System.out.println("삭제 서블릿에서 받아준 storeId : " + storeId);
 		int result = new ReviewService().DeleteReview(listNo);
 		
 		RequestDispatcher view = null;
 		if(result > 0){
-			response.sendRedirect("rlist?storeId=" + storeId);
+			response.sendRedirect("DView?storeId=" + storeId+"&score="+score);
 		}else{
 			view = request.getRequestDispatcher("review/reviewError.jsp");
 			request.setAttribute("code", "rdelete");
