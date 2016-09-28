@@ -41,7 +41,7 @@ public class DetailViewServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String storeId = request.getParameter("storeId");
-		int score = Integer.parseInt(request.getParameter("score"));
+		double score = Double.parseDouble(request.getParameter("score"));
 		Store store = new DetailService().selectRow(storeId);
 		Image image = new DetailService().selectPhoto(storeId);
 		

@@ -10,7 +10,7 @@
 	ArrayList<Review> list = (ArrayList<Review>)request.getAttribute("list");
 	ArrayList<ReviewImage> listRImage = (ArrayList<ReviewImage>)request.getAttribute("listRImage");
 	
-	int score = (Integer)request.getAttribute("score");
+	Double score = (Double)request.getAttribute("score");
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();	//현재 페이지
 	int maxPage = ((Integer)request.getAttribute("maxPage")).intValue();
 	int startPage = ((Integer)request.getAttribute("startPage")).intValue();
@@ -18,6 +18,11 @@
 	int listRCount = ((Integer)request.getAttribute("listRCount")).intValue(); //해당하는 storeId에 대한 총 리뷰 수
 	ArrayList<Review> reviewPageList = (ArrayList<Review>)request.getAttribute("reviewPageList");
 	ArrayList<ReviewImage> reviewImagePageList = (ArrayList<ReviewImage>)request.getAttribute("reviewImagePageList");
+	String nickname = "GUEST";
+	if(member !=null){
+		nickname = member.getNickName();
+	}
+		
 %>
 <!DOCTYPE html>
 <html>
@@ -968,7 +973,7 @@ $(function(){
 							<li class="item"><a href="">포토</a></li>
 							<li class="item"><a href="">리뷰</a></li>
 						</ul> -->
-							<form action="radd?storeId=<%=s.getStoreId() %>" method="post" enctype="multipart/form-data" style="margin:0;" >
+							<form action="radd?storeId=<%=s.getStoreId()%>&nickname=<%= nickname %>" method="post" enctype="multipart/form-data" style="margin:0;" >
 								<div class="body first">
 									<div class="title">
 										리뷰 쓰기
@@ -1266,21 +1271,27 @@ $(function(){
 								<%if(member !=null){ %>
 									<%	if(member.getNickName().equals(reviewPageList.get(z).getNickName())){ %>
 									<div class="action">
-										<a href="rdelete?listNo=<%= reviewPageList.get(z).getListNo()%>&storeId=<%= s.getStoreId() %>" class="func">
-											삭제하기
-										</a>
 										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
-															
 											수정하기  
 										</a>
-									</div>
-								<%		} 
-									}
-								%>
-								
+										<a href="rdelete?listNo=<%= reviewPageList.get(z).getListNo()%>&storeId=<%= s.getStoreId() %>&score=<%=score %>" class="func">
+											삭제하기
+										</a>
+										<%		
+												}
+											if(member.getUserId().equals("admin")){
+										%>
+											<a href="rdelete?listNo=<%= reviewPageList.get(z).getListNo()%>&storeId=<%= s.getStoreId() %>&score=<%=score %>" class="func">
+											삭제하기
+										</a>
+										</div>
+										<%
+												}
+											}
+										%>
+								</div>
 							</div>
 						</div>
-					</div>
 					<%} %>
 					<div id="pager">
 				    	<div class="page-list">
