@@ -335,7 +335,7 @@ $( document ).ready(function() {
 
 		// 회원가입 버튼 클릭시
 		$(".main_joinPopupBtn").leanModal({
-			top : 100,
+			top : 50,
 			overlay : 0.6,
 			closeButton : ".modal_close"
 		});
@@ -441,11 +441,13 @@ $( document ).ready(function() {
 						<div id="nav_guest">
 						<%if(member !=null){ %>
 							<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
+							&nbsp;|&nbsp;
+							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal"><%=member.getNickName() %></a></span>
 						<%}else{ %>
 							<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
-							&nbsp;|&nbsp;
-						<%} %>	
+							
 							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal">회원가입</a></span>
+						<%} %>	
 						</div>
 				</div>
 		</div>
