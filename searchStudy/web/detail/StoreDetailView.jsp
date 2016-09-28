@@ -1,3 +1,20 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @parkyh
+ Unwatch 4
+  Star 0
+  Fork 0 jinoohome/searchStudyProject
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
+Branch: master Find file Copy pathsearchStudyProject/searchStudy/web/detail/StoreDetailView.jsp
+6d11c88  44 minutes ago
+@jinoohome jinoohome 로그인 및 글쓰기 경로 수정
+1 contributor
+RawBlameHistory     
+1760 lines (1598 sloc)  66.3 KB
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="review.model.vo.Review, review.model.vo.ReviewImage" %>
@@ -132,7 +149,6 @@ $( document ).ready(function() {
 			}			
 		});
 	});
-
 	/*회원가입 아이디 존재여부확인*/
 	var joinIdCheck = false;
 	$("#main_joinUserId").blur(function(){
@@ -282,7 +298,6 @@ $( document ).ready(function() {
 		
 	});
 	
-
 		/*********팝업창 관련 jQeury**********/
 		// 로그인 버튼 클릭시
 		$(".main_loginPopupBtn").leanModal({
@@ -294,22 +309,18 @@ $( document ).ready(function() {
 			$("#main_login").show();
 			$("#main_join").hide();
 			$("#main_pwSearch").hide();
-
 			return false;
 		});
-
 		// 회원가입 버튼 클릭시
 		$(".main_joinPopupBtn").leanModal({
 			top : 100,
 			overlay : 0.6,
 			closeButton : ".modal_close"
 		});
-
 		$(".main_joinPopupBtn").click(function() {
 			$("#main_join").show();
 			$("#main_login").hide();
 			$("#main_pwSearch").hide();
-
 			return false;
 		});
 		
@@ -319,12 +330,10 @@ $( document ).ready(function() {
 			overlay : 0.6,
 			closeButton : ".modal_close"
 		});
-
 		$(".main_pwSearchBtn").click(function() {
 			$("#main_pwSearch").show();
 			$("#main_login").hide();
 			$("#main_join").hide();
-
 			return false;
 		});
 		
@@ -358,14 +367,12 @@ ol, ul {
  	background-size: cover; 
     background-position: center center;
 }
-
 .trislider{
 	width: 850px;
     height: 100%;
     position: relative;
     margin: 0 auto;
 }
-
 .pieces{
     width: 30000px;
     height: 100%;
@@ -373,7 +380,6 @@ ol, ul {
     left: -730px;
     overflow: hidden; 
  	display: none; 
-
 }
 .pieces .piece{
     float: left;
@@ -389,7 +395,6 @@ ol, ul {
     width: 730px;
     margin: -25px auto 0 -130px;
    }
-
 .nav i {
     position: absolute;
     width: 51px;
@@ -416,18 +421,14 @@ ol, ul {
     /* background-image: url(../image/mask.png); */
     background: white;
 }
-
 .left.shadow{
     right: 0;
     margin-right: 730px;
-
 }
 .right.shadow{
     left: 0;
     margin-left: 730px;
-
 }
-
 .index {
     position: absolute;
     left: 0;
@@ -441,11 +442,9 @@ ol, ul {
     font-size: 11px;
     letter-spacing: 1px;
 }
-
 .index li.current {
     color: #c91b3c;
 }
-
 </style>
 <style type="text/css">
    #thumnailArea{
@@ -504,7 +503,6 @@ ol, ul {
 		background: #FFF;
 		z-index: 20000;
 	}
-
 </style>
 <script>
 $( document ).ready(function() {
@@ -512,7 +510,6 @@ $( document ).ready(function() {
 	$("body").on("click", " button", function(e)
 	{
 		var type = $(this).data("type");
-
 		if(type != null)
 		{
 			$(this).blur();
@@ -536,41 +533,33 @@ $("#bannerSlider").on("selectstart", function()
 		    var start_point = -width * (fake_pieces-1);
 		    var start_index = options.start_index? options.start_index:0;
 		    var isSliding = false;
-
 		    (function() {
 		        pieces.data('index', start_index);
 		        pieces.css('left', (-width*(start_index+1) + start_point)+'px');
 		    
 		        slider.find(".index>li").removeClass('current');
 		        slider.find(".index>li[data-id="+start_index+"]").addClass('current');
-
 		        pieces.show();
 		    })();
-
 		    var piece = slider.find(".piece"),
 		        first   = piece.filter(':first'),
 		        last    = piece.filter(':last');
-
 		    // 슬라이더가 0개임
 		    if(piece.length == 0) 
 		        return false;
-
 		    // 가짜 페이지들을 만들 때, 설정한 갯수가 진짜 페이지의 최대 갯수보다 많을 경우
 		    var rest = fake_pieces % piece.length;
 		    if(rest > 0) {
 		        first.before( piece.slice(-1 * rest).clone(true) );
 		        last.after( piece.slice(0, rest).clone(true) );
 		    }
-
 		    for(var i=0, len = Math.floor(fake_pieces / piece.length); i<len; ++i) {
 		        first.before( piece.clone(true) );
 		        last.after( piece.clone(true) );
 		    }
-
 		    var slide = function(add) {
 		        isSliding = true;
 		        var index = pieces.data('index');
-
 		        index += add;
 		        pieces.data('index', index);
 		        pieces.animate({left : (-width*(index+1) + start_point)+'px'}, 
@@ -587,20 +576,16 @@ $("#bannerSlider").on("selectstart", function()
 		                }
 		                slider.find(".index>li").removeClass('current');
 		                slider.find(".index>li[data-id="+index+"]").addClass('current');
-
 		                if( options.complete )
 		                    options.complete( pieces.children(".piece").get(index+fake_pieces) );
-
 		                isSliding = false;
 		            }
 		        });
 		    }
-
 		    this.prev = function() {
 		        if(isSliding === false)
 		            slide(-1);
 		    };
-
 		    this.next = function() {
 		        if(isSliding === false)
 		            slide(1);
@@ -608,13 +593,11 @@ $("#bannerSlider").on("selectstart", function()
 		    
 		    slider.find(".nav>.left").click(this.prev);
 		    slider.find(".nav>.right").click(this.next);
-
 		    if(options.duration > 0)
 		        setInterval(this.next, options.duration);
 		};
 		var TriSlider = new TriSlider({'selector':'#bannerSlider>.trislider'});
 });
-
 </script>
 <script type="text/javascript">
 function update(listNo){
@@ -709,7 +692,6 @@ function update(listNo){
 				}
 			}
 			*/
-
 			var num = 1;
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -734,8 +716,6 @@ function update(listNo){
 	});
 	
 }
-
-
 $(document).ready(function() {
 	// 로그인 버튼 클릭시
 	$(".review_loginPopupBtn").leanModal({
@@ -775,7 +755,6 @@ $(document).ready(function() {
 		n++;
 		
 	 });
-
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -790,8 +769,6 @@ $(document).ready(function() {
 		}
 	}
 });
-
-
 // 리뷰쓰기 사진 올리기 버튼
 var n = 1;
 $(function(){          
@@ -973,12 +950,12 @@ $(function(){
 				
 					<% if(member != null){
 						if("admin".equals(member.getUserId())) { %>	
-							<a href="/easyStudy/mmanagement?page=1">회원 관리</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							<a href="#">글쓰기</a>		
+							<a href="/easyStudy/mmanagement?page=1" style="margin-left:300px;">회원 관리</a> 
+						    <a href="/easyStudy/detail/StoreAdmin.jsp" style="margin-left:100px;">글쓰기</a>
 						<%}else{ %>		
-							<a href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>">즐겨찾기</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							<a href="/easyStudy/mreview?page=1&nickname=<%=member.getNickName() %>">내가 쓴 리뷰</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							<a href="/easyStudy/mypage/myinfo.jsp">내 정보 변경</a> 		
+							<a href="/easyStudy/mbookmark?userid=<%=member.getUserId() %>" style="margin-left:300px;">즐겨찾기</a> 
+							<a href="/easyStudy/mreview?page=1&nickname=<%=member.getNickName() %>" style="margin-left:50px;">내가 쓴 리뷰</a> 
+							<a href="/easyStudy/mypage/myinfo.jsp" style="margin-left:40px;">내 정보 변경</a> 		
 						<%}
 					}else{} %>
 				
@@ -1758,3 +1735,5 @@ $(function(){
 
 </body>
 </html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
