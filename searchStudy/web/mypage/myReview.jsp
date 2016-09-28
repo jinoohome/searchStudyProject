@@ -747,12 +747,14 @@ $(function(){
 						<%	if(true){ %>
 						<div id="mypage_modifyNdelbtns">
 							<div>
-							<a href="rdelete?listNo=<%= reviewPageList.get(i).getListNo()%>" class="func">
-							<button class="mypage_btns">삭제하기</button>
-							</a> 
 							<a href="#" class="modify" id="review_updateBtn" onclick="clickModify(<%= reviewPageList.get(i).getListNo()%>);">
 								<button class="mypage_btns">수정하기</button>
 							</a>
+							<a href="myrdel?listNo=<%= reviewPageList.get(i).getListNo()%>&page=<%=currentPage %>&nickname=<%=nickname %>" 
+							onclick="return confirm('정말 리뷰를하시겠습니까?')"  class="func">
+							<button class="mypage_btns">삭제하기</button>
+							</a> 
+
 							</div>
 						</div>
 						<%	} %>
