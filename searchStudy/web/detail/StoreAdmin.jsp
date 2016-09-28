@@ -23,8 +23,6 @@
 <body>
 	<div id="wrap">
 		<div id="header">
-
-
 					<div id="content_wrap">
 
 						<div id="content" class="detail info">
@@ -35,7 +33,7 @@
 
 
 							<%
-								if (s.getStoreId() != null) {
+								if (s != null) {
 							%>
 
 
