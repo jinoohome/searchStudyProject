@@ -23,8 +23,8 @@
 <style>
 input[type=checkbox], input[type=radio] {
     display: block;
+    width: 100%;
 }
-
 </style>
 <script type="text/javascript">
 $(function() {
@@ -300,7 +300,7 @@ $(function() {
 										for (Member m : list) {
 								%>
 								<tr>
-									<td><input type="checkbox" name="userids_del" value="<%=m.getUserId()%>"></td>
+									<td><div id="checkboxdiv"><input type="checkbox" name="userids_del" value="<%=m.getUserId()%>"></div></td>
 									<td><%=m.getUserId()%></td>
 									<!-- 리뷰 페이지로 이동... -->
 									<td><a href="/easyStudy/ureview?page=1&nickname=<%=m.getNickName() %>"  onClick="window.open(this.href, '', 'width=990, height=500, left=100px,top=100px'); return false;"><%=m.getNickName()%></a></td>
