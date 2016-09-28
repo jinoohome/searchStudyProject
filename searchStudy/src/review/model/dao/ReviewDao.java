@@ -398,9 +398,11 @@ public class ReviewDao {
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, listNo);
+			System.out.println("Adsfadsf" + listNo);
 			rset = pstmt.executeQuery();
-			
+			System.out.println("Adsfadsfddd" + listNo);
 			if(rset.next()){
+				System.out.println("나옴");
 				review = new Review();
 				review.setListNo(rset.getInt("list_no"));
 				review.setStoreId(rset.getString("store_id"));
@@ -424,15 +426,18 @@ public class ReviewDao {
 		ReviewImage reviewImage = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+		System.out.println("실해애앵");
 		String query = "select * from review_image where list_no = ?";
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, listNo);
+			System.out.println("12112asdfasdfadsf1");
 			rset = pstmt.executeQuery();
+			System.out.println("121121");
 			
 			if(rset.next()){
+				System.out.println("1111111");
 				reviewImage = new ReviewImage();
 				reviewImage.setListNo(rset.getInt("list_no"));
 				reviewImage.setOriginPhoto1(rset.getString("original_photo1"));

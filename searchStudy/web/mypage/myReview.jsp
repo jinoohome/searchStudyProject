@@ -7,7 +7,6 @@
 	ArrayList<ReviewImage> reviewImagePageList = (ArrayList<ReviewImage>)request.getAttribute("reviewImagePageList");
 	System.out.println("member" + member);
 	
-	String nickname = (String)request.getAttribute("nickname");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue(); 
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue(); 
 	int maxPage =((Integer)request.getAttribute("maxPage")).intValue(); 
@@ -717,7 +716,7 @@ $(function(){
 							<a href="#" class="modify" id="review_updateBtn" onclick="clickModify(<%= reviewPageList.get(i).getListNo()%>);">
 								<button class="mypage_btns">수정하기</button>
 							</a>
-							<a href="myrdel?listNo=<%= reviewPageList.get(i).getListNo()%>&page=<%=currentPage %>&nickname=<%=nickname %>" 
+							<a href="myrdel?listNo=<%= reviewPageList.get(i).getListNo()%>&page=<%=currentPage %>&nickname=<%=member.getNickName() %>" 
 							onclick="return confirm('정말 리뷰를 삭제하시겠습니까?')"  class="func">
 							<button class="mypage_btns">삭제하기</button>
 							</a> 
@@ -771,7 +770,7 @@ $(function(){
 			    	<% if(currentPage <= 1){ %> 
 			             <li>&lt;&lt;</li>
 			            <%}else{ %> 
-			           	<li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
+			           	<li><a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= currentPage - 1 %>">&lt;&lt;</a></li>
 			            <% } %> 
 			          
 			            
@@ -779,7 +778,7 @@ $(function(){
 			                if(p == currentPage){ %> 
 			                	<li class="active"><%= p %></li>
 			                <%}else{ %> 
-			               <li> <a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= p %>"><%= p %></a></li>
+			               <li> <a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= p %>"><%= p %></a></li>
 			                <% } %> 
 			            <% } %> 
 			            
@@ -787,7 +786,7 @@ $(function(){
 			            <% if(currentPage >= maxPage){ %> 
 			            	<li>&gt;&gt;</li>
 			            <%}else{ %> 
-			            <li><a href="/easyStudy/mreview?nickname=<%=nickname %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
+			            <li><a href="/easyStudy/mreview?nickname=<%=member.getNickName() %>&page=<%= currentPage + 1 %>">&gt;&gt;</a></li>
 			            <% } %>
 			            
 			            </ul>
