@@ -16,19 +16,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css"/>
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
- <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
- <script type="text/javascript" src="js/navigation.js"> </script>
- <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css"/>
+ <script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"> </script>
+ <script type="text/javascript" src="/easyStudy/js/navigation.js"> </script>
+ <script type="text/javascript" src="/easyStudy/js/jquery.leanModal.min.js"></script>
 <style>
-input[type=checkbox], input[type=radio] {
-    display: block;
-    width: 100%;
-}
+
 </style>
 <script type="text/javascript">
 $(function() {
@@ -291,7 +288,9 @@ $(function() {
 						<table class="mypage_userManager">
 							<thead>
 								<tr>
-									<th><input type="checkbox" id="allCheck"></th>
+									<th><input type="checkbox" id="allCheck" class="mypage_alcheck">
+											<label for="allCheck"></label>									
+									</th>
 									<th class="dothesort" data-type="string">회원 ID ▼</th>
 									<th class="dothesort" data-type="string">회원 닉네임 ▼</th>
 									<th class="dothesort" data-type="string">가입 날짜 ▼</th>
@@ -304,7 +303,9 @@ $(function() {
 										for (Member m : list) {
 								%>
 								<tr>
-									<td><div id="checkboxdiv"><input type="checkbox" name="userids_del" value="<%=m.getUserId()%>"></div></td>
+									<td><div id="checkboxdiv"><input type="checkbox" name="userids_del" id="mypage_allcheck" value="<%=m.getUserId()%>" >
+											<label for="mypage_allcheck"></label>
+									</div></td>
 									<td><%=m.getUserId()%></td>
 									<!-- 리뷰 페이지로 이동... -->
 									<td><a href="/easyStudy/ureview?page=1&nickname=<%=m.getNickName() %>"  onClick="window.open(this.href, '', 'width=990, height=500, left=100px,top=100px'); return false;"><%=m.getNickName()%></a></td>

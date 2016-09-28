@@ -683,6 +683,19 @@ table.mypage_userManager td {
     padding: 10px;
 }
 
+.mypage_alcheck input[type=checkbox], input[type=radio] {
+    display: block;
+    width: 100%;
+}
+
+
+#mypage_userManager_T>table.mypage_userManager>thead>tr>th>input:checked+label{
+	   background-position: 0px 1px;
+}
+
+#mypage_userManager_T>table.mypage_userManager>tbody>tr>td>div#checkboxdiv>input:checked+label{
+	   background-position: 0px 1px;
+}
 
 
 .dothesort{

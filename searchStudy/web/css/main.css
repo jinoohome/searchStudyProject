@@ -307,7 +307,7 @@ input[type=checkbox]+label, input[type=radio]+label {
     padding-left: 20px;
     font-size: 13px;
     line-height: 13px;
-    background-image: url(../images/checkbox.png);
+    background-image: url(/easyStudy/images/checkbox.png);
     background-repeat: no-repeat;
     background-position: 0 -35px;
 }
