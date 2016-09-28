@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @parkyh
- Unwatch 4
-  Star 0
-  Fork 0 jinoohome/searchStudyProject
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathsearchStudyProject/searchStudy/web/detail/StoreDetailView.jsp
-6d11c88  44 minutes ago
-@jinoohome jinoohome 로그인 및 글쓰기 경로 수정
-1 contributor
-RawBlameHistory     
-1760 lines (1598 sloc)  66.3 KB
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="review.model.vo.Review, review.model.vo.ReviewImage" %>
@@ -602,12 +585,15 @@ $("#bannerSlider").on("selectstart", function()
 <script type="text/javascript">
 //시작하자마자 수정버튼 숨기기
 $( document ).ready(function() {
+	
 	$('#review_modify').hide();	
 	
-	alert("adsfa");
+	//수정버튼 클릭
 	$('#modifyGo').click(function(){
 		alert("수정하기");
 		var contents = $("#review_text").val();
+		var listno = $('#hiddenlistno').val();
+		alert(listno);
 		var score = 0;
 		if($("#p10").is(":checked")){
 			score = 5.0;
@@ -639,7 +625,8 @@ $( document ).ready(function() {
 		if($("#p1").is(":checked")){
 			score = 0.5;
 		}
-		alert($("listnohidden").val());
+		alert("고!");
+		location.href = "/easyStudy/updateQ?listno=" + listno + "&updatescore=" + score + "&contents=" + contents + "&storeId=" + <%=s.getStoreId() %> + "&score=" + <%=score %>;
 		
 		
 		
@@ -663,8 +650,11 @@ function update(listNo){
 			
 			//
 			$("#itemPhoto").hide();
+			$('#review_add').hide();
+			$('#review_modify').show();
 			
 			//내용			
+			$("#hiddenlistno").val(data.listNo);
 			$("#review_text").text($("#review_text").text() + data.contents);
 			 
 			//별점
@@ -753,7 +743,6 @@ function update(listNo){
 					reader.readAsDataURL(input.files[0]);
 				}
 			}
-			location.href="/easyStudy/DView?storeId=<%=s.getStoreId() %>&score=<%=score %>";
 			
 			
 		},
@@ -1317,6 +1306,7 @@ $(function(){
 												자세하게 써주세요
 											</div>
 											<div class="detail">
+												<input type="hidden" id="hiddenlistno" >
 												<textarea id="review_text" name="review_text" class="border_radius soft"></textarea>
 												<div id="review_text_state" class="border_radius soft">
 													평점을 매겨주세요!
@@ -1357,9 +1347,14 @@ $(function(){
 									
 								</div>
 					
-								<div class="body review write">
+								<div class="body review write" id="review_add">
 									<button type="submit" class="border_radius soft" id="AA">
 										리뷰 올리기
+									</button>
+								</div>
+								<div class="body review write" id="review_modify">
+									<button type="button" class="border_radius soft" id="modifyGo">
+										리뷰 수정하기
 									</button>
 								</div>
 								</form>

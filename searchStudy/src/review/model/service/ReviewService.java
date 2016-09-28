@@ -125,6 +125,17 @@ public class ReviewService {
 		return reviewImage;
 	}
 
+	public int updateReview(int listno, Double score, String contents) {
+		Connection con = getConnection();
+		int result = new ReviewDao().updateReview(con, listno, score, contents);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+
 	
 	
 	

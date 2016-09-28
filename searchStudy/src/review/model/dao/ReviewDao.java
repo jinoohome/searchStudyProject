@@ -461,6 +461,29 @@ public class ReviewDao {
 		
 		return reviewImage;
 	}
+
+	public int updateReview(Connection con, int listno, Double score, String contents) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "update REVIEW set score = ? , contents= ? where list_no= ? ";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, score);
+			pstmt.setString(2, contents);
+			pstmt.setInt(3, listno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
 
 
