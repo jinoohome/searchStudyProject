@@ -84,7 +84,7 @@ public class DetailViewServlet extends HttpServlet {
 		
 		if(store !=null){
 			view = request.getRequestDispatcher("detail/StoreDetailView.jsp");
-			if(reviewPageList !=null){
+			if(reviewPageList !=null && reviewImagePageList!=null){
 				reviewPageList.sort(new DescReview());
 				reviewImagePageList.sort(new DescReview());
 				
