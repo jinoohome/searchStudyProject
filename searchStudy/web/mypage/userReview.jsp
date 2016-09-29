@@ -315,7 +315,6 @@ $("#bannerSlider").on("selectstart", function()
 			
 					<div class="body review list ">
 						<div class="review_detail">
-							<a class="i_wrap" href="/timeline/50b6dc12d20c781e6700004b">
 							<i class="image border_radius circle" style="display: inline-block; background-image: url(&quot;http://c4.poing.co.kr/55ea410bd820b94b140000f7.jpg&quot;);"></i>
 							</a>
 							<div class="user">
