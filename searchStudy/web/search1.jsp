@@ -4,7 +4,6 @@
 <% Member member = (Member)session.getAttribute("member"); %>
 <%
 	ArrayList<SearchStore> list = (ArrayList<SearchStore>)request.getAttribute("list");
-
 	String areaW = (String)request.getAttribute("area");
 	String categoryW = (String)request.getAttribute("category");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue(); 
@@ -21,7 +20,6 @@
 	String score = (String)request.getAttribute("score");
 	System.out.print(storeId+":"+score+"=================\n");
 	 */
-
 	 
 	Cookie[] cook = request.getCookies();
 	for(Cookie c : cook){
@@ -84,7 +82,6 @@ $( document ).ready(function() {
 	   $("body").on("click", " button", function(e)
 	   {
 	      var type = $(this).data("type");
-
 	      if(type != null)
 	      {
 	         $(this).blur();
@@ -108,41 +105,33 @@ $( document ).ready(function() {
 	          var start_point = -width * (fake_pieces-1);
 	          var start_index = options.start_index? options.start_index:0;
 	          var isSliding = false;
-
 	          (function() {
 	              pieces.data('index', start_index);
 	              pieces.css('left', (-width*(start_index+1) + start_point)+'px');
 	          
 	              slider.find(".index>li").removeClass('current');
 	              slider.find(".index>li[data-id="+start_index+"]").addClass('current');
-
 	              pieces.show();
 	          })();
-
 	          var piece = slider.find(".piece"),
 	              first   = piece.filter(':first'),
 	              last    = piece.filter(':last');
-
 	          // 슬라이더가 0개임
 	          if(piece.length == 0) 
 	              return false;
-
 	          // 가짜 페이지들을 만들 때, 설정한 갯수가 진짜 페이지의 최대 갯수보다 많을 경우
 	          var rest = fake_pieces % piece.length;
 	          if(rest > 0) {
 	              first.before( piece.slice(-1 * rest).clone(true) );
 	              last.after( piece.slice(0, rest).clone(true) );
 	          }
-
 	          for(var i=0, len = Math.floor(fake_pieces / piece.length); i<len; ++i) {
 	              first.before( piece.clone(true) );
 	              last.after( piece.clone(true) );
 	          }
-
 	          var slide = function(add) {
 	              isSliding = true;
 	              var index = pieces.data('index');
-
 	              index += add;
 	              pieces.data('index', index);
 	              pieces.animate({left : (-width*(index+1) + start_point)+'px'}, 
@@ -159,20 +148,16 @@ $( document ).ready(function() {
 	                      }
 	                      slider.find(".index>li").removeClass('current');
 	                      slider.find(".index>li[data-id="+index+"]").addClass('current');
-
 	                      if( options.complete )
 	                          options.complete( pieces.children(".piece").get(index+fake_pieces) );
-
 	                      isSliding = false;
 	                  }
 	              });
 	          }
-
 	          this.prev = function() {
 	              if(isSliding === false)
 	                  slide(-1);
 	          };
-
 	          this.next = function() {
 	              if(isSliding === false)
 	                  slide(1);
@@ -180,15 +165,11 @@ $( document ).ready(function() {
 	          
 	          slider.find(".nav>.left").click(this.prev);
 	          slider.find(".nav>.right").click(this.next);
-
 	          if(options.duration > 0)
 	              setInterval(this.next, options.duration);
 	      };
 	      var TriSlider = new TriSlider({'selector':'#banner>.trislider'});
 	});
-
-
-
 </script>
 
 <!-- 로그인시 버튼관련 -->
@@ -250,11 +231,8 @@ $( document ).ready(function() {
 if(list.size() >= 2){ %>
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		//1번째
-
 		
-
 		var str1 = false;
 		if(<%=list.get(1).getStoreId().equals(bookmarks[1]) %>){
 			$("#mypageGo<%=list.get(1).getStoreId() %>").addClass("on");
@@ -309,9 +287,7 @@ if(list.size() >= 3){ %>
 		
 		
 		//2번째
-
 		
-
 		var str2 = false;
 		if(<%=list.get(2).getStoreId().equals(bookmarks[2]) %>){
 			$("#mypageGo<%=list.get(2).getStoreId() %>").addClass("on");
@@ -363,11 +339,8 @@ if(list.size() >= 4){ %>
 
 <script type="text/javascript">
 			$(document).ready(function() {
-
 		//3번째
-
 		
-
 		var str3 = false;
 		if(<%=list.get(3).getStoreId().equals(bookmarks[3]) %>){
 			$("#mypageGo<%=list.get(3).getStoreId() %>").addClass("on");
@@ -578,7 +551,6 @@ if(list.size() >= 8){ %>
 
 <script type="text/javascript">
 							$(document).ready(function() {
-
 		
 		//7번째
 		var str7 = false;
@@ -632,7 +604,6 @@ if(list.size() >= 9){ %>
 
 <script type="text/javascript">
 								$(document).ready(function() {
-
 		
 		//8번째
 		var str8 = false;
@@ -805,7 +776,6 @@ $( document ).ready(function() {
 			}			
 		});
 	});
-
 	/*회원가입 아이디 존재여부확인*/
 	var joinIdCheck = false;
 	$("#main_joinUserId").blur(function(){
@@ -955,7 +925,6 @@ $( document ).ready(function() {
 		
 	});
 	
-
 		/*********팝업창 관련 jQeury**********/
 		// 로그인 버튼 클릭시
 		$(".main_loginPopupBtn").leanModal({
@@ -967,22 +936,18 @@ $( document ).ready(function() {
 			$("#main_login").show();
 			$("#main_join").hide();
 			$("#main_pwSearch").hide();
-
 			return false;
 		});
-
 		// 회원가입 버튼 클릭시
 		$(".main_joinPopupBtn").leanModal({
 			top : 100,
 			overlay : 0.6,
 			closeButton : ".modal_close"
 		});
-
 		$(".main_joinPopupBtn").click(function() {
 			$("#main_join").show();
 			$("#main_login").hide();
 			$("#main_pwSearch").hide();
-
 			return false;
 		});
 		
@@ -992,12 +957,10 @@ $( document ).ready(function() {
 			overlay : 0.6,
 			closeButton : ".modal_close"
 		});
-
 		$(".main_pwSearchBtn").click(function() {
 			$("#main_pwSearch").show();
 			$("#main_login").hide();
 			$("#main_join").hide();
-
 			return false;
 		});
 		

@@ -286,7 +286,7 @@ a {
     font-weight: 600;
 	
 }
-#nav_container>.search>.box .content>li.selected, #nav_container>.search>.box .content>li:hover {
+#nav_container>.search>.box>.content>li.selected, #nav_container>.search>.box>.content>li:hover {
   background: #f9dee3;
     color: #c91b3c;
     font-weight: 600;
