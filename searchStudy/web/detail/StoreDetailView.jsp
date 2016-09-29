@@ -941,7 +941,7 @@ $(function(){
 								<%if(member !=null){ %>
 							<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
 							&nbsp;|&nbsp;
-							<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal"><%=member.getNickName() %></a></span>
+							<span id="nav_join" style="color:#fff"><%=member.getNickName() %></span>
 						<%}else{ %>
 							<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
 							
@@ -1592,10 +1592,9 @@ $(function(){
 				                <%}else{ %> 
 				               <li> <a href="/easyStudy/DView?page=<%= p %>&storeId=<%= s.getStoreId() %>&score=<%=score %>"><%= p %></a></li>
 				                <% } %> 
-				            <% } %> 
+				         <% } %> 
 				            
-				 			
-				            <% if(currentPage >= maxPage){ %> 
+				           <% if(currentPage >= maxPage){ %> 
 				            	<li>&gt;&gt;</li>
 				            <%}else{ %> 
 				            <li><a href="/easyStudy/DView?page=<%= currentPage + 1 %>&storeId=<%= s.getStoreId() %>&score=<%=score %>">&gt;&gt;</a></li>
