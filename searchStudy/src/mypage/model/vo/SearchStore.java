@@ -6,14 +6,14 @@ public class SearchStore implements java.io.Serializable{
 	private String storeName;
 	private String localName;
 	private String categoryName;
-	private int score;
+	private double score;
 	private String price;
 	private String homepage;
 	private String imgRoute;
 	
 	public SearchStore(){}
 
-	public SearchStore(String storeId, String storeName, String localName, String categoryName, int score, String price,
+	public SearchStore(String storeId, String storeName, String localName, String categoryName, double score, String price,
 			String homepage, String imgRoute) {
 		super();
 		this.storeId = storeId;
@@ -58,11 +58,11 @@ public class SearchStore implements java.io.Serializable{
 		this.categoryName = categoryName;
 	}
 
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 

@@ -91,7 +91,7 @@ public class StoreDao{
 					stores.setStoreName(rset.getString("store_name"));
 					stores.setLocalName(rset.getString("local_name"));
 					stores.setCategoryName(rset.getString("category_name"));
-					stores.setScore(rset.getInt("avg"));
+					stores.setScore(rset.getDouble("avg"));
 					stores.setPrice(rset.getString("price"));
 					stores.setHomepage(rset.getString("homepage"));
 					stores.setImgRoute(rset.getString("photo_n1"));
