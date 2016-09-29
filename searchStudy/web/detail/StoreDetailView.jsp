@@ -644,10 +644,7 @@ $( document ).ready(function() {
 	});
 });
 function update(listNo){
-	//alert("dddd : " + contents );
 	
-	/* $("#upBtn").hide();
-	$("#modiBtn").show(); */
 	$.ajax({
 		url : "rupdate",
 		data : {listNo : listNo},
@@ -709,33 +706,6 @@ function update(listNo){
 			}
 			
 			
-			//console.log("ffffffffffffffff : " + data.renamePhoto1);
-			//readURL("E:\server workspace\easyStudy-1\web\uploadFiles" + data.renamePhoto1);
-			
-			/*
-			if(data.renamePhoto1 != null){
-				
-				//$("#AA").append($("<input type='file' multiple name='reviewPhoto1' id='upBtn1_1' class='' value= '" + data.renamePhoto1 + "'/>"));
-				//$("#upBtn1_1").attr('files', data.renamePhoto1);
-				
-				/* var fName = "E:\\server workspace\\easyStudy-1\\web\\uploadFiles\\" + data.renamePhoto1;
-				var ext = data.renamePhoto1.split(".").pop();
-				console.log(ext);
-				
-				ext.toLowerCase();
-				
-				if(ext.length > 0){
-					//if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
-					if($.inArray(ext,['gif','png','jpg','jpeg']) == -1) { 
-						alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
-						this.value = "";
-						return;  
-					} else {
-						readURL(fName);	
-					}	
-				}
-			}
-			*/
 			var num = 1;
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -782,7 +752,6 @@ $(document).ready(function() {
 		ext.toLowerCase();
 		
 		if(ext.length > 0){
-			//if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
 			if($.inArray(ext,['gif','png','jpg','jpeg']) == -1) { 
 				alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
 				this.value = "";
