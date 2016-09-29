@@ -1347,7 +1347,7 @@ a {
 
 						<%}else{ %>
 						<div class="element medium">
-							<a href="#" class="image"
+							<a href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>&score=<%=list.get(i).getScore() %>" class="image"
 								style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
 								<div class="shading"></div> <%if( member != null && !("관리자".equals( member.getNickName() )) ){ %>
 								<div class="top">
