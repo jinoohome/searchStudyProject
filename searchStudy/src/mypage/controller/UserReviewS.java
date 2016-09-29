@@ -44,7 +44,6 @@ public class UserReviewS extends HttpServlet {
 		// 페이지 수 처리용 변수
 		int currentPage = 1;
 		int limit = 5; // 한 페이지에 5개씩 출력
-		RequestDispatcher view = null;
 
 		String nickname = request.getParameter("nickname");
 
@@ -78,7 +77,7 @@ public class UserReviewS extends HttpServlet {
 			}
 			}
 			System.out.println("listRImage : " + listRImage);
-
+			RequestDispatcher view = null;
 			view = request.getRequestDispatcher("mypage/userReview.jsp");
 
 			request.setAttribute("list", list);

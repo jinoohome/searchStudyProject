@@ -1128,7 +1128,6 @@ $(document).ready(function() {
 							<%	} %>
  --%>									<div class="action">
 								<%if(member !=null){ %>
-									<%	if(member.getNickName().equals(reviewPageList.get(z).getNickName())){ %>
 										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
 											수정하기  
 										</a>
@@ -1136,15 +1135,6 @@ $(document).ready(function() {
 											삭제하기
 										</a>
 										<%		
-												}
-											if(member.getUserId().equals("admin")){
-										%>
-											<a href="" class="func">
-											삭제하기
-										</a>
-										
-										<%
-												}
 											}
 										%>
 									</div>
@@ -1159,7 +1149,7 @@ $(document).ready(function() {
 				    	<% if(currentPage <= 1){ %> 
 				             <li>&lt;&lt;</li>
 				            <%}else{ %> 
-				           	<li><a href="">&lt;&lt;</a></li>
+				           	<li><a href="/easyStudy/mreview?page=<%= currentPage - 1 %>&nickname=<%=member.getNickName() %>">&lt;&lt;</a></li>
 				            <% } %> 
 				          
 				            
@@ -1167,7 +1157,7 @@ $(document).ready(function() {
 				                if(p == currentPage){ %> 
 				                	<li class="active"><%= p %></li>
 				                <%}else{ %> 
-				               <li> <a href=""><%= p %></a></li>
+				               <li> <a href="/easyStudy/mreview?page=<%= p %>&nickname=<%=member.getNickName() %>"><%= p %></a></li>
 				                <% } %> 
 				            <% } %> 
 				            
@@ -1175,7 +1165,7 @@ $(document).ready(function() {
 				            <% if(currentPage >= maxPage){ %> 
 				            	<li>&gt;&gt;</li>
 				            <%}else{ %> 
-				            <li><a href="">&gt;&gt;</a></li>
+				            <li><a href="/easyStudy/mreview?page=<%= currentPage + 1 %>&nickname=<%=member.getNickName() %>">&gt;&gt;</a></li>
 				            <% } %>
 				            
 				            </ul>
