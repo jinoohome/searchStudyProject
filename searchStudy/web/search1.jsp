@@ -1240,11 +1240,11 @@ a {
 				<div id="banner">
     <div class="trislider">
        <div class="pieces" data-index="0" data-max="5" style="left: -1700px; display: block;">
-                       <a href="" class="piece" style="background-image:url(images/main1.jpg);"></a>
-                       <a href="" class="piece" style="background-image:url(images/main2.jpg)"></a>
-                       <a href="" class="piece" style="background-image:url(images/main3.jpg)"></a>
-                       <a href="" class="piece" style="background-image:url(images/main4.jpg)"></a>
-                       <a href="" class="piece" style="background-image:url(images/main5.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/content_04.jpg);"></a>
+                       <a href="" class="piece" style="background-image:url(images/content_02.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/content_03.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/content_06.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/content_05.jpg)"></a>
                     
                  </div>
       <div class="left shadow"></div>

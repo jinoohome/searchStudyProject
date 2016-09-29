@@ -323,11 +323,11 @@ $(document).ready(function(){
    		});*/
    		
    		$('.element.large>.image').on("mouseover", function () {
-   		    $(this).find('div:first').css('opacity','0.5');
+   		    $(this).find('div:first').css('opacity','0.7');
    		});
 
    		$('.element.large>.image>div').on("mouseout", function () {
-   		 $('.element.large>.image>div.shading').css('opacity','0.3');
+   		 $('.element.large>.image>div.shading').css('opacity','0.5');
    		});
    		
 });

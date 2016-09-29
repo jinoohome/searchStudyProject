@@ -598,19 +598,19 @@ button {
 .element>.image>.shading {
     height: 100%;
     background: #000;
-    -moz-opacity: .3;
-    -khtml-opacity: .3;
-    opacity: .3;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=30);
-    filter: alpha(opacity=30);
+    -moz-opacity: .5;
+    -khtml-opacity: .5;
+    opacity: .5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=50);
+    filter: alpha(opacity=50);
 }
 
 .element>.image>.shading:hover {
     height: 100%;
     background: #000;
-    -moz-opacity: .5;
-    -khtml-opacity: .5;
-    opacity: .5;
+    -moz-opacity: .7;
+    -khtml-opacity: .7;
+    opacity: .7;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha"(Opacity=50);
     filter: alpha(opacity=50);
 }
@@ -703,6 +703,12 @@ button:focus { outline:none }
 
 .element.large>.image {
     height: 312px;
+    background-position-x: 0p
+}
+
+.element>.image>.center>.middle>.title {
+    font-size: 18px;
+    line-height: 23px;
 }
 
 .element>.image>.center>.middle>.subtitle {

@@ -520,9 +520,9 @@ $( document ).ready(function() {
     			<div class="body">
        				 <div class="element large first ">
        				 <%if(member != null){%>
-    					    <a href="/easyStudy/search.store?gn=GN&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					    <a href="/easyStudy/search.store?gn=GN&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/content_01.jpg);">
        				<%}else{ %>	
-       				        <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				        <a href="/easyStudy/search.store?gn=GN" class="image" style="display: block; background-image: url(images/content_01.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -537,9 +537,9 @@ $( document ).ready(function() {
     				
 					<div class="element large">
 					<%if(member != null){%>
-    					<a href="/easyStudy/search.store?jl=JL&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					<a href="/easyStudy/search.store?jl=JL&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/content_02.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?jl=JL" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?jl=JL" class="image" style="display: block; background-image: url(images/content_02.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -554,9 +554,9 @@ $( document ).ready(function() {
     				
     				<div class="element large">
     				<%if(member != null){%>
-    					<a href="/easyStudy/search.store?sc=SC&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					<a href="/easyStudy/search.store?sc=SC&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/content_03.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?sc=SC" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?sc=SC" class="image" style="display: block; background-image: url(images/content_03.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -576,9 +576,9 @@ $( document ).ready(function() {
     			<div class="body">
        				 <div class="element large first ">
        				 <%if(member != null){%>
-    					    <a href="/easyStudy/search.store?room=S20&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					    <a href="/easyStudy/search.store?room=S20&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/content_04.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?room=S20" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?room=S20" class="image" style="display: block; background-image: url(images/content_04.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -593,9 +593,9 @@ $( document ).ready(function() {
     				
 					<div class="element large">
 					<%if(member != null){%>
-    					    <a href="/easyStudy/search.store?cafe=S30&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					    <a href="/easyStudy/search.store?cafe=S30&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/content_05.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?cafe=S30"  class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?cafe=S30"  class="image" style="display: block; background-image: url(images/content_05.jpg);">
        				<%} %>
        						<div class="shading"></div>
         		
@@ -610,9 +610,9 @@ $( document ).ready(function() {
     				
     				<div class="element large">
 					<%if(member != null){%>
-    					    <a href="/easyStudy/search.store?library=S10&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+    					    <a href="/easyStudy/search.store?library=S10&userid=<%=member.getUserId() %>" class="image" style="display: block; background-image: url(images/JL/JL0013_01.jpg);">
        				<%}else{ %>	
-       				   <a href="/easyStudy/search.store?library=S10"  class="image" style="display: block; background-image: url(images/JL/JL0008_01.jpg);">
+       				   <a href="/easyStudy/search.store?library=S10"  class="image" style="display: block; background-image: url(images/JL/JL0013_01.jpg);">
        				<%} %>    				
        						<div class="shading"></div>
         		
