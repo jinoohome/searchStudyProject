@@ -1086,7 +1086,7 @@ $(document).ready(function() {
 								<div class="text">
 								<pre><%= reviewPageList.get(z).getContents() %></pre>
 								</div>
-						<%--  	<%	if(reviewImagePageList.get(z) != null){ %>
+						 	<%	if(reviewImagePageList.get(z) != null){ %>
 											
 								<ul class="photo_list">
 									<li class="item">
@@ -1124,7 +1124,7 @@ $(document).ready(function() {
 								
 							<%	}else{ %>
 								<div style="text-align: center">사진 없음</div>
-							<%	} %> --%>
+							<%	} %>
 									<div class="action">
 								<%if(member !=null){ %>
 										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">

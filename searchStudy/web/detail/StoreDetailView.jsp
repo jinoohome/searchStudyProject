@@ -603,10 +603,9 @@ $( document ).ready(function() {
 	
 	//수정버튼 클릭
 	$('#modifyGo').click(function(){
-		alert("수정하기");
+		
 		var contents = $("#review_text").val();
 		var listno = $('#hiddenlistno').val();
-		alert(listno);
 		var score = 0;
 		if($("#p10").is(":checked")){
 			score = 5.0;
@@ -638,7 +637,6 @@ $( document ).ready(function() {
 		if($("#p1").is(":checked")){
 			score = 0.5;
 		}
-		alert("고!");
 		location.href = "/easyStudy/updateQ?listno=" + listno + "&updatescore=" + score + "&contents=" + contents + "&storeId=<%=s.getStoreId() %>&score=<%=score %>";
 		
 		
@@ -646,7 +644,6 @@ $( document ).ready(function() {
 	});
 });
 function update(listNo){
-	alert("sssss : " + listNo );
 	//alert("dddd : " + contents );
 	
 	/* $("#upBtn").hide();
@@ -657,7 +654,6 @@ function update(listNo){
 		type : "post",
 		dataType : "json", //명시해줘야 data를 json 타입으로 받아준다.
 		success : function(data){
-			alert(data.listNo + ", " + data.score + ", " + data.contents);
 			
 			//
 			$("#itemPhoto").hide();
