@@ -1010,11 +1010,11 @@ $(function(){
 										<div id="bannerSlider">
 										    <div class="trislider">
 										    	<div class="pieces" data-index="0" data-max="5" style="left: -1700px; display: block;">
-						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto1() %>);"></a>
-						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto2() %>)"></a>
-						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto3() %>)"></a>
-						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto4() %>)"></a>
-						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto5() %>)"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto1() %>);" onclick="return false"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto2() %>);" onclick="return false"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto3() %>);" onclick="return false"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto4() %>);" onclick="return false"></a>
+						    		    			<a href="" class="piece" style="background-image:url(/easyStudy/images/<%=i.getPhoto5() %>);" onclick="return false"></a>
 										    		    		
 										    		    	</div>
 										   		<div class="left shadow"></div>
