@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="review.model.vo.Review, review.model.vo.ReviewImage" %>
 <%@ page
+
 	import="detail.model.vo.Store,detail.model.vo.Image, java.util.* , member.model.vo.*"%>
 <%
+	request.setCharacterEncoding("UTF-8");
 	Store s=(Store)request.getAttribute("store");
 	Image i=(Image)request.getAttribute("image"); 
 	Member member = (Member)session.getAttribute("member");

@@ -25,7 +25,10 @@
     margin: 20px auto 150px;
 }
 
-
+.storeAdd_banner{
+	opacity:1;
+	background:black;
+}
 
 
 /****** table ******/
@@ -145,3 +148,148 @@ p:after{
 	margin-bottom: 10px;
 }
 
+/******************* Store Add CSS ************** */
+#storeAdd_area table th p {
+	margin-left:15px;
+}
+
+#storeAdd_area table tr td .inputBox3Wrap{
+	margin:5px;
+	width:360px;
+	height:40px;
+	padding: 0px 6px;
+	
+}
+
+#storeAdd_area table tr td .inputBox3{ 	
+	width:100%;
+	font-size:15pt;
+	border:0px;
+	margin-top:0px;
+	border:solid 1px darkgray;
+}
+#storeAdd_area .textarea_text{
+	
+}
+#storeAdd_area .textareaBoxWrap{
+	margin:5px;
+	padding: 0px 6px;
+}
+#storeAdd_area .textareaBoxWrap .textareaBox{
+	overflow-y: auto;
+    resize: none;
+    width: 480px;
+    height: 84px;
+    border: 1px solid darkgray;
+    font-size: 12px;
+    margin-left:5px;
+}
+#storeAdd_area #review_text_state{
+    width: 485px;
+    height: 16px;
+    margin-top: -15px;
+    font-size: 12pt;
+    color: #fff;
+    background: #444;
+    text-align: center;
+    line-height: 16px;
+    margin-bottom:10px;
+    border:0px;
+    margin-left:5px;
+ }
+ 
+ #storeAdd_area .storeAdd_time{
+	margin:5px;
+	width:160px;
+	height:40px;
+	padding: 0px 6px;
+ }
+
+#content>#setting.body>table>tbody>tr>.value>div label {
+    margin-right: 15px;
+}
+#storeAdd_area input[type=checkbox]:checked+label, input[type=radio]:checked+label {
+    background-position: 0 1px;
+    color: #c91b3c;
+}
+#storeAdd_area #storeAdd_cate li{
+	list-style-type:none;
+	float:left;
+	margin-left: 20px;
+	
+}
+#storeAdd_area #storeAdd_loca li{
+	list-style-type:none;
+	float:left;
+	margin-left: 20px;
+	
+}
+#storeAdd_area #review_photo_upload{
+    width: 74px;
+    height: 74px;
+    margin-right: 4px;
+    border: 2px dotted #c91b3c;
+    font-size: 20px;
+    color: #c91b3c;
+    background: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+#storeAdd_area .file_input_hidden {
+    /* font-size: 45px; */
+    /* right: 0px; */
+    /* position: absolute; */
+    top: 0px;
+    opacity: 0;
+    z-index: -100;
+    width: 0px;
+    height: 0px;
+    filter: alpha(opacity=0);
+    -ms-filter: "alpha(opacity=0)";
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+     text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+   float:left;
+}
+#storeAdd_area #thumnailArea{
+    width: 450px;
+    height: 74px;
+    background: white;
+    vertical-align: baseline; 
+    float:right;
+    
+}
+#storeAdd_area #itemPhoto{
+	margin: 10px;
+}
+
+#storeAdd_area #storeAdd_enrollBtnWrap{
+	border: none;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    margin: 10px 0 40px;
+    background: 0 0;
+   
+}
+#storeAdd_area #storeAdd_enrollBtn{
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #c91b3c;
+    background: #c91b3c;
+     border-radius: 3px;
+}

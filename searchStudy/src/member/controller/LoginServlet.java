@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		Member member = new MemberService().loginCheck(userId, userPwd);
 	
 		if(member != null){  //로그인 성공시
-			
+			response.setContentType("text/xml; charset=UTF-8");
 			HttpSession session = request.getSession(); 
 			System.out.println("session id : " + session.getId());
 			session.setAttribute("member", member);

@@ -70,23 +70,23 @@ public class StoreAddServlet extends HttpServlet {
 		int serviceInsert = 0;
 		
 		/*Store Save List*/
-		String storeName = multi.getParameter("name");
-		System.out.println("sotreName : "+storeName);
-		String categoryId = multi.getParameter("group");
+		String storeName = multi.getParameter("storeName");
+		System.out.println("storeName : "+storeName);
+		String categoryId = multi.getParameter("categoryId");
 		System.out.println("categoryId : "+categoryId);
-		String localCode = multi.getParameter("local");
+		String localCode = multi.getParameter("localCode");
 		System.out.println("localCode : "+localCode);
 		String address = multi.getParameter("address");
 		System.out.println("address : "+address);
-		String homepage = multi.getParameter("site");
+		String homepage = multi.getParameter("homepage");
 		System.out.println("homepage : "+homepage);
 		String tell = multi.getParameter("tell");
 		System.out.println("tell : "+tell);
 		String price = multi.getParameter("price");
 		System.out.println("price : "+price);
-		String weekDayTime = multi.getParameter("daytime");
+		String weekDayTime = multi.getParameter("weekDayTime");
 		System.out.println("weekDayTime : "+weekDayTime);
-		String weekEndTime = multi.getParameter("endtime");
+		String weekEndTime = multi.getParameter("weekEndTime");
 		System.out.println("weekEndTime : "+weekEndTime);
 		String etc = multi.getParameter("etc");
 		System.out.println("etc : "+etc);

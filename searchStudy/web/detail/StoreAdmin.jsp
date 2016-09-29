@@ -10,13 +10,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <link rel="stylesheet" href="/easyStudy/css/main.css" type="text/css"/>
- <link rel="stylesheet" href="/easyStudy/css/layout.css" type="text/css">  
- <link rel="stylesheet" href="/easyStudy/css/function.css" type="text/css"> 
- <script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"> </script>
- <script type="text/javascript" src="/easyStudy/js/navigation.js"> </script>
- <script type="text/javascript" src="/easyStudy/js/jquery.leanModal.min.js"></script> <!--dialog -->
-<script type="text/javascript" src="/easyStudy/js/navigation.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css" > 
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/detail.css" > 
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css" >
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css" >
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA29xkBAMN_bvriR7uE8dSqVFFwjKXZjcw"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="/easyStudy/js/navigation.js"> </script>
+<script type="text/javascript" src="/easyStudy/js/review.js"></script>
+<script type="text/javascript" src="/easyStudy/js/jquery.leanModal.min.js"></script> <!--dialog -->
+
+
 
 <title>Admin</title>
 <script>
@@ -375,6 +385,78 @@ $( document ).ready(function() {
 		
 	});
 </script>
+<!-- "검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다 -->
+<script> 
+$("#postcodify_search_button").click(function(){
+	alert();
+});
+$(function() { 
+	$("#postcodify_search_button").postcodifyPopUp(); 
+}); 
+</script>
+
+<script type="text/javascript">
+// 사진파일 다중 업로드
+$(document).ready(function() {
+	 var num = 1;
+	 
+	$(".file_input_hidden").change(function() {
+		console.log("변화된 n값 : " + n);
+		
+		var ext = $("#upBtn"+n).val().split(".").pop();
+		console.log($("#upBtn"+n).val().split(".").pop());
+		ext.toLowerCase();
+		
+		if(ext.length > 0){
+			if($.inArray(ext,['gif','png','jpg','jpeg']) == -1) { 
+				alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
+				this.value = "";
+				return;  
+			} else {
+				readURL(this);	
+				if(num != 6){	
+					$(this).hide();	
+				}
+		 		$("input[name='reviewPhoto"+(num+1)+"']").show();              
+			}
+		}
+		n++;
+		
+	 });
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				var thumnailId = "thumnail"+ num;
+				$('#'+thumnailId).css("width","74px");
+				$('#'+thumnailId).css("height","74px");
+				$('#'+thumnailId).attr('src', e.target.result);
+				num++;
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+});
+// 리뷰쓰기 사진 올리기 버튼
+var n = 1;
+$(function(){          
+	console.log("ok");
+	console.log(n);
+	$('#review_photo_upload').click(function(e){
+		e.preventDefault();
+		
+		if(n < 6){
+			$("#upBtn" + n).click();         
+			$("input:file").val().toLowerCase();
+		}else{
+			alert("사진은 최대 5장까지만 업로드할 수 있습니다.")
+		}
+	});       
+	
+			
+});
+</script>
+
 </head>
 <body>
 	<div id="wrap">
@@ -386,7 +468,7 @@ $( document ).ready(function() {
 						<div id="nav_container" class="">
 							<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 							<!-- logo section -->
-							<a id="nav_logo" href="index.jsp"><img class="logo"	src="/easyStudy/images/logo.png"></a>
+							<a id="nav_logo" href="/easyStudy/index.jsp"><img class="logo"	src="/easyStudy/images/logo.png"></a>
 
 							<!-- area search section -->
 							<%
@@ -507,18 +589,15 @@ $( document ).ready(function() {
 			<!--배너 슬라이더 이미지 banner_warp-->
 			<div id="banner_wrap">
 
-				<div id="banner">
+				<div id="banner" class="storeAdd_banner" style="opacity:1;">
 					<div class="trislider">
 						<div class="pieces" data-index="0" data-max="5"
 							style="left: -1700px; display: block;">
-							<a href="" class="piece"
-								style="background-image: url(/easyStudy/images/main1.jpg);"></a> <a href=""
-								class="piece" style="background-image: url(/easyStudy/images/main2.jpg)"></a>
-							<a href="" class="piece"
-								style="background-image: url(/easyStudy/images/main3.jpg)"></a> <a href=""
-								class="piece" style="background-image: url(/easyStudy/images/main4.jpg)"></a>
-							<a href="" class="piece"
-								style="background-image: url(/easyStudy/images/main5.jpg)"></a>
+							<a href="" class="piece" style="background-image:url(/easyStudy/images/content_04.jpg);"></a>
+		                    <a href="" class="piece" style="background-image:url(/easyStudy/images/content_02.jpg)"></a>
+		                    <a href="" class="piece" style="background-image:url(/easyStudy/images/content_03.jpg)"></a>
+		                    <a href="" class="piece" style="background-image:url(/easyStudy/images/content_06.jpg)"></a>
+		                    <a href="" class="piece" style="background-image:url(/easyStudy/images/content_05.jpg)"></a>
 
 						</div>
 						<div class="left shadow"></div>
@@ -539,33 +618,26 @@ $( document ).ready(function() {
 				</div>
 			</div>
 			<!--배너 슬라이더 이미지 banner_warp-->
-
+		
+		<!--************content 작업 부분****************-->
 			<div id="content_wrap">
 
 				<div id="content" class="detail info">
 					<ul class="tab">
-						<li class="item selected"><a>관리자</a></li>
+						<li class="item selected"><a>상점 등록 </a></li>
 					</ul>
-					<br> <br> <br> <br>
-
-
 					<%
 						if (s != null) {
 					%>
 
-
 					<form action="StoreUpdate?storeId=<%=s.getStoreId()%>"
 						method="post" enctype="multipart/form-data">
-						<table border="1" cellspacing="0" width="500">
+						<table border="1" id="detail_table">
 
 							<tr>
 								<th>이 름 :</th>
 								<td><input type="text" name="name"
 									value="<%=s.getStoreName()%>"></td>
-							</tr>
-							<tr>
-								<th>별 점 :</th>
-								<td><input type="text" name="star" value=""></td>
 							</tr>
 							<tr>
 								<th>분 류 :</th>
@@ -612,13 +684,9 @@ $( document ).ready(function() {
 									value="<%=s.getEtc()%>"></td>
 							</tr>
 
-							<tr>
-								<th colspan="2"></th>
-							</tr>
 
 							<tr>
 								<th>첨부파일</th>
-
 								<td id="farea">&nbsp; &nbsp; &nbsp; &nbsp; <input
 									type="button" id="fileadd" value="파일추가">
 								</td>
@@ -637,54 +705,101 @@ $( document ).ready(function() {
 						} else {
 					%>
 
-					<form action="../StoreAdd" method="post"
-						enctype="multipart/form-data">
-						<table border="1" cellspacing="0" width="500">
-
+					<div id="storeAdd_area">
+					<form action="" method="post" enctype="multipart/form-data">
+						<table border="1" id="detail_table">
 							<tr>
-								<th>이 름 :</th>
-								<td><input type="text" name="name" value=""></td>
+								<th><p>상 점 명</p></th>
+								<td>
+									<div class="inputBox3Wrap" id="">
+										<input type="text" placeholder="" id="" name="storeName" class="inputBox3">
+									</div>
+								</td>
 							</tr>
 
 							<tr>
-								<th>별 점 :</th>
-								<td><input type="text" name="star" value=""></td>
+								<th><p>분 류</p></th>
+								<td>
+									<div class="" id="storeAdd_cate">
+										<li><input type="radio" name="categoryId" id="storeAdd_S10" value="S10"> <label for="storeAdd_S10">도서관/독서실</label></li>
+										<li><input type="radio" name="categoryId" id="storeAdd_S20" value="S20"> <label for="storeAdd_S20">스터디룸</label></li>
+										<li><input type="radio" name="categoryId" id="storeAdd_S30" value="S30"> <label for="storeAdd_S30">스터디카페</label></li>
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>분 류 :</th>
-								<td><input type="text" name="group" value=""></td>
+								<th><p>지 역</p></th>
+								<td>
+									<div class="" id="storeAdd_loca">
+										<li><input type="radio" name="localCode" id="storeAdd_GN" value="GN"><label for="storeAdd_GN">강남</label></li>
+										<li><input type="radio" name="localCode" id="storeAdd_SC" value="SC"><label for="storeAdd_SC">신촌</label></li>   
+										<li><input type="radio" name="localCode" id="storeAdd_JL" value="JL"><label for="storeAdd_JL">종로</label></li>  
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>지 역 :</th>
-								<td><input type="text" name="local" value=""></td>
+								<th><p>주 소</p></th>
+								<td>
+									<input type="text" name="" class="postcodify_postcode5" value="" />
+									<button id="postcodify_search_button">검색</button><br />
+									<input type="text" name="" class="postcodify_address" value="" /><br />
+									<input type="text" name="" class="postcodify_details" value="" /><br />
+								</td>
 							</tr>
 							<tr>
-								<th>주 소 :</th>
-								<td><input type="text" name="address" value=""></td>
+								<th><p>사 이 트</p></th>
+								<td>
+									<div class="inputBox3Wrap" id="">
+										<input type="text" placeholder=" http://www.searchStudy.com " id="" name="homepage" class="inputBox3">
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>사 이 트 :</th>
-								<td><input type="text" name="site" value=""></td>
+								<th><p>평일 영업</p></th>
+								<td>
+									<div id="storeAdd_weekDayWrap" class="storeAdd_time" >
+										<input type="time" placeholder="" id="storeAdd_weekDay" name="weekDayTime" class="inputBox3">
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>평일 영업 :</th>
-								<td><input type="text" name="daytime" value=""></td>
+								<th><p>주말 영업</p></th>
+								<td>
+									<div id="storeAdd_weekEndWrap" class="storeAdd_time" >
+										<input type="time" placeholder="" id="storeAdd_weekEnd" name="weekEndTime" class="inputBox3">
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>주말 영업 :</th>
-								<td><input type="text" name="endtime" value=""></td>
+								<th><p>전화번호</p></th>
+								<td>
+									<div class="inputBox3Wrap" id="">
+										<input type="tel" placeholder=" '-'를 뺀 번호를 입력해주세요" id="" name="tell" class="inputBox3">
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<th>가 격 :</th>
-								<td><input type="text" name="price" value=""></td>
+								<th><p>가 격</p></th>
+								<td>
+									<div class="inputBox1Wrap" id="">
+										<input type="text" placeholder="" id="" name="" class="inputBox3">
+									</div>
+								</td>
 							</tr>
+							
 							<tr>
-								<th>전화번호 :</th>
-								<td><input type="text" name="tell" value=""></td>
-							</tr>
-							<tr>
-								<th>비 고 :</th>
-								<td><textarea name="etc" rows="5" cols="50"></textarea></td>
+								<th><p class="textarea_text">비 고</p></th>
+								<td>
+									<div class="textareaBoxWrap" id="">
+										<textarea placeholder="" id="" name="etc" class="textareaBox"></textarea>
+										<div id="review_text_state" class="border_radius soft">
+													특이 사항이 있으면 적어주세요!
+									</div>
+									
+									</div>
+									
+									
+								</td>
 							</tr>
 
 							<tr>
@@ -694,17 +809,40 @@ $( document ).ready(function() {
 							<tr>
 								<th>첨부파일</th>
 
-								<td id="farea">&nbsp; &nbsp; &nbsp; &nbsp; <input
-									type="button" id="fileadd" value="파일추가">
+								<td id="farea">
+									<div id="itemPhoto" class="item photo">
+											<div class="detail">
+												<button id="review_photo_upload" class="border_radius medium" tabindex="-1">
+													+
+												</button>
+												<input type="file" multiple name="reviewPhoto1" id="upBtn1" class="file_input_hidden" /> 
+												<input type="file" multiple name="reviewPhoto2" id="upBtn2" class="file_input_hidden" style="display:none" /> 
+												<input type="file" multiple name="reviewPhoto3" id="upBtn3" class="file_input_hidden" style="display:none" />
+												<input type="file" multiple name="reviewPhoto4" id="upBtn4" class="file_input_hidden" style="display:none" />
+												<input type="file" multiple name="reviewPhoto5" id="upBtn5" class="file_input_hidden" style="display:none" />
+											    <div id="thumnailArea">
+											       <img id="thumnail1" name="thumanail" />
+											       <img id="thumnail2" name="thumanail" />
+											       <img id="thumnail3" name="thumanail" />
+											       <img id="thumnail4" name="thumanail" />
+											       <img id="thumnail5" name="thumanail" />
+											    </div>
+												<!-- <ul id="review_photo_list">
+												</ul> -->
+											</div>
+										</div>
+
 								</td>
 
 							</tr>
 
 
 						</table>
-
-						<input type="submit" value="등록하기"> &nbsp; &nbsp;
+						<div id="storeAdd_enrollBtnWrap">
+							<input type="submit" value="등록하기" id="storeAdd_enrollBtn">
+						</div>
 					</form>
+					</div>
 
 					<%
 						}
@@ -712,7 +850,132 @@ $( document ).ready(function() {
 				</div>
 			</div>
 		</div>
+		
+		<div id="footer_wrap">
+	      <div id="footer" style="width:970px; height:208px;">
+	         <img class="logo" src="/easyStudy/images/logo.png" style="width:100px; height:auto;">
+	         <div class="slogan">특별한 공간에서 공부하는 방법.<br>즐거운 공부 하세요.<br>성공 할 수 있습니다.</div>
+	         <div class="author">(주)이지스터디  만든이들 : 최진형, 유의현, 하지수, 박유화, 양명준&nbsp;&nbsp;|&nbsp;&nbsp;HK정보교육원&nbsp;&nbsp;|&nbsp;&nbsp;등록번호 :778484758&nbsp;&nbsp;|&nbsp;&nbsp;1F 서울시 강남구 역삼동 152309 </div>
+	      </div>
+   		</div>
 	</div>
+	<div id="main_loginWrap">
+		<div id="main_loginModal" class="main_loginPopup" style="display: none;">
+			<!-- 로그인 페이지-->
+			<div id="main_login">
+				<div id="main_loginHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+				
+				<div class="sel">
+					<form action="login" method="post" id="loginForm">
+						<div class="main_inputRow" id="main_loginIdArea">
+							<input type="email" placeholder="이메일" id="main_loginUserId" name="main_loginUserId" class="inputBox1">
+						</div>
+						<div class="main_labelRow"  id="main_loginIdCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_loginIdCheckLabel"> </label>							
+						</div>
+						<div class="main_inputRow" id="main_passwordArea">
+							<input type="password" placeholder="비밀번호" id="main_loginUserPwd" name="main_loginUserPwd" class="inputBox1">
+						</div>
+						<div class="main_labelRow"  id="main_loginPwCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_loginPwCheckLabel"> 패스워드를 다시 확인해주세요</label>							
+						</div>
+						<div id="main_loginBtn_area">
+							<input type="button" value="로그인" id="main_loginBtn">
+						</div>
+						<div id="main_sendLoginBtn" class="box">
+							<ul class="content">
+								<li>
+									<input type="checkbox" id="main_login_chk" value="off" >
+									<label for="main_login_chk">로그인 상태 저장</label>
+								</li>
+							</ul>
+						</div>
+					</form>
+				</div>
 
+				<div id="main_find_info">
+					<div>
+						<!-- <a href="#"> 아이디 찾기</a> <span>|</span> -->
+						<a href="#main_pwSearchModal" class="main_pwSearchBtn"> 비밀번호 찾기</a> <span>|</span>
+						<a href="#main_joinModal" class="main_joinPopupBtn"> 회원가입</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div id="main_joinModal" class="main_joinPopup" style="display: none;">
+			<!-- 회원가입 페이지-->
+			<div id="main_join" >
+				<div id="main_joinHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+
+				<div>
+					<form action="mjoin" method="post" id="joinForm">
+						<div id="main_joinIdArea" class="divBox1">
+							<input type="email" placeholder="이메일" class="inputBox1" name="main_joinUserId" id="main_joinUserId">
+						</div>
+						<div class="main_labelRow"  id="main_joinIdCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinIdCheckLabel"> </label>							
+						</div>
+						<div id="main_joinPwArea" class="divBox1">
+							<input type="password" placeholder="비밀번호" class="inputBox1" name="main_joinUserPwd" id="main_joinUserPwd">
+						</div>
+						<div class="main_labelRow"  id="main_joinPwCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinPwCheckLabel"> </label>							
+						</div>
+						<div id="main_joinPwcheckArea" class="divBox1">
+							<input type="password" placeholder="비밀번호확인" class="inputBox1" name="main_joinUserPwdChk" id="main_joinUserPwdChk">
+						</div>
+						<div class="main_labelRow"  id="main_joinPwCheckChkArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinPwCheckChkLabel"> </label>							
+						</div>
+						<div id="main_joinNickArea" class="divBox1">
+							<input type="text" placeholder="닉네임" class="inputBox1" name="main_joinUserNickName" id="main_joinUserNickName">
+						</div>
+						<div class="main_labelRow"  id="main_joinNickCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_joinNickCheckLabel"> </label>							
+						</div>
+						<div id="main_sendInfoBtn">
+							<input type="button" value="가입하기" id="main_joinBtn">
+						</div>
+					</form>
+				</div>
+				<div id="main_backArea">
+					<a href="#main_loginModal" class="main_loginPopupBtn"> 로그인</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="main_pwSearchModal" class="main_pwSearchPopup" style="display: none;">
+			<!-- 비밀번호찾기 페이지-->
+			<div id="main_pwSearch" >
+				<div id="main_pwSearchHeader">
+					<h1>SEARCH STUDY</h1>
+				</div>
+
+				<div>
+					<form action="sendEmail" method="post" id="pwSearchForm">
+						<div id="main_pwSearchArea" class="divBox1">
+							<input type="text" placeholder="이메일" class="inputBox1" name="main_pwSearchUser" id="main_pwSearchUser">
+						</div>
+						<div class="main_labelRow"  id="main_pwSearchCheckArea" style="display:none">
+							<label class="main_loginCheck" id="main_pwSearchCheckLabel"> </label>							
+						</div>
+						<div id="main_sendEamilBtn">
+							<input type="button" value="이메일로 보내기">
+						</div>
+					</form>
+				</div>
+				<div id="main_backArea">
+					<a href="#main_loginModal" class="main_loginPopupBtn"> 로그인</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </body>
 </html>
