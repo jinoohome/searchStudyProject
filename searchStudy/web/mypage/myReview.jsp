@@ -922,8 +922,7 @@ $(document).ready(function() {
 			
 					<div class="body review list ">
 						<div class="review_detail">
-							<a class="i_wrap" href="/timeline/50b6dc12d20c781e6700004b">
-							<i class="image border_radius circle" style="display: inline-block; background-image: url(&quot;http://c4.poing.co.kr/55ea410bd820b94b140000f7.jpg&quot;);"></i>
+							<i class="image border_radius circle" style="display: inline-block;"></i>
 							</a>
 							<div class="user">
 								<div class="name ">
@@ -1087,7 +1086,7 @@ $(document).ready(function() {
 								<div class="text">
 								<pre><%= reviewPageList.get(z).getContents() %></pre>
 								</div>
-						<%-- 	<%	if(reviewImagePageList.get(z).getRenamePhoto1() != null){ %>
+						<%--  	<%	if(reviewImagePageList.get(z) != null){ %>
 											
 								<ul class="photo_list">
 									<li class="item">
@@ -1125,8 +1124,8 @@ $(document).ready(function() {
 								
 							<%	}else{ %>
 								<div style="text-align: center">사진 없음</div>
-							<%	} %>
- --%>									<div class="action">
+							<%	} %> --%>
+									<div class="action">
 								<%if(member !=null){ %>
 										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
 											수정하기  
