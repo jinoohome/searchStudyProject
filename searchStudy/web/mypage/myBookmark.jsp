@@ -30,7 +30,7 @@
 		<div id="nav_container" class="">
 			<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 				<!-- logo section -->
-			<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
+			<a id="nav_logo" href="/easyStudy/index.jsp"><img class="logo" src="images/logo.png"></a>
 
 			<!-- area search section -->
 			<%if(member != null){ %>
@@ -134,7 +134,7 @@
                 <%if(i%3==0){ %>
              <div class="element medium first ">
                   
-                  <a href="#" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
+                  <a href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>&score=<%=list.get(i).getScore() %>" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
             
                     <div class="shading"></div>
         			<div class="top"> 
@@ -314,7 +314,7 @@ $(document).ready(function() {
           
              <%}else{ %>
                 <div class="element medium">
-                  <a href="#" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
+                  <a href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>&score=<%=list.get(i).getScore() %>" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
                     <div class="shading"></div>
         				<div class="top"> 
         				<button class="" onclick="return false;" tabindex="-1">

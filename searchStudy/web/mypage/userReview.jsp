@@ -480,7 +480,7 @@ $("#bannerSlider").on("selectstart", function()
 								<div class="text">
 								<pre><%= reviewPageList.get(z).getContents() %></pre>
 								</div>
-						<%-- 	<%	if(reviewImagePageList.get(z).getRenamePhoto1() != null){ %>
+							<%	if(reviewImagePageList.get(z).getRenamePhoto1() != null){ %>
 											
 								<ul class="photo_list">
 									<li class="item">
@@ -519,7 +519,7 @@ $("#bannerSlider").on("selectstart", function()
 							<%	}else{ %>
 								<div style="text-align: center">사진 없음</div>
 							<%	} %>
- --%>									<div class="action">
+									<div class="action">
 
 										<a href="urdel?listNo=<%= reviewPageList.get(z).getListNo()%>&page=<%=currentPage %>&nickname=<%=member.getNickName() %>" onclick="return confirm('정말 리뷰를 삭제하시겠습니까?')" class="func">
 											삭제하기

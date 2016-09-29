@@ -750,7 +750,7 @@ $(document).ready(function() {
 				<div id="nav_container" class="">
 					<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 						<!-- logo section -->
-					<a id="nav_logo" href="index.jsp"><img class="logo" src="images/logo.png"></a>
+					<a id="nav_logo" href="/easyStudy/index.jsp"><img class="logo" src="images/logo.png"></a>
 		
 					<!-- area search section -->
 					<%if(member != null){ %>
