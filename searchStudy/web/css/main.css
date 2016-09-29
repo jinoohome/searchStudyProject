@@ -1021,9 +1021,27 @@ div.page-list>ul.pagination>li.active {
 
 /* footer 카피라이터 */
 #footer_wrap {
-   /* padding: 26px 32px 10px;*/
+      padding: 26px 32px 10px;
     background: #373737;
     color: #fff;
     overflow: hidden;
     width:100%;
+}
+
+#footer>.logo {
+    display: block;
+    margin-bottom: 12px;
+}
+
+#footer>.slogan {
+        margin-bottom: 35px;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+#footer>.author {
+    font-size: 10px;
+    line-height: 19px;
+    padding-top: 20px;
+    color:#bbb9b9;
 }

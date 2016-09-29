@@ -634,8 +634,12 @@ $( document ).ready(function() {
 	
 	
 	<div id="footer_wrap">
-		<div style="width:970px; height:208px; background:gray;"></div>
-	</div>
+      <div id="footer" style="width:970px; height:208px;">
+         <img class="logo" src="images/logo.png" style="width:100px; height:auto;">
+         <div class="slogan">특별한 공간에서 공부하는 방법.<br>즐거운 공부 하세요.<br>성공 할 수 있습니다.</div>
+         <div class="author">(주)이지스터디  만든이들 : 최진형, 유의현, 하지수, 박유화, 양명준&nbsp;&nbsp;|&nbsp;&nbsp;HK정보교육원&nbsp;&nbsp;|&nbsp;&nbsp;등록번호 :778484758&nbsp;&nbsp;|&nbsp;&nbsp;1F 서울시 강남구 역삼동 152309 </div>
+      </div>
+   </div>
 	
 </div>
 
