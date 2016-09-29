@@ -16,6 +16,52 @@
 	String cg = (String)request.getAttribute("categorys");
 	String sort = (String)request.getAttribute("sort");
 	String[] bookmarks = (String[])request.getAttribute("bookmarks");
+	/* 
+	String storeId = (String)request.getAttribute("storeId");
+	String score = (String)request.getAttribute("score");
+	System.out.print(storeId+":"+score+"=================\n");
+	 */
+
+	 
+	Cookie[] cook = request.getCookies();
+	for(Cookie c : cook){
+		System.out.print("search 쿠키 받아지나? "+c.getValue()+"\n");
+	/* 	c.setMaxAge(0);//초단위  
+		c.setPath("/");
+		response.addCookie(c); */
+		
+	}
+	
+	String item[] = new String[cook.length];
+	String name[] = new String[cook.length];
+	String key[] = new String[cook.length];
+	String score[] = new String[cook.length];
+	System.out.print("search cook length: "+cook.length+"\n");
+	if(cook != null){
+			for(int i=0;i<cook.length; i++){
+				
+				key[i] =cook[i].getName();
+				if(!(java.net.URLDecoder.decode(key[i],"utf-8").equals("JSESSIONID"))){
+				
+				String value= java.net.URLDecoder.decode(cook[i].getValue(),"utf-8");
+				score[i] = value.split(",")[2];
+				name[i] =value.split(",")[0];
+				item[i] = value.split(",")[1];
+				System.out.print("search cook item:"+ i +" : "+key[i]+"\n");
+					System.out.print("search cook item:"+item[i]+"\n");
+					System.out.print("search cook item:"+name[i]+"\n");
+					System.out.print("search cook item:"+score[i]+"\n");
+			
+				
+					//System.out.print("search cook key: "+i+" - "+name[i]+"\n");
+					//System.out.print("search cook item: "+i+" - "+item[i]+"\n");
+				}
+				
+				
+				
+			
+		}
+	}
 	
 %>
 <!DOCTYPE html>
@@ -1135,7 +1181,7 @@ a {
 							<a
 								href="/easyStudy/DView?storeId=<%=list.get(i).getStoreId() %>&score=<%=list.get(i).getScore() %>"
 								class="image"
-								style="background-image: url(<%=list.get(i).getImgRoute() %>);">
+								style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
 
 								<div class="shading"></div> <%if( member != null && !("관리자".equals( member.getNickName() )) ){ %>
 								<div class="top">
@@ -1302,7 +1348,7 @@ a {
 						<%}else{ %>
 						<div class="element medium">
 							<a href="#" class="image"
-								style="background-image: url(<%=list.get(i).getImgRoute() %>);">
+								style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
 								<div class="shading"></div> <%if( member != null && !("관리자".equals( member.getNickName() )) ){ %>
 								<div class="top">
 									<button class="" onclick="return false;" tabindex="-1">
@@ -1536,14 +1582,42 @@ a {
 					<div id="find" class="sidebar">
 						<div class="title">찾아 본 페이지</div>
 						<ul class="list">
-							<li class="item"><a class="i_wrap" href="#"> <i
-									class="image border_radius soft"
-									style="background-color: #eee;"></i>
-							</a>
+						<% if(cook.length < 5){ %>
+							<%for(int i=1; i<cook.length; i++){ %>
+								<% if(name[i] != null && item[i] !=null){%>
+						
+								<li class="item">
+								<a class="i_wrap" href="/easyStudy/DView?storeId=<%=key[i]%>&score=<%=score[i]%>">
+								
+								<div id="sideimg" style="background-image:url(images/<%=item[i] %>)"></div>
+								
 								<div class="desc">
-									<div class="name">상점이름</div>
-									<div class="comment"></div>
-								</div></li>
+										<div class="name"><%=name[i] %></div>
+									</div>
+								</a>
+									</li>
+									
+									<%}
+								} 
+							}else{	%>
+							
+								<%for(int i=cook.length-4; i<cook.length; i++){ %>
+								<% if(name[i] != null && item[i] !=null){%>
+						
+								<li class="item">
+								<a class="i_wrap" href="/easyStudy/DView?storeId=<%=key[i]%>&score=<%=score[i]%>">
+								
+								<div id="sideimg" style="background-image:url(images/<%=item[i] %>)"></div>
+								
+								<div class="desc">
+										<div class="name"><%=name[i] %></div>
+									</div>
+								</a>
+									</li>
+								
+									<%}
+								} 
+							}%>
 
 						</ul>
 					</div>

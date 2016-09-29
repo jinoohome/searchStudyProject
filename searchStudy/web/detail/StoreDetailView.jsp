@@ -22,6 +22,20 @@
 	if(member !=null){
 		nickname = member.getNickName();
 	}
+	
+	//String storeName = java.net.URLEncoder.encode(s.getStoreName());
+	String detail = s.getStoreName()+","+i.getPhoto1()+","+score;
+	//상품정보 쿠기 저장
+	
+	Cookie cook = new Cookie(s.getStoreId(), java.net.URLEncoder.encode(detail,"utf-8"));
+
+	cook.setMaxAge(5*60);//초단위  
+	cook.setPath("/");
+	
+	response.addCookie(cook);
+	
+	System.out.print("detail storeName:"+cook.getName()+"\n");
+	System.out.print("detail storeImg:"+cook.getValue()+"\n");
 		
 %>
 <!DOCTYPE html>

@@ -667,10 +667,12 @@ button:focus { outline:none }
     display: block;
     font-size: 16px;
     letter-spacing: -1px;
+    color:#fff;
 }
 
 .element>.image>.bottom>.area {
     font-size: 13px;
+    color:#fff;
 }
 
 
@@ -932,6 +934,7 @@ div.page-list>ul.pagination>li.active {
     width: 220px;
     margin-top: 136px;
     float: right;
+    padding-bottom: 50px;
 }
 
 #sidebar_wrap>.sidebar {
@@ -959,15 +962,14 @@ div.page-list>ul.pagination>li.active {
 
 #sidebar_wrap>.sidebar>.list>.item {
     min-height: 43px;
-    padding: 10px 0;
+    padding: 20px 0;
+    overflow:hidden;
+	height:auto;
     border-bottom: 1px solid #e3e3e3;
 }
 
-#sidebar_wrap>#find>.list>.item:list-child{
-	border-bottom:none;
-}
-#sidebar_wrap>#find>.list>.item {
-    padding: 20px 0;
+#sidebar_wrap>.sidebar>.list>.item:last-child{
+	 border-bottom: none;
 }
 
 .i_wrap {
@@ -975,8 +977,6 @@ div.page-list>ul.pagination>li.active {
 }
 #sidebar_wrap>.sidebar>.list>.item>.i_wrap {
     float: left;
-    width: 46px;
-    height: 46px;
 }
 
 #sidebar_wrap>#find>.list>.item>.i_wrap {
@@ -986,11 +986,21 @@ div.page-list>ul.pagination>li.active {
     margin-left: 11px;
     position: relative;
 }
-#sidebar_wrap>#find>.list>.item>.desc {
-    padding: 0 11px;
+
+#sidebar_wrap>#find>.list>.item>.i_wrap>#sideimg{
+	width: 175px;
+    height: 175px;
+    background-size: auto 175px;
+    border-radius: 3px;
+    display: block;
 }
 
-#sidebar_wrap>#find>.list>.item>.desc>.name {
+#sidebar_wrap>#find>.list>.item>.i_wrap>.desc {
+   padding: 10px 0px;
+    text-align: center;
+}
+
+#sidebar_wrap>#find>.list>.item>.i_wrap>.desc>.name {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 5px;
