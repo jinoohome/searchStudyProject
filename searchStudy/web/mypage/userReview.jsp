@@ -7,6 +7,7 @@
 	ArrayList<ReviewImage> reviewImagePageList = (ArrayList<ReviewImage>)request.getAttribute("reviewImagePageList");
 	System.out.println("member" + member);
 	
+	String nickname = (String)request.getAttribute("nickname");
 	int listCount = ((Integer)request.getAttribute("listCount")).intValue(); 
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue(); 
 	int maxPage =((Integer)request.getAttribute("maxPage")).intValue(); 
@@ -536,7 +537,7 @@ $("#bannerSlider").on("selectstart", function()
 				    	<% if(currentPage <= 1){ %> 
 				             <li>&lt;&lt;</li>
 				            <%}else{ %> 
-				           	<li><a href="/easyStudy/ureview?page=<%= currentPage - 1 %>&nickname=<%=member.getNickName() %>">&lt;&lt;</a></li>
+				           	<li><a href="/easyStudy/ureview?page=<%= currentPage - 1 %>&nickname=<%=nickname %>">&lt;&lt;</a></li>
 				            <% } %> 
 				          
 				            
@@ -544,7 +545,7 @@ $("#bannerSlider").on("selectstart", function()
 				                if(p == currentPage){ %> 
 				                	<li class="active"><%= p %></li>
 				                <%}else{ %> 
-				               <li> <a href="/easyStudy/ureview?page=<%= p %>&nickname=<%=member.getNickName() %>"><%= p %></a></li>
+				               <li> <a href="/easyStudy/ureview?page=<%= p %>&nickname=<%=nickname%>"><%= p %></a></li>
 				                <% } %> 
 				            <% } %> 
 				            

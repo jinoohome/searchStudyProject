@@ -1617,7 +1617,7 @@ $(function(){
 				    	<% if(currentPage <= 1){ %> 
 				             <li>&lt;&lt;</li>
 				            <%}else{ %> 
-				           	<li><a href="/easyStudy-1/rlist?page=<%= currentPage - 1 %>&storeId=<%= s.getStoreId() %>">&lt;&lt;</a></li>
+				           	<li><a href="/easyStudy/DView?page=<%= currentPage - 1 %>&storeId=<%= s.getStoreId() %>&score=<%=score %>">&lt;&lt;</a></li>
 				            <% } %> 
 				          
 				            
@@ -1625,7 +1625,7 @@ $(function(){
 				                if(p == currentPage){ %> 
 				                	<li class="active"><%= p %></li>
 				                <%}else{ %> 
-				               <li> <a href="/easyStudy-1/rlist?page=<%= p %>&storeId=<%= s.getStoreId() %>"><%= p %></a></li>
+				               <li> <a href="/easyStudy/DView?page=<%= p %>&storeId=<%= s.getStoreId() %>&score=<%=score %>"><%= p %></a></li>
 				                <% } %> 
 				            <% } %> 
 				            
@@ -1633,7 +1633,7 @@ $(function(){
 				            <% if(currentPage >= maxPage){ %> 
 				            	<li>&gt;&gt;</li>
 				            <%}else{ %> 
-				            <li><a href="/easyStudy-1/rlist?page=<%= currentPage + 1 %>&storeId=<%= s.getStoreId() %>">&gt;&gt;</a></li>
+				            <li><a href="/easyStudy/DView?page=<%= currentPage + 1 %>&storeId=<%= s.getStoreId() %>&score=<%=score %>">&gt;&gt;</a></li>
 				            <% } %>
 				            
 				            </ul>
