@@ -526,8 +526,11 @@ $("#bannerSlider").on("selectstart", function()
 //시작하자마자 수정버튼 숨기기
 $( document ).ready(function() {
 	//수정버튼 클릭
+	$('#mypage_myreviewModify').hide();
+	
 	$('#modifyGo').click(function(){
-		alert("수정하기");
+		
+		
 		var contents = $("#review_text").val();
 		var listno = $('#hiddenlistno').val();
 		alert(listno);
@@ -562,7 +565,6 @@ $( document ).ready(function() {
 		if($("#p1").is(":checked")){
 			score = 0.5;
 		}
-		alert("고!");
 		location.href = "/easyStudy/myreviewupdateQ?listno=" + listno + "&updatescore=" + score + "&contents=" + contents + "&nickname=<%=member.getNickName() %>&page=<%=currentPage %>";
 		
 		
@@ -572,7 +574,6 @@ $( document ).ready(function() {
 
 
 function update(listNo){
-	alert("sssss : " + listNo );
 	
 	$.ajax({
 		url : "rupdate",
@@ -580,8 +581,7 @@ function update(listNo){
 		type : "post",
 		dataType : "json", //명시해줘야 data를 json 타입으로 받아준다.
 		success : function(data){
-			alert(data.listNo + ", " + data.score + ", " + data.contents);
-		
+			$('#mypage_myreviewModify').show();
 			//내용			
 			$("#hiddenlistno").val(data.listNo);
 			$("#review_text").text($("#review_text").text() + data.contents);
@@ -631,33 +631,7 @@ function update(listNo){
 			}
 			
 			
-			//console.log("ffffffffffffffff : " + data.renamePhoto1);
-			//readURL("E:\server workspace\easyStudy-1\web\uploadFiles" + data.renamePhoto1);
 			
-			/*
-			if(data.renamePhoto1 != null){
-				
-				//$("#AA").append($("<input type='file' multiple name='reviewPhoto1' id='upBtn1_1' class='' value= '" + data.renamePhoto1 + "'/>"));
-				//$("#upBtn1_1").attr('files', data.renamePhoto1);
-				
-				/* var fName = "E:\\server workspace\\easyStudy-1\\web\\uploadFiles\\" + data.renamePhoto1;
-				var ext = data.renamePhoto1.split(".").pop();
-				console.log(ext);
-				
-				ext.toLowerCase();
-				
-				if(ext.length > 0){
-					//if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
-					if($.inArray(ext,['gif','png','jpg','jpeg']) == -1) { 
-						alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
-						this.value = "";
-						return;  
-					} else {
-						readURL(fName);	
-					}	
-				}
-			}
-			*/
 			var num = 1;
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -855,7 +829,7 @@ $(document).ready(function() {
 							<li class="item"><a href="">포토</a></li>
 							<li class="item"><a href="">리뷰</a></li>
 						</ul> -->
-							<form action="" method="post" enctype="multipart/form-data" style="margin:0;" >
+							<form id="mypage_myreviewModify" action="" method="post" enctype="multipart/form-data" style="margin:0;" >
 								<div class="body first">
 									<div class="title">
 										리뷰 수정하기
