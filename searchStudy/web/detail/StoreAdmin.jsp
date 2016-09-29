@@ -10,17 +10,371 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <link rel="stylesheet" href="css/main.css" type="text/css"/>
- <link rel="stylesheet" href="css/layout.css" type="text/css">  
- <link rel="stylesheet" href="css/function.css" type="text/css"> 
- <script type="text/javascript" src="js/jquery-3.1.0.min.js"> </script>
- <script type="text/javascript" src="js/navigation.js"> </script>
- <script type="text/javascript" src="js/jquery.leanModal.min.js"></script> <!--dialog -->
-<script type="text/javascript" src="/easyStudy/js/navigation.js">
-	
-</script>
-<title>Admin</title>
+ <link rel="stylesheet" href="/easyStudy/css/main.css" type="text/css"/>
+ <link rel="stylesheet" href="/easyStudy/css/layout.css" type="text/css">  
+ <link rel="stylesheet" href="/easyStudy/css/function.css" type="text/css"> 
+ <script type="text/javascript" src="/easyStudy/js/jquery-3.1.0.min.js"> </script>
+ <script type="text/javascript" src="/easyStudy/js/navigation.js"> </script>
+ <script type="text/javascript" src="/easyStudy/js/jquery.leanModal.min.js"></script> <!--dialog -->
+<script type="text/javascript" src="/easyStudy/js/navigation.js"></script>
 
+<title>Admin</title>
+<script>
+$( document ).ready(function() {
+	   $("button").attr("tabindex", "-1");
+	   $("body").on("click", " button", function(e)
+	   {
+	      var type = $(this).data("type");
+
+	      if(type != null)
+	      {
+	         $(this).blur();
+	         $.proxy(eval(type), this)();
+	      }
+	   });
+	   $("#banner").on("selectstart", function()
+	         {
+	             return false;
+	         });
+	$("#banner").on("selectstart", function()
+	      {
+	          return false;
+	      });
+	      function TriSlider(options) {
+	          var slider = $(options.selector);
+	          var pieces = slider.children(".pieces");
+	          var max = pieces.data('max');
+	          var fake_pieces = options.fake_pieces? options.fake_pieces:2;
+	          var width = 850;
+	          var start_point = -width * (fake_pieces-1);
+	          var start_index = options.start_index? options.start_index:0;
+	          var isSliding = false;
+
+	          (function() {
+	              pieces.data('index', start_index);
+	              pieces.css('left', (-width*(start_index+1) + start_point)+'px');
+	          
+	              slider.find(".index>li").removeClass('current');
+	              slider.find(".index>li[data-id="+start_index+"]").addClass('current');
+
+	              pieces.show();
+	          })();
+
+	          var piece = slider.find(".piece"),
+	              first   = piece.filter(':first'),
+	              last    = piece.filter(':last');
+
+	          // 슬라이더가 0개임
+	          if(piece.length == 0) 
+	              return false;
+
+	          // 가짜 페이지들을 만들 때, 설정한 갯수가 진짜 페이지의 최대 갯수보다 많을 경우
+	          var rest = fake_pieces % piece.length;
+	          if(rest > 0) {
+	              first.before( piece.slice(-1 * rest).clone(true) );
+	              last.after( piece.slice(0, rest).clone(true) );
+	          }
+
+	          for(var i=0, len = Math.floor(fake_pieces / piece.length); i<len; ++i) {
+	              first.before( piece.clone(true) );
+	              last.after( piece.clone(true) );
+	          }
+
+	          var slide = function(add) {
+	              isSliding = true;
+	              var index = pieces.data('index');
+
+	              index += add;
+	              pieces.data('index', index);
+	              pieces.animate({left : (-width*(index+1) + start_point)+'px'}, 
+	                  {'duration':300,
+	                   'complete':function() {
+	                      if(index == -1) { // attach to left
+	                          index = max - 1;
+	                          pieces.data('index', index);
+	                          pieces.css('left', (-width*(index+1) + start_point)+'px');
+	                      } else if(index == max) { // attach to right
+	                          index = 0;
+	                          pieces.data('index', index);
+	                          pieces.css('left', (-width*(index+1) + start_point)+'px');
+	                      }
+	                      slider.find(".index>li").removeClass('current');
+	                      slider.find(".index>li[data-id="+index+"]").addClass('current');
+
+	                      if( options.complete )
+	                          options.complete( pieces.children(".piece").get(index+fake_pieces) );
+
+	                      isSliding = false;
+	                  }
+	              });
+	          }
+
+	          this.prev = function() {
+	              if(isSliding === false)
+	                  slide(-1);
+	          };
+
+	          this.next = function() {
+	              if(isSliding === false)
+	                  slide(1);
+	          };
+	          
+	          slider.find(".nav>.left").click(this.prev);
+	          slider.find(".nav>.right").click(this.next);
+
+	          if(options.duration > 0)
+	              setInterval(this.next, options.duration);
+	      };
+	      var TriSlider = new TriSlider({'selector':'#banner>.trislider'});
+	});
+
+</script>
+<script>
+$( document ).ready(function() {
+	/*WebStorge 최근 저장된 로그인정보 가져오기 */
+	if(!window.localStorage) { 
+		alert('이 Browser 는 Local Storage 를 지원하지 않습니다.'); 
+	}else { 
+			var key = localStorage.key(0); 
+			var value = localStorage[key];
+			$('#main_loginUserId').val(key);
+			$('#main_loginUserPwd').val(value);
+	};
+	/* localStorage.clear(); */
+	
+	/*로그인 패스워드 확인여부*/
+	$("#main_loginBtn").click(function(){
+		if ($("#main_login_chk").is(":checked")) {
+			$.fnWebStorge();
+		}
+		var str = $("#loginForm").serialize();
+		$.ajax({
+			type:'POST',
+			url:"/easyStudy/pwCheck",
+			data: str,
+			success: function(data) {
+				if(data.result==0){
+					$("#main_loginPwCheckArea").css('display','block');
+					$("#main_loginPwCheckArea").css('background','#ffeeee');
+					$("#main_loginPwCheckLabel").css('color','red');
+					$("#main_loginPwCheckLabel").html("이메일 또는 비밀번호를 다시 확인해주세요");
+				}else{
+					$("#main_loginPwCheckArea").css('display','none');
+					$("#loginForm").submit();
+				}			
+			},
+			error: function(data) {
+				alert("에러");
+			}			
+		});
+	});
+
+	/*회원가입 아이디 존재여부확인*/
+	var joinIdCheck = false;
+	$("#main_joinUserId").blur(function(){
+		if($("#main_joinUserId").val().length != 0){
+			var str = $("#joinForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/idCheck",
+				data: str,
+				success: function(data) {
+					var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (re.test($("#main_joinUserId").val())) {
+						if(data.result>0){
+							$("#main_joinIdCheckArea").css('display','block');
+							$("#main_joinIdCheckArea").css('background','#ffeeee');
+							$("#main_joinIdCheckLabel").css('color','red');
+							$("#main_joinIdCheckLabel").html("이미 존재하는 이메일 입니다");
+						}else{
+							$("#main_joinIdCheckArea").css('display','block');
+							$("#main_joinIdCheckArea").css('background','#def7de');
+							$("#main_joinIdCheckLabel").css('color','green');
+							$("#main_joinIdCheckLabel").html("사용가능한 이메일입니다");
+							joinIdCheck = true;
+						}	
+					 
+				   return false;
+				 }else{
+					 $("#main_joinIdCheckArea").css('display','block');
+						$("#main_joinIdCheckArea").css('background','#ffeeee');
+						$("#main_joinIdCheckLabel").css('color','red');
+						$("#main_joinIdCheckLabel").html("올바른 이메일 형식이 아닙니다.");
+				 }
+				
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+		
+	});
+	
+	/*회원가입 비밀번호 사용가능여부확인*/
+	var joinPwdCheck= false;
+	$("#main_joinUserPwd").blur(function(){
+		var joinPassword = $("#main_joinUserPwd").val();
+		if(joinPassword.length !=0){
+			if(joinPassword.length > 0 && joinPassword.length < 8){
+				$("#main_joinPwCheckArea").css('display','block');
+				$("#main_joinPwCheckArea").css('background','#ffeeee');
+				$("#main_joinPwCheckLabel").css('color','red');
+				$("#main_joinPwCheckLabel").html("비밀번호는 8글자이상 입력하시기 바랍니다");
+			}else{
+				$("#main_joinPwCheckArea").css('display','block');
+				$("#main_joinPwCheckArea").css('background','#def7de');
+				$("#main_joinPwCheckLabel").css('color','green');
+				$("#main_joinPwCheckLabel").html("사용가능한 비밀번호 입니다");
+				joinPwdCheck = true;
+			}
+		}
+	});
+	
+	
+	/*회원가입 비밀번호 동일여부확인*/
+	var joinPwdChkCheck = false;
+	$("#main_joinUserPwdChk").blur(function(){
+		var joinPassword = $("#main_joinUserPwd").val();
+		var joinPasswordChk = $("#main_joinUserPwdChk").val();
+		if(joinPasswordChk.length !=0){
+			if(joinPassword != joinPasswordChk ){
+				$("#main_joinPwCheckChkArea").css('display','block');
+				$("#main_joinPwCheckChkArea").css('background','#ffeeee');
+				$("#main_joinPwCheckChkLabel").css('color','red');
+				$("#main_joinPwCheckChkLabel").html("비밀번호가 동일하지 않습니다");
+			}else{
+				$("#main_joinPwCheckChkArea").css('display','block');
+				$("#main_joinPwCheckChkArea").css('background','#def7de');
+				$("#main_joinPwCheckChkLabel").css('color','green');
+				$("#main_joinPwCheckChkLabel").html("비밀번호가 동일합니다");
+				joinPwdChkCheck = true;
+			}
+		}
+	});
+	
+	/*회원가입 nickname 동일여부확인*/
+	var joinNicknameCheck= false;
+	$("#main_joinUserNickName").blur(function(){
+		if($("#main_joinUserNickName").val().length != 0){
+			var str = $("#joinForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/nickNameCheck",
+				data: str,
+				success: function(data) {
+					if(data.result>0){
+						$("#main_joinNickCheckArea").css('display','block');
+						$("#main_joinNickCheckArea").css('background','#ffeeee');
+						$("#main_joinNickCheckLabel").css('color','red');
+						$("#main_joinNickCheckLabel").html("이미 존재하는 nickname 입니다");
+					}else{
+						$("#main_joinNickCheckArea").css('display','block');
+						$("#main_joinNickCheckArea").css('background','#def7de');
+						$("#main_joinNickCheckLabel").css('color','green');
+						$("#main_joinNickCheckLabel").html("사용가능한 nickname");
+						joinNicknameCheck =true;
+					}	
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+	});
+	/*회원가입 가능 여부 확인*/
+	$("#main_joinBtn").click(function(){
+		if(joinIdCheck == true && joinPwdCheck == true && 
+				joinPwdChkCheck == true && joinNicknameCheck == true){
+			$("#joinForm").submit();
+		}
+			
+	});
+	
+	/*비밀번호 찾기 아이디 존재여부확인*/
+	$("#main_sendEamilBtn").click(function(){
+		if($("#main_pwSearchUser").val().length != 0){
+			var str = $("#pwSearchForm").serialize();
+			$.ajax({
+				type:'POST',
+				url:"/easyStudy/idCheck",
+				data: str,
+				success: function(data) {
+					if(data.result>0){
+						$("#main_pwSearchCheckArea").css('display','none');
+						$("#pwSearchForm" ).submit();
+					}else{
+						$("#main_pwSearchCheckArea").css('display','block');
+						$("#main_pwSearchCheckArea").css('background','#ffeeee');
+						$("#main_pwSearchCheckLabel").css('color','red');
+						$("#main_pwSearchCheckLabel").html("존재하지 않은 이메일 입니다. 다시 확인해주세요");
+					}	
+				},
+				error: function(data) {
+					alert("에러");
+				}			
+			});
+		}
+		
+	});
+	
+
+		/*********팝업창 관련 jQeury**********/
+		// 로그인 버튼 클릭시
+		$(".main_loginPopupBtn").leanModal({
+			top : 100,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+		$(".main_loginPopupBtn").click(function() {
+			$("#main_login").show();
+			$("#main_join").hide();
+			$("#main_pwSearch").hide();
+
+			return false;
+		});
+
+		// 회원가입 버튼 클릭시
+		$(".main_joinPopupBtn").leanModal({
+			top : 50,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+
+		$(".main_joinPopupBtn").click(function() {
+			$("#main_join").show();
+			$("#main_login").hide();
+			$("#main_pwSearch").hide();
+
+			return false;
+		});
+		
+		// 비밀번호찾기 버튼 클릭시
+		$(".main_pwSearchBtn").leanModal({
+			top : 100,
+			overlay : 0.6,
+			closeButton : ".modal_close"
+		});
+
+		$(".main_pwSearchBtn").click(function() {
+			$("#main_pwSearch").show();
+			$("#main_login").hide();
+			$("#main_join").hide();
+
+			return false;
+		});
+		
+		/* 주변 화면으로 팝업 종료 */
+		$("#lean_overlay").click(function(){
+			$("#main_loginWrap input[type=text]").val("");
+			$("#main_loginWrap input[type=email]").val("");
+			$("#main_loginWrap input[type=password]").val("");
+			$("#main_loginWrap input[type=checkbox]").prop('checked', false);
+			$(".main_labelRow").css("display","none");
+		});
+		
+	});
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -32,7 +386,7 @@
 						<div id="nav_container" class="">
 							<div id="nav_shading" class="shading_bg" style="display: none;"></div>
 							<!-- logo section -->
-							<a id="nav_logo" href="index.jsp"><img class="logo"	src="images/logo.png"></a>
+							<a id="nav_logo" href="index.jsp"><img class="logo"	src="/easyStudy/images/logo.png"></a>
 
 							<!-- area search section -->
 							<%
@@ -158,13 +512,13 @@
 						<div class="pieces" data-index="0" data-max="5"
 							style="left: -1700px; display: block;">
 							<a href="" class="piece"
-								style="background-image: url(images/main1.jpg);"></a> <a href=""
-								class="piece" style="background-image: url(images/main2.jpg)"></a>
+								style="background-image: url(/easyStudy/images/main1.jpg);"></a> <a href=""
+								class="piece" style="background-image: url(/easyStudy/images/main2.jpg)"></a>
 							<a href="" class="piece"
-								style="background-image: url(images/main3.jpg)"></a> <a href=""
-								class="piece" style="background-image: url(images/main4.jpg)"></a>
+								style="background-image: url(/easyStudy/images/main3.jpg)"></a> <a href=""
+								class="piece" style="background-image: url(/easyStudy/images/main4.jpg)"></a>
 							<a href="" class="piece"
-								style="background-image: url(images/main5.jpg)"></a>
+								style="background-image: url(/easyStudy/images/main5.jpg)"></a>
 
 						</div>
 						<div class="left shadow"></div>
@@ -178,8 +532,8 @@
 							<li data-id="4" class="">●</li>
 						</ul>
 						<div class="nav">
-							<img class="left" alt="icon" src="images/left_arrow.png" /> <img
-								class="right" alt="icon" src="images/right_arrow.png" />
+							<img class="left" alt="icon" src="/easyStudy/images/left_arrow.png" /> <img
+								class="right" alt="icon" src="/easyStudy/images/right_arrow.png" />
 						</div>
 					</div>
 				</div>
