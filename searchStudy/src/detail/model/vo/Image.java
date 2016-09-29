@@ -3,7 +3,7 @@ package detail.model.vo;
 import java.io.Serializable;
 
 public class Image implements Serializable {
-
+	private String storeId;
 	private String photo1;
 	private String photo2;
 	private String photo3;
@@ -11,6 +11,16 @@ public class Image implements Serializable {
 	private String photo5;
 
 	public Image() {
+	}
+	
+	public Image(String storeId, String photo1, String photo2, String photo3, String photo4, String photo5) {
+		super();
+		this.storeId = storeId;
+		this.photo1 = photo1;
+		this.photo2 = photo2;
+		this.photo3 = photo3;
+		this.photo4 = photo4;
+		this.photo5 = photo5;
 	}
 
 	public Image(String photo1, String photo2, String photo3, String photo4, String photo5) {
@@ -20,6 +30,14 @@ public class Image implements Serializable {
 		this.photo3 = photo3;
 		this.photo4 = photo4;
 		this.photo5 = photo5;
+	}
+
+	public String getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
 	}
 
 	public String getPhoto1() {
@@ -64,8 +82,9 @@ public class Image implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Image [photo1=" + photo1 + ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4
-				+ ", photo5=" + photo5 + "]";
+		return "Image [storeId=" + storeId + ", photo1=" + photo1 + ", photo2=" + photo2 + ", photo3=" + photo3
+				+ ", photo4=" + photo4 + ", photo5=" + photo5 + "]";
 	}
+
 
 }

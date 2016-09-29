@@ -9,6 +9,7 @@ import java.sql.Connection;
 
 import detail.model.dao.DetailDao;
 import detail.model.vo.Image;
+import detail.model.vo.Service;
 import detail.model.vo.Store;
 
 public class DetailService {
@@ -20,6 +21,12 @@ public class DetailService {
 		Connection con = getConnection();
 		Store store = new DetailDao().selectRow(con, storeId);
 		return store;
+	}
+	
+	public String selectStoreId() {
+		Connection con = getConnection();
+		String storeId = new DetailDao().selectStoreId(con);
+		return storeId;
 	}
 
 	public Image selectPhoto(String storeId) {
@@ -33,6 +40,30 @@ public class DetailService {
 			
 		Connection con = getConnection();
 		int result = new DetailDao().insertNewStore(con, nstore);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+	public int insertNewImage(Image nimage) {
+		// TODO Auto-generated method stub
+		
+		Connection con = getConnection();
+		int result = new DetailDao().insertNewImage(con, nimage);
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+		close(con);
+		return result;
+	}
+	public int insertService(Service nservice) {
+	// TODO Auto-generated method stub
+		
+		Connection con = getConnection();
+		int result = new DetailDao().insertService(con, nservice);
 		if(result > 0)
 			commit(con);
 		else

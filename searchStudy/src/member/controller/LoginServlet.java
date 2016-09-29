@@ -31,6 +31,9 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
 		String userId = request.getParameter("main_loginUserId");
 		String userPwd = request.getParameter("main_loginUserPwd");
 		
@@ -39,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 		Member member = new MemberService().loginCheck(userId, userPwd);
 	
 		if(member != null){  //로그인 성공시
+			
 			HttpSession session = request.getSession(); 
 			System.out.println("session id : " + session.getId());
 			session.setAttribute("member", member);

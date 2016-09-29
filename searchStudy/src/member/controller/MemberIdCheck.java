@@ -31,6 +31,9 @@ public class MemberIdCheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
 		String userId = request.getParameter("main_joinUserId");
 		if(userId == null){
 			userId = request.getParameter("main_pwSearchUser");

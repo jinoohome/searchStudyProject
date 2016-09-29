@@ -31,6 +31,9 @@ public class MemberPwCheck extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
 		String userId = request.getParameter("main_loginUserId");
 		String userPwd = request.getParameter("main_loginUserPwd");
 		System.out.println("testsetetstets");

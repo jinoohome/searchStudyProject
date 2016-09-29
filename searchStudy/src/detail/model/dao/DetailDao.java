@@ -6,8 +6,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 import detail.model.vo.Image;
 import detail.model.vo.Store;
+import detail.model.vo.Service;
 
 public class DetailDao {
 	public DetailDao() {
@@ -71,6 +73,34 @@ public class DetailDao {
 		
 		return store;
 	}
+	public String selectStoreId(Connection con) {
+		String storeId = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String query = "SELECT * "
+						+ "FROM (SELECT STORE_ID, ROW_NUMBER() OVER (ORDER BY STORE_ID DESC) RANK "
+						+ 		"FROM STORE ) "
+						+ "WHERE RANK = 1";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				storeId = rset.getString("STORE_ID");
+				
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return storeId;
+	}
 
 
 	public Image selectPhoto(Connection con, String storeId) {
@@ -111,10 +141,21 @@ public class DetailDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String query = "insert into STORE (STORE_ID,STORE_NAME, " + 
+		String seq = null;
+		if (nstore.getLocalCode()=="GN") {
+			seq = "'GN'||LPAD(GN_SEQ.NEXTVAL,4,0)";
+		}else if(nstore.getLocalCode()=="SC"){
+			seq = "'SC'||LPAD(SC_SEQ.NEXTVAL,4,0)";
+		}else if(nstore.getLocalCode()=="SC"){
+			seq = "'JL'||LPAD(JL_SEQ.NEXTVAL,4,0)";
+			
+		}
+		
+		
+		String query = "INSERT INTO STORE (STORE_ID,STORE_NAME, " + 
 				"CATEGORY_ID, LOCAL_CODE, ADDRESS, " + 
 				"HOMEPAGE, TELL, PRICE,WEEKDAY_TIME,WEEKEND_TIME,ETC) "
-				+ "values ('ST'||LPAD(store_seq.nextval,4,0), ?, ?, ?,?,?,?,?,?,?,?)";
+				+ "VALUES ("+seq+",?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -130,6 +171,59 @@ public class DetailDao {
 			pstmt.setString(10, nstore.getEtc());
 
 			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewImage(Connection con, Image nimage) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "INSERT INTO STORE_IMAGE VALUE(?,?,?,?,?,?)";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, nimage.getStoreId());
+			pstmt.setString(2, nimage.getPhoto1());
+			pstmt.setString(3, nimage.getPhoto2());
+			pstmt.setString(4, nimage.getPhoto3());
+			pstmt.setString(5, nimage.getPhoto4());
+			pstmt.setString(6, nimage.getPhoto5());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertService(Connection con, Service nservice) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String query = "INSERT INTO STORE_SERVICE VALUE(?,?,?,?,?)";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, nservice.getStoreId());
+			pstmt.setString(2, nservice.getLaptop());
+			pstmt.setString(3, nservice.getBeam());
+			pstmt.setString(4, nservice.getWifi());
+			pstmt.setString(5, nservice.getBoard());
 			
 			result = pstmt.executeUpdate();
 			
