@@ -77,6 +77,120 @@
 <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 <!--dialog -->
 
+
+<script>
+$( document ).ready(function() {
+	   $("button").attr("tabindex", "-1");
+	   $("body").on("click", " button", function(e)
+	   {
+	      var type = $(this).data("type");
+
+	      if(type != null)
+	      {
+	         $(this).blur();
+	         $.proxy(eval(type), this)();
+	      }
+	   });
+	   $("#banner").on("selectstart", function()
+	         {
+	             return false;
+	         });
+	$("#banner").on("selectstart", function()
+	      {
+	          return false;
+	      });
+	      function TriSlider(options) {
+	          var slider = $(options.selector);
+	          var pieces = slider.children(".pieces");
+	          var max = pieces.data('max');
+	          var fake_pieces = options.fake_pieces? options.fake_pieces:2;
+	          var width = 850;
+	          var start_point = -width * (fake_pieces-1);
+	          var start_index = options.start_index? options.start_index:0;
+	          var isSliding = false;
+
+	          (function() {
+	              pieces.data('index', start_index);
+	              pieces.css('left', (-width*(start_index+1) + start_point)+'px');
+	          
+	              slider.find(".index>li").removeClass('current');
+	              slider.find(".index>li[data-id="+start_index+"]").addClass('current');
+
+	              pieces.show();
+	          })();
+
+	          var piece = slider.find(".piece"),
+	              first   = piece.filter(':first'),
+	              last    = piece.filter(':last');
+
+	          // 슬라이더가 0개임
+	          if(piece.length == 0) 
+	              return false;
+
+	          // 가짜 페이지들을 만들 때, 설정한 갯수가 진짜 페이지의 최대 갯수보다 많을 경우
+	          var rest = fake_pieces % piece.length;
+	          if(rest > 0) {
+	              first.before( piece.slice(-1 * rest).clone(true) );
+	              last.after( piece.slice(0, rest).clone(true) );
+	          }
+
+	          for(var i=0, len = Math.floor(fake_pieces / piece.length); i<len; ++i) {
+	              first.before( piece.clone(true) );
+	              last.after( piece.clone(true) );
+	          }
+
+	          var slide = function(add) {
+	              isSliding = true;
+	              var index = pieces.data('index');
+
+	              index += add;
+	              pieces.data('index', index);
+	              pieces.animate({left : (-width*(index+1) + start_point)+'px'}, 
+	                  {'duration':300,
+	                   'complete':function() {
+	                      if(index == -1) { // attach to left
+	                          index = max - 1;
+	                          pieces.data('index', index);
+	                          pieces.css('left', (-width*(index+1) + start_point)+'px');
+	                      } else if(index == max) { // attach to right
+	                          index = 0;
+	                          pieces.data('index', index);
+	                          pieces.css('left', (-width*(index+1) + start_point)+'px');
+	                      }
+	                      slider.find(".index>li").removeClass('current');
+	                      slider.find(".index>li[data-id="+index+"]").addClass('current');
+
+	                      if( options.complete )
+	                          options.complete( pieces.children(".piece").get(index+fake_pieces) );
+
+	                      isSliding = false;
+	                  }
+	              });
+	          }
+
+	          this.prev = function() {
+	              if(isSliding === false)
+	                  slide(-1);
+	          };
+
+	          this.next = function() {
+	              if(isSliding === false)
+	                  slide(1);
+	          };
+	          
+	          slider.find(".nav>.left").click(this.prev);
+	          slider.find(".nav>.right").click(this.next);
+
+	          if(options.duration > 0)
+	              setInterval(this.next, options.duration);
+	      };
+	      var TriSlider = new TriSlider({'selector':'#banner>.trislider'});
+	});
+
+
+
+</script>
+
 <!-- 로그인시 버튼관련 -->
 <%if(member != null){ %>
 <%if(list.size() >= 1 ){ %>
@@ -1123,10 +1237,32 @@ a {
 		<div id="container">
 			<!--배너 슬라이더 이미지 banner_warp-->
 			<div id="banner_warp">
-				<div id="banner" style="background-color: rgba(0, 0, 0, 0.3);">
-					<div
-						style="width: 850px; height: 100%; margin: 0 auto; background-color: rgba(0, 0, 0, 0.6);"></div>
-				</div>
+				<div id="banner">
+    <div class="trislider">
+       <div class="pieces" data-index="0" data-max="5" style="left: -1700px; display: block;">
+                       <a href="" class="piece" style="background-image:url(images/main1.jpg);"></a>
+                       <a href="" class="piece" style="background-image:url(images/main2.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/main3.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/main4.jpg)"></a>
+                       <a href="" class="piece" style="background-image:url(images/main5.jpg)"></a>
+                    
+                 </div>
+      <div class="left shadow"></div>
+        <div class="right shadow"></div>
+        
+        <ul class="index">
+                         <li data-id="0" class="current">●</li>
+                         <li data-id="1" class="">●</li>
+                         <li data-id="2" class="">●</li>
+                         <li data-id="3" class="">●</li>
+                         <li data-id="4" class="">●</li>
+                   </ul> 
+       <div class="nav">
+        			<img class="left" alt="icon" src="images/left_arrow.png" />
+        			<img class="right" alt="icon" src="images/right_arrow.png"/>
+       			</div>
+    </div>
+</div>
 			</div>
 			<!--배너 슬라이더 이미지 banner_warp-->
 
