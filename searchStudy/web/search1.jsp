@@ -1582,7 +1582,9 @@ a {
 					<div id="find" class="sidebar">
 						<div class="title">찾아 본 페이지</div>
 						<ul class="list">
-						<% if(cook.length < 5){ %>
+						<%if(cook.length==1){ %>
+							<li class="item_none">최근 본 페이지가 없습니다.</li>
+						<%}else if(cook.length < 5){ %>
 							<%for(int i=1; i<cook.length; i++){ %>
 								<% if(name[i] != null && item[i] !=null){%>
 						
@@ -1669,6 +1671,7 @@ a {
 									<li><input type="checkbox" id="main_login_chk" value="off">
 										<label for="main_login_chk">로그인 상태 저장</label></li>
 								</ul>
+								
 							</div>
 						</form>
 					</div>

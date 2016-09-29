@@ -967,6 +967,11 @@ div.page-list>ul.pagination>li.active {
 	height:auto;
     border-bottom: 1px solid #e3e3e3;
 }
+#sidebar_wrap>.sidebar>.list>.item_none{
+    text-align: center;
+    padding: 50px 0px;
+    color:#c7c7c7;
+}
 
 #sidebar_wrap>.sidebar>.list>.item:last-child{
 	 border-bottom: none;
