@@ -1196,7 +1196,7 @@ a {
 									<%if(member !=null){ %>
 										<span id="nav_login" ><a class="main_loginPopupBtn" href="/easyStudy/logout">로그아웃</a></span>
 										&nbsp;|&nbsp;
-										<span id="nav_join"><a class="main_joinPopupBtn" href="#main_joinModal"><%=member.getNickName() %></a></span>
+										<span id="nav_join" style="color:#fff"><%=member.getNickName() %></span>
 									<%}else{ %>
 										<span id="nav_login" ><a class="main_loginPopupBtn" href="#main_loginModal">로그인</a></span>
 										&nbsp;|&nbsp;
