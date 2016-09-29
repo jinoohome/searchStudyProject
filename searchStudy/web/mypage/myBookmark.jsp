@@ -134,7 +134,7 @@
                 <%if(i%3==0){ %>
              <div class="element medium first ">
                   
-                  <a href="#" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
+                  <a href="#" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
             
                     <div class="shading"></div>
         			<div class="top"> 
@@ -164,31 +164,157 @@ $(document).ready(function() {
                   </a>
 
                      <div class="desc">
-                            <div class="place_info">
-                                <div class="rating">
-                                    <div class="stars">
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd "></span>
-                                       <span class="star even "></span>
-                                    </div>
-                                  <div class="grade"><%=list.get(i).getScore() %></div>
-                              </div>
-                             <div class="budget">금액 : <%=list.get(i).getPrice() %></div>                    
-                             <div class="comment">전화번호 : <%=list.get(i).getHomepage() %> </div>           
-                           </div>
-                       </div>
+								<div class="place_info">
+									<div class="rating">
+										<%
+							if(list.get(i).getScore() <= 0.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore() <= 1){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 1.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 2){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 2.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 3){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 3.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 4){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%	}else if(list.get(i).getScore()<= 4.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+										</div>
+										<%	
+							}else if(list.get(i).getScore()<= 5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span>
+										</div>
+										<%
+										}
+									%>
+										<div class="grade"><%=list.get(i).getScore() %>점
+										</div>
+									</div>
+									<div class="budget">
+										<span class="price"><%=list.get(i).getPrice() %></span>
+									</div>
+									<%if(list.get(i).getHomepage()== null){ %>
+									<div class="comment"></div>
+									<% }else{ %>
+									<div class="comment">
+										주소 :
+										<%=list.get(i).getHomepage() %>
+									</div>
+									<%} %>
+								</div>
+							</div>
           </div>
           
              <%}else{ %>
                 <div class="element medium">
-                  <a href="#" class="image" style="background-image: url(<%=list.get(i).getImgRoute() %>);">
+                  <a href="#" class="image" style="background-image: url(images/<%=list.get(i).getImgRoute() %>);">
                     <div class="shading"></div>
         				<div class="top"> 
         				<button class="" onclick="return false;" tabindex="-1">
@@ -217,26 +343,152 @@ $(document).ready(function() {
                   </a>
 
                      <div class="desc">
-                            <div class="place_info">
-                                <div class="rating">
-                                    <div class="stars">
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd"></span>
-                                       <span class="star even"></span>
-                                       <span class="star odd "></span>
-                                       <span class="star even "></span>
-                                    </div>
-                                  <div class="grade"><%=list.get(i).getScore() %></div>
-                              </div>
-                             <div class="budget">금액 : <%=list.get(i).getPrice() %></div>                    
-                             <div class="comment">전화번호 : <%=list.get(i).getHomepage() %> </div>
-                           </div>
-                       </div>
+								<div class="place_info">
+									<div class="rating">
+										<%
+							if(list.get(i).getScore() <= 0.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore() <= 1){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 1.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 2){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 2.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 3){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 3.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+											<span class="star odd"></span> <span class="star even"></span>
+										</div>
+										<%
+							}else if(list.get(i).getScore()<= 4){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span class="star odd"></span>
+											<span class="star even"></span>
+										</div>
+										<%	}else if(list.get(i).getScore()<= 4.5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span class="star even"></span>
+										</div>
+										<%	
+							}else if(list.get(i).getScore()<= 5){
+						%>
+										<div class="stars">
+											<span class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span> <span
+												class="star odd active"></span> <span
+												class="star even active"></span>
+										</div>
+										<%
+										}
+									%>
+										<div class="grade"><%=list.get(i).getScore() %>점
+										</div>
+									</div>
+									<div class="budget">
+										<span class="price"><%=list.get(i).getPrice() %></span>
+									</div>
+									<%if(list.get(i).getHomepage()== null){ %>
+									<div class="comment"></div>
+									<% }else{ %>
+									<div class="comment">
+										주소 :
+										<%=list.get(i).getHomepage() %>
+									</div>
+									<%} %>
+								</div>
+							</div>
           </div>
              <%} %>
           <%}}else{ %>

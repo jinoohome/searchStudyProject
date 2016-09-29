@@ -323,10 +323,12 @@ div#mypage_bookmarkList{
     display: block;
     font-size: 16px;
     letter-spacing: -1px;
+    color:#fff;
 }
 
 .element>.image>.mypage_bottom>.area {
     font-size: 13px;
+    color:#fff;
 }
 
 
