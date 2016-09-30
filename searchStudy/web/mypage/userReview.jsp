@@ -320,7 +320,7 @@ $("#bannerSlider").on("selectstart", function()
 							</a>
 							<div class="user">
 								<div class="name ">
-								<a href="#"><%= reviewPageList.get(z).getNickName() %></a>									
+								<a href="#"><%= reviewPageList.get(z).getStoreName() %></a>									
 								</div>
 								
 								

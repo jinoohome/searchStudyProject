@@ -900,7 +900,7 @@ $(document).ready(function() {
 							</a>
 							<div class="user">
 								<div class="name ">
-								<a href="#"><%= reviewPageList.get(z).getNickName() %></a>									
+								<a href="#"><%= reviewPageList.get(z).getStoreName() %></a>									
 								</div>
 								
 								
