@@ -108,7 +108,7 @@ public class StoreAddServlet extends HttpServlet {
 		}
 		
 		
-		if(storeInsert > 0){
+		/*if(storeInsert > 0){
 		if(renameFileNames.size() > 0){
 			Collections.reverse(renameFileNames);
 		
@@ -125,9 +125,8 @@ public class StoreAddServlet extends HttpServlet {
 								+ renameFileNames.get(i).substring(renameFileNames.get(i).lastIndexOf(".") + 1)).toString();
 					
 					renameFileNames.add(renameFileName);
-					
-					File saveFile = new File(localCode + "\\" + renameFileNames.get(i));
-					File newFile = new File(localCode + "\\" + renameFileNames.get(i));
+					File saveFile = new File(savePath+"\\"+localCode + "\\" + renameFileNames.get(i));
+					File newFile = new File(savePath+"\\"+localCode + "\\" + renameFileNames.get(i));
 					if(!saveFile.renameTo(newFile)){
 						int read = 0;
 						byte[] buf = new byte[1024];
@@ -155,16 +154,15 @@ public class StoreAddServlet extends HttpServlet {
 		
 		imageInsert = new DetailService().insertNewImage(nimage);
 		
-		}
+		}*/
 		
 		/*Service Save List*/
-		String[] storeAdd_servies = request.getParameterValues("storeAdd_servie");
+	/*	String[] storeAdd_servies = request.getParameterValues("storeAdd_servie");
 		String storeAdd_servie = "";
-		if(storeAdd_servies.length !=0){
 			for(int i = 0; i < storeAdd_servies.length; i++){
 				System.out.println(storeAdd_servies[i]);
 			}
-		}
+		}*/
 		String laptop = multi.getParameter("laptop");
 		System.out.println("laptop : "+laptop);
 		String beam = multi.getParameter("beam");

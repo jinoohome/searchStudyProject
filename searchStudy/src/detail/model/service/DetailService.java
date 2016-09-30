@@ -37,7 +37,7 @@ public class DetailService {
 
 	public int insertNewStore(Store nstore) {
 		// TODO Auto-generated method stub
-			System.out.println(nstore);
+			System.out.println(nstore.getStoreName());
 		Connection con = getConnection();
 		int result = new DetailDao().insertNewStore(con, nstore);
 		if(result > 0)

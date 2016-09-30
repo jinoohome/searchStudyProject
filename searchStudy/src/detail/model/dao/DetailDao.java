@@ -151,11 +151,11 @@ public class DetailDao {
 			
 		}
 		System.out.println(seq+": seq++++++++" );
-		
+		System.out.println("nstore. nstore.getEtc()()"+  nstore.getEtc());
 		String query = "INSERT INTO STORE (STORE_ID,STORE_NAME, " + 
 				"CATEGORY_ID, LOCAL_CODE, ADDRESS, " + 
-				"HOMEPAGE, TELL, PRICE,WEEKDAY_TIME,WEEKEND_TIME,ETC) "
-				+ "VALUES (JL'||LPAD(JL_SEQ.NEXTVAL,4,0),?,?,?,?,?,?,?,?,?,?)";
+				"HOMEPAGE, TELL, PRICE,WEEKDAY_TIME,WEEKEND_TIME, ETC) "
+				+ "VALUES ('JL'||LPAD(JL_SEQ.NEXTVAL,4,0),?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = con.prepareStatement(query);
@@ -215,15 +215,15 @@ public class DetailDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String query = "INSERT INTO STORE_SERVICE VALUE(?,?,?,?,?)";
+		String query = "INSERT INTO STORE_SERVICE VALUE(?,Y,N,N,Y)";
 		
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, nservice.getStoreId());
-			pstmt.setString(2, nservice.getLaptop());
+			/*pstmt.setString(2, nservice.getLaptop());
 			pstmt.setString(3, nservice.getBeam());
 			pstmt.setString(4, nservice.getWifi());
-			pstmt.setString(5, nservice.getBoard());
+			pstmt.setString(5, nservice.getBoard());*/
 			
 			result = pstmt.executeUpdate();
 			
