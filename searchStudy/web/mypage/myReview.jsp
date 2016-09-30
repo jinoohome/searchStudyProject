@@ -533,7 +533,6 @@ $( document ).ready(function() {
 		
 		var contents = $("#review_text").val();
 		var listno = $('#hiddenlistno').val();
-		alert(listno);
 		var score = 0;
 		if($("#p10").is(":checked")){
 			score = 5.0;
