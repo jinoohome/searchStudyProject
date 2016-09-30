@@ -1064,7 +1064,8 @@ $(document).ready(function() {
 											
 								<ul class="photo_list">
 									<li class="item">
-										<a class="review_loginPopupBtn" href="#review_loginModal">
+										<!-- <a class="review_loginPopupBtn" href="#review_loginModal"> -->
+										<a class="" href="" onclick="return false"> 
 									
 										<%if( reviewImagePageList.get(z).getRenamePhoto1()!=null){ %>
 										<img src="uploadFiles/<%= reviewImagePageList.get(z).getRenamePhoto1() %>" width="84" height="84">
