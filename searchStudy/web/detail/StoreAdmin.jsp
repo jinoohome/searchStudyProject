@@ -456,7 +456,36 @@ $(function(){
 			
 });
 </script>
+<script type="text/javascript">
 
+//[] <--문자 범위 [^] <--부정 [0-9] <-- 숫자  
+//[0-9] => \d , [^0-9] => \D
+var rgx1 = /\D/g;  // /[^0-9]/g 와 같은 표현
+var rgx2 = /(\d+)(\d{3})/; 
+
+function getNumber(obj){
+	
+     var num01;
+     var num02;
+     num01 = obj.value;
+     num02 = num01.replace(rgx1,"");
+     num01 = setComma(num02);
+     obj.value =  num01;
+
+}
+
+function setComma(inNum){
+     
+     var outNum;
+     outNum = inNum; 
+     while (rgx2.test(outNum)) {
+          outNum = outNum.replace(rgx2, '$1' + ',' + '$2');
+      }
+     return outNum;
+
+}
+
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -782,8 +811,17 @@ $(function(){
 								<th><p>가 격</p></th>
 								<td>
 									<div class="inputBox1Wrap" id="">
-										<input type="text" placeholder="" id="" name="" class="inputBox3">
+										<input name="price" placeholder="숫자만 사용 가능합니다" id="storeAdd_price" type="text" onchange="getNumber(this);" onkeyup="getNumber(this);" class="inputBox3">
 									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><p>서비스</p></th>
+								<td>
+									<li><input type="checkbox" name="localCode" id="storeAdd_laptop" value="laptop"><label for="storeAdd_GN">강남</label></li>
+									<li><input type="checkbox" name="localCode" id="storeAdd_beam" value="beam"><label for="storeAdd_SC">신촌</label></li>   
+									<li><input type="checkbox" name="localCode" id="storeAdd_wifi" value="wifi"><label for="storeAdd_JL">종로</label></li>  
+									<li><input type="checkbox" name="localCode" id="storeAdd_board" value="board"><label for="storeAdd_JL">종로</label></li>  
 								</td>
 							</tr>
 							
@@ -791,21 +829,17 @@ $(function(){
 								<th><p class="textarea_text">비 고</p></th>
 								<td>
 									<div class="textareaBoxWrap" id="">
-										<textarea placeholder="" id="" name="etc" class="textareaBox"></textarea>
+										<textarea placeholder="" id="" name="etc" class="textareaBox" style="background:aliceblue;"></textarea>
 										<div id="review_text_state" class="border_radius soft">
 													특이 사항이 있으면 적어주세요!
-									</div>
-									
+										</div>
 									</div>
 									
 									
 								</td>
 							</tr>
 
-							<tr>
-								<th colspan="2"></th>
-							</tr>
-
+	
 							<tr>
 								<th>첨부파일</th>
 

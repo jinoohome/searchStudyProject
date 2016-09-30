@@ -44,12 +44,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/detail.css" > 
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css" >
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css" > 
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css" > 
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA29xkBAMN_bvriR7uE8dSqVFFwjKXZjcw"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
