@@ -1554,7 +1554,7 @@ $(function(){
 									<div class="action">
 								<%if(member !=null){ %>
 									<%	if(member.getNickName().equals(reviewPageList.get(z).getNickName())){ %>
-										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
+										<a href="#" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);" class="func">
 											수정하기  
 										</a>
 										<a href="rdelete?listNo=<%= reviewPageList.get(z).getListNo()%>&storeId=<%= s.getStoreId() %>&score=<%=score %>" class="func">

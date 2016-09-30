@@ -143,7 +143,7 @@ li {
 }
 
 /*4_2_1. li class=item grade */
-/*별점*/
+/*蹂꾩젏*/
 
 
 form ul.list {
@@ -241,7 +241,7 @@ i.icon.star.medium.even {
     height: 74px;
     display: inline-flex;
 }
-/*사진올리기 글씨 옆에 있는 +버튼*/
+/*�궗吏꾩삱由ш린 湲��뵪 �쁿�뿉 �엳�뒗 +踰꾪듉*/
 button {
     -webkit-appearance: button;
 }
@@ -309,7 +309,7 @@ button {
     text-align: center;
     vertical-align: middle;
 }
-/*사진올리기 글씨 옆에 있는 +버튼 다음에있는 ul review_photo_list*/
+/*�궗吏꾩삱由ш린 湲��뵪 �쁿�뿉 �엳�뒗 +踰꾪듉 �떎�쓬�뿉�엳�뒗 ul review_photo_list*/
 
 ul ul, ol ul {
     list-style-type: circle;
@@ -421,7 +421,7 @@ hr {
 .review_detail {
     margin-left: 8px;
 }
-/*리뷰의 작성자 사진 a태그*/
+/*由щ럭�쓽 �옉�꽦�옄 �궗吏� a�깭洹�*/
 a:-webkit-any-link {
     color: -webkit-link;
     text-decoration: none;
@@ -461,7 +461,7 @@ i.image, i.profile_image {
     font-size: 13px;
     font-weight: 600;
 }
-		/*이름의 a태그*/
+		/*�씠由꾩쓽 a�깭洹�*/
 
 a {
     text-decoration: none;
@@ -473,7 +473,7 @@ a {
     min-width: 125px;
     color: #444;
 }
-	/*count 사용 안함*/
+	/*count �궗�슜 �븞�븿*/
 	/*grade*/
 .review_detail>.user>.grade {
     margin-bottom: 12px;
@@ -554,9 +554,9 @@ pre {
     height: 84px;
 }
 
-	/*action -좋아요,찜하기, 댓글 등등 사용안함*/
-	/*comment_list -댓글 사용안함*/
-	/*comment_write -댓글쓰기버튼 사용안함*/
+	/*action -醫뗭븘�슂,李쒗븯湲�, �뙎湲� �벑�벑 �궗�슜�븞�븿*/
+	/*comment_list -�뙎湲� �궗�슜�븞�븿*/
+	/*comment_write -�뙎湲��벐湲곕쾭�듉 �궗�슜�븞�븿*/
 
 /*7_4. script */
 script {
@@ -606,7 +606,7 @@ div.page-list>ul.pagination>li {
     background: 0 0;
 }
 
-/* 수정하기,삭제하기 a태그 */
+
 div.action a.func{
     float: right;
     padding: 0;

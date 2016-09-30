@@ -20,8 +20,8 @@
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/layout.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/function.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/review.css">
-<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
 <link rel="stylesheet" type="text/css" href="/easyStudy/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/easyStudy/css/star.css">
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA29xkBAMN_bvriR7uE8dSqVFFwjKXZjcw"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -1102,7 +1102,7 @@ $(document).ready(function() {
 							<%	} %>
 									<div class="action">
 								<%if(member !=null){ %>
-										<a href="#" class="modify" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);">
+										<a href="#" id="review_updateBtn" onclick="update(<%= reviewPageList.get(z).getListNo()%>);" class="func">
 											수정하기  
 										</a>
 										<a href="myrdel?listNo=<%= reviewPageList.get(z).getListNo()%>&page=<%=currentPage %>&nickname=<%=member.getNickName() %>" onclick="return confirm('정말 리뷰를 삭제하시겠습니까?')" class="func">
