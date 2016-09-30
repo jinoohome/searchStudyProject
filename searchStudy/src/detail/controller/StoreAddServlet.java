@@ -158,6 +158,13 @@ public class StoreAddServlet extends HttpServlet {
 		}
 		
 		/*Service Save List*/
+		String[] storeAdd_servies = request.getParameterValues("storeAdd_servie");
+		String storeAdd_servie = "";
+		if(storeAdd_servies.length !=0){
+			for(int i = 0; i < storeAdd_servies.length; i++){
+				System.out.println(storeAdd_servies[i]);
+			}
+		}
 		String laptop = multi.getParameter("laptop");
 		System.out.println("laptop : "+laptop);
 		String beam = multi.getParameter("beam");

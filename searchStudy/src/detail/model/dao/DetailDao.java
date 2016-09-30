@@ -146,16 +146,16 @@ public class DetailDao {
 			seq = "'GN'||LPAD(GN_SEQ.NEXTVAL,4,0)";
 		}else if(nstore.getLocalCode()=="SC"){
 			seq = "'SC'||LPAD(SC_SEQ.NEXTVAL,4,0)";
-		}else if(nstore.getLocalCode()=="SC"){
+		}else if(nstore.getLocalCode()=="JL"){
 			seq = "'JL'||LPAD(JL_SEQ.NEXTVAL,4,0)";
 			
 		}
-		
+		System.out.println(seq+": seq++++++++" );
 		
 		String query = "INSERT INTO STORE (STORE_ID,STORE_NAME, " + 
 				"CATEGORY_ID, LOCAL_CODE, ADDRESS, " + 
 				"HOMEPAGE, TELL, PRICE,WEEKDAY_TIME,WEEKEND_TIME,ETC) "
-				+ "VALUES ("+seq+",?,?,?,?,?,?,?,?,?,?)";
+				+ "VALUES (JL'||LPAD(JL_SEQ.NEXTVAL,4,0),?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = con.prepareStatement(query);

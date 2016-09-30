@@ -299,3 +299,9 @@ p:after{
 	margin-left:10px;
 	width:150px;
 }
+#storeAdd_area #storeAdd_servie li{
+	list-style-type:none;
+	float:left;
+	margin-left: 20px;
+	
+}

@@ -26,8 +26,6 @@
 <script type="text/javascript" src="/easyStudy/js/review.js"></script>
 <script type="text/javascript" src="/easyStudy/js/jquery.leanModal.min.js"></script> <!--dialog -->
 
-
-
 <title>Admin</title>
 <script>
 $( document ).ready(function() {
@@ -735,7 +733,7 @@ function setComma(inNum){
 					%>
 
 					<div id="storeAdd_area">
-					<form action="" method="post" enctype="multipart/form-data">
+					<form action="/easyStudy/storeAdd" method="post" enctype="multipart/form-data">
 						<table border="1" id="detail_table">
 							<tr>
 								<th><p>상 점 명</p></th>
@@ -769,10 +767,9 @@ function setComma(inNum){
 							<tr>
 								<th><p>주 소</p></th>
 								<td>
-									<input type="text" name="" class="postcodify_postcode5" value="" />
-									<button id="postcodify_search_button">검색</button><br />
-									<input type="text" name="" class="postcodify_address" value="" /><br />
-									<input type="text" name="" class="postcodify_details" value="" /><br />
+								<div class="inputBox3Wrap" id="">
+									<input type="text" name="address" class="postcodify_postcode5 inputBox3" value="" />
+								</div>
 								</td>
 							</tr>
 							<tr>
@@ -818,10 +815,12 @@ function setComma(inNum){
 							<tr>
 								<th><p>서비스</p></th>
 								<td>
-									<li><input type="checkbox" name="localCode" id="storeAdd_laptop" value="laptop"><label for="storeAdd_GN">강남</label></li>
-									<li><input type="checkbox" name="localCode" id="storeAdd_beam" value="beam"><label for="storeAdd_SC">신촌</label></li>   
-									<li><input type="checkbox" name="localCode" id="storeAdd_wifi" value="wifi"><label for="storeAdd_JL">종로</label></li>  
-									<li><input type="checkbox" name="localCode" id="storeAdd_board" value="board"><label for="storeAdd_JL">종로</label></li>  
+									<div class="" id="storeAdd_servie">
+									<li><input type="checkbox" name="storeAdd_servie" id="storeAdd_laptop" value="laptop"><label for="storeAdd_laptop">노트북</label></li>
+									<li><input type="checkbox" name="storeAdd_servie" id="storeAdd_beam" value="beam"><label for="storeAdd_beam">빔 프로젝트</label></li>   
+									<li><input type="checkbox" name="storeAdd_servie" id="storeAdd_wifi" value="wifi"><label for="storeAdd_wifi">와이파이</label></li>  
+									<li><input type="checkbox" name="storeAdd_servie" id="storeAdd_board" value="board"><label for="storeAdd_board">화이트보드</label></li>  
+									</div>
 								</td>
 							</tr>
 							
@@ -846,7 +845,7 @@ function setComma(inNum){
 								<td id="farea">
 									<div id="itemPhoto" class="item photo">
 											<div class="detail">
-												<button id="review_photo_upload" class="border_radius medium" tabindex="-1">
+												<button type="button" id="review_photo_upload" class="border_radius medium" tabindex="-1">
 													+
 												</button>
 												<input type="file" multiple name="reviewPhoto1" id="upBtn1" class="file_input_hidden" /> 
